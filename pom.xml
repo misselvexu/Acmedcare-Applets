@@ -84,6 +84,7 @@
     <modules>
         <module>api</module>
         <module>common</module>
+        <module>integrates</module>
         <module>server</module>
     </modules>
 
@@ -129,6 +130,13 @@
                 <groupId>com.acmedcare.framework</groupId>
                 <artifactId>applet-common</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.framework</groupId>
+                <artifactId>applet-integrates-all</artifactId>
+                <version>${project.version}</version>
+                <type>pom</type>
             </dependency>
 
             <dependency>

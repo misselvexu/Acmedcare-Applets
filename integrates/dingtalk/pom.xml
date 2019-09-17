@@ -1,0 +1,80 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.acmedcare.framework</groupId>
+        <artifactId>applet-integrates-all</artifactId>
+        <version>2.1.0.BUILD-SNAPSHOT</version>
+        <relativePath>../</relativePath>
+    </parent>
+    <artifactId>applet-integrate-dingtalk</artifactId>
+    <name>Acmedcare+ Applet Tripartite Integrate Alibaba DingTalk Module :: ${project.version}</name>
+
+    <properties>
+        <dingtalk.base.dir>${project.basedir}</dingtalk.base.dir>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.acmedcare.framework</groupId>
+            <artifactId>applet-integrate-api</artifactId>
+        </dependency>
+
+        <!-- Third's libs -->
+        <dependency>
+            <groupId>com.alibaba.dingtalk</groupId>
+            <artifactId>encrpt-kit</artifactId>
+            <version>20190313</version>
+            <scope>system</scope>
+            <systemPath>${dingtalk.base.dir}/src/main/libs/lippi-oapi-encrpt.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>com.taobao.top</groupId>
+            <artifactId>top-api-sdk-dev</artifactId>
+            <version>20190313</version>
+            <scope>system</scope>
+            <systemPath>${dingtalk.base.dir}/src/main/libs/taobao-sdk-java-auto_1479188381469-20190313.jar</systemPath>
+        </dependency>
+
+        <!-- Common Libs -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <!--  -->
+                    <includeSystemScope>true</includeSystemScope>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
