@@ -82,7 +82,9 @@
     </developers>
 
     <modules>
-
+        <module>api</module>
+        <module>common</module>
+        <module>server</module>
     </modules>
 
     <dependencyManagement>
@@ -117,6 +119,23 @@
             </dependency>
 
             <!-- Inner Libs Defined -->
+            <dependency>
+                <groupId>com.acmedcare.framework</groupId>
+                <artifactId>applet-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.framework</groupId>
+                <artifactId>applet-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.framework</groupId>
+                <artifactId>applet-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <!-- libs defined -->
             <dependency>
