@@ -16,7 +16,8 @@ public class DefaultAppletResponse extends AppletResponse<String, String> {
   /**
    * Default Constructor
    *
-   * <p>
+   * <p>WARN: if you want to use {@link AppletResponse#appletResponseBuilder()} to create new
+   * response instance , you must add this default constructor
    */
   @Builder
   public DefaultAppletResponse(Status status, Date timestamp, String message, String data) {
