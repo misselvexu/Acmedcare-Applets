@@ -12,6 +12,7 @@ import com.dingtalk.api.response.OapiUserGetuserinfoResponse;
 import com.taobao.api.ApiException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -40,12 +41,6 @@ public class AuthEndpoint {
     this.properties = properties;
   }
 
-  /** 欢迎页面 */
-  @RequestMapping(value = "/welcome", method = RequestMethod.GET)
-  public String welcome() {
-    return "welcome";
-  }
-
   /**
    * 钉钉用户登录，显示当前登录的企业和用户
    *
@@ -58,27 +53,26 @@ public class AuthEndpoint {
       @RequestParam(value = "corpId") String corpId,
       @RequestParam(value = "authCode") String requestAuthCode) {
 
-    Long start = System.currentTimeMillis();
-
     // 获取accessToken,注意正是代码要有异常流处理
-    OapiServiceGetCorpTokenResponse oapiServiceGetCorpTokenResponse =
-        getOapiServiceGetCorpToken(corpId);
+    OapiServiceGetCorpTokenResponse oapiServiceGetCorpTokenResponse = getOapiServiceGetCorpToken(corpId);
+
     String accessToken = oapiServiceGetCorpTokenResponse.getAccessToken();
 
     // 获取用户信息
-    OapiUserGetuserinfoResponse oapiUserGetuserinfoResponse =
-        getOapiUserGetuserinfo(accessToken, requestAuthCode);
+    OapiUserGetuserinfoResponse oapiUserGetuserinfoResponse = getOapiUserGetuserinfo(accessToken, requestAuthCode);
+
+    Assert.notNull(oapiUserGetuserinfoResponse, "[==DingTalk==] get user info response must not be null.");
 
     // 3.查询得到当前用户的userId
     // 获得到userId之后应用应该处理应用自身的登录会话管理（session）,避免后续的业务交互（前端到应用服务端）每次都要重新获取用户身份，提升用户体验
     String userId = oapiUserGetuserinfoResponse.getUserid();
 
     // 返回结果
-    Map<String, Object> resultMap = new HashMap<>();
-    resultMap.put("userId", userId);
-    resultMap.put("corpId", corpId);
+    Map<String, Object> result = new HashMap<>(2);
+    result.put("userId", userId);
+    result.put("corpId", corpId);
 
-    return DingTalkResult.success(resultMap);
+    return DingTalkResult.success(result);
   }
 
   /**

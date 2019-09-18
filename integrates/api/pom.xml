@@ -11,5 +11,29 @@
     <name>Acmedcare+ Applet Tripartite Integrate Api Base Module :: ${project.version}</name>
 
 
+    <dependencies>
+
+        <dependency>
+            <groupId>com.acmedcare.framework</groupId>
+            <artifactId>applet-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.acmedcare.framework.kits</groupId>
+            <artifactId>common-kits</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.acmedcare.framework</groupId>
+            <artifactId>spring-boot-starter-resteasy</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
 
 </project>

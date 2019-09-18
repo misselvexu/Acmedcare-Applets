@@ -15,6 +15,9 @@
     <modules>
         <module>api</module>
 
+        <!-- Default Aorp-->
+        <module>default</module>
+
         <!-- Alibaba DingTalk Integration -->
         <module>dingtalk</module>
     </modules>
@@ -25,6 +28,12 @@
             <dependency>
                 <groupId>com.acmedcare.framework</groupId>
                 <artifactId>applet-integrate-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.framework</groupId>
+                <artifactId>applet-integrate-default</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

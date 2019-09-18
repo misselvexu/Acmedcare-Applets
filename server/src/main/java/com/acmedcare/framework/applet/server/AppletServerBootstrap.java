@@ -3,6 +3,7 @@ package com.acmedcare.framework.applet.server;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 
 /**
  * {@link AppletServerBootstrap}
@@ -13,8 +14,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 @SpringBootApplication
 public class AppletServerBootstrap {
 
+  private static ConfigurableApplicationContext context;
+
   public static void main(String[] args) {
-    new SpringApplicationBuilder(AppletServerBootstrap.class)
+    context = new SpringApplicationBuilder(AppletServerBootstrap.class)
         .web(WebApplicationType.SERVLET)
         .properties("spring.profiles.active=production")
         .run(args);

@@ -7,8 +7,8 @@
         <version>2.1.0.BUILD-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
-    <artifactId>applet-integrate-dingtalk</artifactId>
-    <name>Acmedcare+ Applet Tripartite Integrate Alibaba DingTalk Module :: ${project.version}</name>
+    <artifactId>applet-integrate-default</artifactId>
+    <name>Acmedcare+ Applet Tripartite Integrate Default Aorp Module :: ${project.version}</name>
 
     <properties>
         <dingtalk.base.dir>${project.basedir}</dingtalk.base.dir>
@@ -20,21 +20,9 @@
             <artifactId>applet-integrate-api</artifactId>
         </dependency>
 
-        <!-- Third's libs -->
         <dependency>
-            <groupId>com.alibaba.dingtalk</groupId>
-            <artifactId>encrpt-kit</artifactId>
-            <version>20190313</version>
-            <scope>system</scope>
-            <systemPath>${dingtalk.base.dir}/src/main/libs/lippi-oapi-encrpt.jar</systemPath>
-        </dependency>
-
-        <dependency>
-            <groupId>com.taobao.top</groupId>
-            <artifactId>top-api-sdk-dev</artifactId>
-            <version>20190313</version>
-            <scope>system</scope>
-            <systemPath>${dingtalk.base.dir}/src/main/libs/taobao-sdk-java-auto_1479188381469-20190313.jar</systemPath>
+            <groupId>com.acmedcare.framework</groupId>
+            <artifactId>spring-boot-starter-resteasy</artifactId>
         </dependency>
 
         <!-- Spring Boot Libs-->
@@ -63,31 +51,6 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Common Libs -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpmime</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-        </dependency>
     </dependencies>
 
 

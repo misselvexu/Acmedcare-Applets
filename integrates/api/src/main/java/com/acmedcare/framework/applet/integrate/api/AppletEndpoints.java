@@ -20,5 +20,5 @@ public class AppletEndpoints {
    *
    * <p>
    */
-  public static final String APPLET_AUTH_ENDPOINT = APPLET_ENDPOINT_PREFIX + "/auth";
+  public static final String APPLET_AUTH_ENDPOINT = "/auth";
 }
