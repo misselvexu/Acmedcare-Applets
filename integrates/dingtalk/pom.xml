@@ -34,7 +34,7 @@
             <artifactId>top-api-sdk-dev</artifactId>
             <version>20190313</version>
             <scope>system</scope>
-            <systemPath>${dingtalk.base.dir}/src/main/libs/taobao-sdk-java-auto_1479188381469-20190313.jar</systemPath>
+            <systemPath>${dingtalk.base.dir}/src/main/libs/taobao-sdk-java-auto_1479188381469-20190918.jar</systemPath>
         </dependency>
 
         <!-- Spring Boot Libs-->

@@ -21,4 +21,11 @@ public class AppletEndpoints {
    * <p>
    */
   public static final String APPLET_AUTH_ENDPOINT = "/auth";
+
+  /**
+   * Principal Endpoint
+   *
+   * <p>
+   */
+  public static final String APPLET_PRINCIPAL_ENDPOINT = "/principal";
 }
