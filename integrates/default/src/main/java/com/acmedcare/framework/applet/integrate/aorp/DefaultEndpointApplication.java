@@ -1,6 +1,7 @@
 package com.acmedcare.framework.applet.integrate.aorp;
 
 import com.acmedcare.framework.applet.integrate.aorp.endpoints.DefaultAuthEndpoint;
+import com.acmedcare.framework.applet.integrate.aorp.endpoints.DefaultPrincipalEndpoint;
 import com.google.common.collect.Sets;
 import org.springframework.stereotype.Component;
 
@@ -39,6 +40,6 @@ public class DefaultEndpointApplication extends Application {
    */
   @Override
   public Set<Class<?>> getClasses() {
-    return Sets.newHashSet(DefaultAuthEndpoint.class);
+    return Sets.newHashSet(DefaultAuthEndpoint.class, DefaultPrincipalEndpoint.class);
   }
 }
