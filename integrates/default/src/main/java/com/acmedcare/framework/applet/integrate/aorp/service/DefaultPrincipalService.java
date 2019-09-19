@@ -1,4 +1,4 @@
-package com.acmedcare.framework.applet.integrate.aorp.endpoints;
+package com.acmedcare.framework.applet.integrate.aorp.service;
 
 import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.integrate.aorp.response.DefaultPrincipalResponse;
@@ -10,15 +10,15 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * {@link DefaultPrincipalEndpoint}
+ * {@link DefaultPrincipalService}
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version} - 2019/9/19.
  */
 @Extension("aorp")
-public class DefaultPrincipalEndpoint implements PrincipalService {
+public class DefaultPrincipalService implements PrincipalService {
 
-  private static final Logger log = LoggerFactory.getLogger(DefaultPrincipalEndpoint.class);
+  private static final Logger log = LoggerFactory.getLogger(DefaultPrincipalService.class);
 
   /**
    * Get Applet Principal Detail By Custom params

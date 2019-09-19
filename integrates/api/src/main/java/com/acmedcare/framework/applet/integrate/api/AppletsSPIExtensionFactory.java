@@ -9,9 +9,12 @@ import com.acmedcare.framework.applet.integrate.spi.ExtensionLoader;
 import com.acmedcare.framework.applet.integrate.spi.ExtensionLoaderFactory;
 import com.acmedcare.framework.applet.integrate.spi.util.StringUtils;
 import com.acmedcare.framework.kits.lang.NonNull;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanFactory;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import java.util.Map;
 
 /**
  * {@link AppletsSPIExtensionFactory}
@@ -24,18 +27,31 @@ public final class AppletsSPIExtensionFactory {
 
   private static final Logger log = LoggerFactory.getLogger(AppletsSPIExtensionFactory.class);
 
+  private static final String APPLETS_ENABLED_ENV_PROPERTIES_KEY = "applet.integrate.enabled";
+
+  private static final String SPI_IMPLEMENTS_ENABLED_ENV_PROPERTIES_KEY = "applet.integrate.%s.enabled";
+
+  private static final Map<String, Boolean> CUSTOMER_APPLET_ENABLED_CACHE = Maps.newHashMap();
+
   private static ExtensionLoader<AuthService> authServiceExtensionLoader;
 
   private static ExtensionLoader<PrincipalService> principalServiceExtensionLoader;
 
-  private static BeanFactory beanFactory;
+  private static ConfigurableApplicationContext context;
 
-  static void refresh(BeanFactory beanFactory) {
-    AppletsSPIExtensionFactory.beanFactory = beanFactory;
+  private static volatile Boolean appletsEnabled = false;
+
+  static void refresh(ConfigurableApplicationContext context) {
+    AppletsSPIExtensionFactory.context = context;
     authServiceExtensionLoader = buildAuthServiceExtensionLoader();
     log.info("[==Applets SPI==] AuthService instance is build-ed.");
     principalServiceExtensionLoader = buildPrincipalServiceExtensionLoader();
     log.info("[==Applets SPI==] PrincipalService instance is build-ed.");
+
+    appletsEnabled =
+        context
+            .getEnvironment()
+            .getProperty(APPLETS_ENABLED_ENV_PROPERTIES_KEY, Boolean.class, false);
   }
 
   private static ExtensionLoader<PrincipalService> buildPrincipalServiceExtensionLoader() {
@@ -71,6 +87,20 @@ public final class AppletsSPIExtensionFactory {
       throw new NotFoundAppletDependencyException();
     }
 
+    /*
+    if(!appletsEnabled) {
+      throw new UnSupportedAppletException(
+          "Applet server not found config properties <applet.integrate.enabled=true> on environment");
+    }
+    */
+
+    String envKey = String.format(SPI_IMPLEMENTS_ENABLED_ENV_PROPERTIES_KEY, alias);
+
+    if (!checkAndSet(envKey)) {
+      throw new UnSupportedAppletException(
+          "Applet server not found config properties <" + envKey + "=true> on environment");
+    }
+
     if (clazz.equals(AuthService.class)) {
       return (T) authServiceExtensionLoader.getExtension(alias);
     }
@@ -81,5 +111,15 @@ public final class AppletsSPIExtensionFactory {
 
     // without extension
     throw new NotFoundAppletDependencyException();
+  }
+
+  private static boolean checkAndSet(@NonNull String key) {
+    if (CUSTOMER_APPLET_ENABLED_CACHE.containsKey(key)) {
+      return CUSTOMER_APPLET_ENABLED_CACHE.get(key);
+    } else {
+      Boolean value = context.getEnvironment().getProperty(key, Boolean.class, Boolean.FALSE);
+      CUSTOMER_APPLET_ENABLED_CACHE.put(key, value);
+      return value;
+    }
   }
 }

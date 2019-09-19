@@ -17,7 +17,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = DingTalkIntegrateProperties.INTEGRATE_PROPERTIES_CONFIG_PREFIX)
 public class DingTalkIntegrateProperties {
 
-  static final String INTEGRATE_PROPERTIES_CONFIG_PREFIX = "applet.integrate.ding-talk";
+  static final String INTEGRATE_PROPERTIES_CONFIG_PREFIX = "applet.integrate.dingtalk";
 
   private boolean enabled = false;
 

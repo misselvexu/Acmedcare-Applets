@@ -1,1 +1,1 @@
-aorp=com.acmedcare.framework.applet.integrate.aorp.endpoints.DefaultPrincipalEndpoint
+aorp=com.acmedcare.framework.applet.integrate.aorp.service.DefaultPrincipalService

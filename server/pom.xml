@@ -26,12 +26,10 @@
             <artifactId>applet-common</artifactId>
         </dependency>
 
-        <!--
         <dependency>
             <groupId>com.acmedcare.framework</groupId>
             <artifactId>applet-integrate-dingtalk</artifactId>
         </dependency>
-        -->
 
         <dependency>
             <groupId>com.acmedcare.framework</groupId>

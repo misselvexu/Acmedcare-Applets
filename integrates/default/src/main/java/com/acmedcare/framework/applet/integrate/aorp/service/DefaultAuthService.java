@@ -1,4 +1,4 @@
-package com.acmedcare.framework.applet.integrate.aorp.endpoints;
+package com.acmedcare.framework.applet.integrate.aorp.service;
 
 import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.integrate.aorp.response.DefaultAppletResponse;

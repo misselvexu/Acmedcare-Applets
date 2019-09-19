@@ -1,6 +1,7 @@
 package com.acmedcare.framework.applet.integrate.api.configuration;
 
 import com.acmedcare.framework.applet.api.exception.AppletException;
+import com.acmedcare.framework.applet.api.exception.InvalidRequestParamException;
 import com.acmedcare.framework.applet.api.exception.NotFoundAppletDependencyException;
 import com.acmedcare.framework.applet.api.exception.UnSupportedAppletException;
 import com.acmedcare.framework.exception.entity.EntityBody;
@@ -68,6 +69,19 @@ public class AppletsExceptionMapper implements ExceptionMapper<RuntimeException>
                     EntityBody.builder()
                         .status(EntityBody.Status.EXCEPTION)
                         .message("Applet server not found applet's implements dependency .")
+                        .build())
+                .type(MediaType.APPLICATION_JSON);
+
+        return responseBuilder.build();
+      }
+
+      if(appletException instanceof InvalidRequestParamException) {
+        Response.ResponseBuilder responseBuilder =
+            Response.status(Response.Status.BAD_REQUEST)
+                .entity(
+                    EntityBody.builder()
+                        .status(EntityBody.Status.FAILED)
+                        .message(appletException.getMessage())
                         .build())
                 .type(MediaType.APPLICATION_JSON);
 
