@@ -26,7 +26,7 @@ public abstract class AbstractEndpoint {
    */
   void checkAppletType(String type) {
     if (!this.properties.isAppletSupported(type)) {
-      throw new UnSupportedAppletException("Applet Type: " + type + " is not supported .");
+      throw new UnSupportedAppletException("Applet Type <" + type + "> is not supported .");
     }
   }
 }
