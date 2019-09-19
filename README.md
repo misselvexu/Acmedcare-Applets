@@ -13,9 +13,9 @@ Acmedcare+ Tripartite Applet Support Framework
 
 ### Building from Source
 
-You don’t need to build from source to use `Acmedcare+ Nas` (binaries in [repo.acmedcare.com](http://47.97.26.165:8081/repository/maven-public/)), 
+You don’t need to build from source to use `Acmedcare+ Applets` (binaries in [repo.acmedcare.com](http://47.97.26.165:8081/repository/maven-public/)), 
 but if you want to try out the latest and greatest, 
-`Acmedcare+ Nas` can be easily built with the maven wrapper. You also need JDK 1.8.
+`Acmedcare+ Applets` can be easily built with the maven wrapper. You also need JDK 1.8.
 
 *First* : git clone source from gitlab
  
