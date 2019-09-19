@@ -92,6 +92,7 @@ public class AppletsExceptionMapper implements ExceptionMapper<RuntimeException>
     // other system exception
 
     // TODO
+    exception.printStackTrace();
 
     // normal exception
     return NORMAL_RESPONSE;

@@ -5,7 +5,6 @@ import com.acmedcare.framework.applet.integrate.api.AppletResponse;
 import com.acmedcare.framework.applet.integrate.api.AppletsSPIExtensionFactory;
 import com.acmedcare.framework.applet.integrate.api.bean.Principal;
 import com.acmedcare.framework.applet.integrate.api.spi.PrincipalService;
-import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
@@ -23,7 +22,6 @@ import static com.acmedcare.framework.applet.integrate.api.AppletEndpoints.APPLE
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version} - 2019/9/19.
  */
-@Component
 @Path(APPLET_PRINCIPAL_ENDPOINT)
 public class PrincipalEndpoint extends AbstractEndpoint {
 

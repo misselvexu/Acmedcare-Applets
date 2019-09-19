@@ -20,6 +20,11 @@
             <artifactId>applet-integrate-api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.acmedcare.framework</groupId>
+            <artifactId>spring-boot-starter-resteasy</artifactId>
+        </dependency>
+
         <!-- Third's libs -->
         <dependency>
             <groupId>com.alibaba.dingtalk</groupId>

@@ -32,9 +32,7 @@ public class DefaultPrincipalService implements PrincipalService {
   public DefaultPrincipalResponse principal(HttpServletRequest request)
       throws AppletException {
 
-    String type = request.getHeader("");
-
-    log.info("[==Applet Principal==] Client-{} request to get principal .", type);
+    log.info("[==Applet Principal==] Client-Aorp request to get principal .");
 
     return DefaultPrincipalResponse.builder().build();
   }

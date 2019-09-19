@@ -32,6 +32,7 @@ public class AppletsAutoConfiguration {
       name = "enabled",
       havingValue = "true")
   public void onApplicationStartedUp(ApplicationReadyEvent event) {
+    AppletsContext.refresh(event.getApplicationContext().getBeanFactory(), event.getApplicationContext().getEnvironment());
     AppletsSPIExtensionFactory.refresh(event.getApplicationContext());
   }
 }
