@@ -19,6 +19,11 @@
         </dependency>
 
         <dependency>
+            <groupId>com.acmedcare.framework</groupId>
+            <artifactId>exception-api</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
@@ -31,7 +36,25 @@
         <dependency>
             <groupId>com.acmedcare.framework</groupId>
             <artifactId>spring-boot-starter-resteasy</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
             <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
         </dependency>
 
     </dependencies>

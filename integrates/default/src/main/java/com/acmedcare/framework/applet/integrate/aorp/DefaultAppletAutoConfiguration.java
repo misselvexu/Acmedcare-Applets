@@ -17,7 +17,8 @@ import static com.acmedcare.framework.applet.integrate.aorp.DefaultAppletIntegra
 @ConditionalOnProperty(
     prefix = INTEGRATE_PROPERTIES_CONFIG_PREFIX,
     name = "enabled",
-    havingValue = "true")
+    havingValue = "true",
+    matchIfMissing = true)
 @EnableConfigurationProperties(DefaultAppletIntegrateProperties.class)
 @ComponentScan(basePackageClasses = DefaultAppletIntegrateProperties.class)
 public class DefaultAppletAutoConfiguration {}

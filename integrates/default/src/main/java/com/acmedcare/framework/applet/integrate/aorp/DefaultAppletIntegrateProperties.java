@@ -21,5 +21,5 @@ public class DefaultAppletIntegrateProperties {
 
   static final String INTEGRATE_PROPERTIES_CONFIG_PREFIX = "applet.integrate.default";
 
-  private boolean enabled = false;
+  private boolean enabled = true;
 }

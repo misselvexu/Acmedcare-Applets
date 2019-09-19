@@ -2,7 +2,10 @@ package com.acmedcare.framework.applet.integrate.api.endpoints;
 
 import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.integrate.api.AppletResponse;
+import com.acmedcare.framework.applet.integrate.api.AppletsSPIExtensionFactory;
 import com.acmedcare.framework.applet.integrate.api.bean.Principal;
+import com.acmedcare.framework.applet.integrate.api.spi.PrincipalService;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
@@ -20,8 +23,9 @@ import static com.acmedcare.framework.applet.integrate.api.AppletEndpoints.APPLE
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version} - 2019/9/19.
  */
+@Component
 @Path(APPLET_PRINCIPAL_ENDPOINT)
-public interface PrincipalEndpoint {
+public class PrincipalEndpoint extends AbstractEndpoint {
 
   /**
    * Get Applet Principal Detail By Custom params
@@ -35,5 +39,12 @@ public interface PrincipalEndpoint {
   @POST
   @Path("/{type}")
   @Produces({MediaType.APPLICATION_JSON})
-  <T extends AppletResponse<? extends Principal, String>> T principal(@PathParam("type") String type, @Context HttpServletRequest request) throws AppletException;
+  public <T extends AppletResponse<? extends Principal, String>> T principal(@PathParam("type") String type, @Context HttpServletRequest request) throws AppletException {
+
+    checkAppletType(type);
+
+    PrincipalService principalService = AppletsSPIExtensionFactory.getService(type, PrincipalService.class);
+
+    return principalService.principal(request);
+  }
 }

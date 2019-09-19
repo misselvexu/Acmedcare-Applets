@@ -1,7 +1,8 @@
-package com.acmedcare.framework.applet.integrate.aorp;
+package com.acmedcare.framework.applet.integrate.api;
 
-import com.acmedcare.framework.applet.integrate.aorp.endpoints.DefaultAuthEndpoint;
-import com.acmedcare.framework.applet.integrate.aorp.endpoints.DefaultPrincipalEndpoint;
+import com.acmedcare.framework.applet.integrate.api.configuration.AppletsExceptionMapper;
+import com.acmedcare.framework.applet.integrate.api.endpoints.AuthEndpoint;
+import com.acmedcare.framework.applet.integrate.api.endpoints.PrincipalEndpoint;
 import com.google.common.collect.Sets;
 import org.springframework.stereotype.Component;
 
@@ -13,14 +14,14 @@ import java.util.Set;
 import static com.acmedcare.framework.applet.integrate.api.AppletEndpoints.APPLET_ENDPOINT_PREFIX;
 
 /**
- * {@link DefaultEndpointApplication}
+ * {@link AppletsEndpointApplication}
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version} - 2019/9/18.
  */
 @Component
 @ApplicationPath(APPLET_ENDPOINT_PREFIX)
-public class DefaultEndpointApplication extends Application {
+public class AppletsEndpointApplication extends Application {
 
   /**
    * Get a set of root resource, provider and {@link Feature feature} classes.
@@ -40,6 +41,7 @@ public class DefaultEndpointApplication extends Application {
    */
   @Override
   public Set<Class<?>> getClasses() {
-    return Sets.newHashSet(DefaultAuthEndpoint.class, DefaultPrincipalEndpoint.class);
+    return Sets.newHashSet(
+        AuthEndpoint.class, PrincipalEndpoint.class, AppletsExceptionMapper.class);
   }
 }
