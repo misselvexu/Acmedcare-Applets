@@ -19,7 +19,7 @@ import static com.acmedcare.framework.applet.integrate.aorp.DefaultAppletIntegra
 @ConfigurationProperties(prefix = INTEGRATE_PROPERTIES_CONFIG_PREFIX)
 public class DefaultAppletIntegrateProperties {
 
-  static final String INTEGRATE_PROPERTIES_CONFIG_PREFIX = "applet.integrate.default";
+  static final String INTEGRATE_PROPERTIES_CONFIG_PREFIX = "applet.integrate.aorp";
 
   private boolean enabled = true;
 }
