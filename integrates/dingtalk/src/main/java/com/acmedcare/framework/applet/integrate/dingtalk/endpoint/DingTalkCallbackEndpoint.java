@@ -59,6 +59,8 @@ public class DingTalkCallbackEndpoint {
     String timestamp = request.getParameter("timestamp");
     String nonce = request.getParameter("nonce");
 
+    log.info("[==DingTalk==] Callback queryString params: {} - {} - {}" ,signature, timestamp, nonce);
+
     try {
       CallbackPayload payload =
           JSON.parseObject(IOUtils.toByteArray(request.getInputStream()), CallbackPayload.class);
@@ -74,10 +76,14 @@ public class DingTalkCallbackEndpoint {
       String plainText =
           dingTalkEncryptor.getDecryptMsg(signature, timestamp, nonce, payload.getEncrypt());
 
+      log.info("[==DingTalk==] Callback decode content: {}" , plainText);
+
       JSONObject obj = JSON.parseObject(plainText);
 
       // 根据回调数据类型做不同的业务处理
       String eventType = obj.getString("EventType");
+
+      log.info("[==DingTalk==] Callback decode event: {}" , eventType);
 
       switch (eventType) {
         case EVENT_CHECK_CREATE_SUITE_URL:
