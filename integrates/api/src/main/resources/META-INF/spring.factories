@@ -1,2 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
   com.acmedcare.framework.applet.integrate.api.AppletsAutoConfiguration
+
+org.springframework.context.ApplicationListener=\
+  com.acmedcare.framework.applet.integrate.api.AppletsAutoConfiguration.AppletsEventListener

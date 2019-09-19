@@ -19,6 +19,9 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.io.Serializable;
@@ -53,7 +56,8 @@ public class DingTalkCallbackEndpoint {
   private static final String CALLBACK_RESPONSE_SUCCESS = "success";
 
   @POST
-  public Response callback(HttpServletRequest request) {
+  @Produces({MediaType.APPLICATION_JSON})
+  public Response callback(@Context HttpServletRequest request) {
 
     String signature = request.getParameter("signature");
     String timestamp = request.getParameter("timestamp");
@@ -64,6 +68,8 @@ public class DingTalkCallbackEndpoint {
     try {
       CallbackPayload payload =
           JSON.parseObject(IOUtils.toByteArray(request.getInputStream()), CallbackPayload.class);
+
+      log.info("[==DingTalk==] Callback payload: {}" , JSON.toJSONString(payload));
 
       DingTalkIntegrateProperties properties = DingTalkAppletContext.context().getProperties();
 

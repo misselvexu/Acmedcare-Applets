@@ -3,7 +3,7 @@
 
     <property name="log.context.name" value="applets-endpoints-server"/>
     <property name="log.charset" value="UTF-8"/>
-    <property name="log.pattern" value="[%-5level] ${PID} %date --%thread-- [%logger] %msg %n"/>
+    <property name="log.pattern" value="[%-5level] ${PID} %date --%thread-- [%logger{30}] %msg %n"/>
     <property name="FILE_LOG_PATTERN" value="[%-5level] ${PID} %date --%thread-- [%logger] %msg %n"/>
 
     <!-- From Spring Boot Default Logger-->

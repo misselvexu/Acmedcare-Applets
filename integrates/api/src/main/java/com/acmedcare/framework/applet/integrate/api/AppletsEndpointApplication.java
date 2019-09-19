@@ -4,7 +4,8 @@ import com.acmedcare.framework.applet.integrate.api.configuration.AppletsExcepti
 import com.acmedcare.framework.applet.integrate.api.endpoints.AuthEndpoint;
 import com.acmedcare.framework.applet.integrate.api.endpoints.PrincipalEndpoint;
 import com.google.common.collect.Sets;
-import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
@@ -19,9 +20,13 @@ import static com.acmedcare.framework.applet.integrate.api.AppletEndpoints.APPLE
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version} - 2019/9/18.
  */
-@Component
 @ApplicationPath(APPLET_ENDPOINT_PREFIX)
 public class AppletsEndpointApplication extends Application {
+
+  private static final Logger log = LoggerFactory.getLogger(AppletsEndpointApplication.class);
+
+  public AppletsEndpointApplication() {
+  }
 
   /**
    * Get a set of root resource, provider and {@link Feature feature} classes.
@@ -41,7 +46,14 @@ public class AppletsEndpointApplication extends Application {
    */
   @Override
   public Set<Class<?>> getClasses() {
-    return Sets.newHashSet(
+
+    Set<Class<?>> classes = Sets.newHashSet(
         AuthEndpoint.class, PrincipalEndpoint.class, AppletsExceptionMapper.class);
+
+    classes.addAll(AppletsContext.loadExtensionResourceClasses());
+
+    log.info("[==Applet RESTEasy==] config-ed resource 、provider set size :{} - {}", classes.size(), classes.toArray());
+
+    return classes;
   }
 }

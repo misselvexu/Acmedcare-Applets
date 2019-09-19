@@ -27,6 +27,8 @@ public class AppletsIntegrateProperties {
 
   private boolean enabled = false;
 
+  private String[] basePackages;
+
   private static final String REGEX_STAR = "*";
 
   /**
@@ -34,7 +36,7 @@ public class AppletsIntegrateProperties {
    *
    * <p>default: * ; also can config spi implement alias lists , like : a,b,c
    */
-  private Set<String> supportedApplets = Sets.newHashSet(REGEX_STAR);
+  private Set<String> supportedAppletTypes = Sets.newHashSet(REGEX_STAR);
 
   /**
    * Check Applet is Supported
@@ -43,9 +45,9 @@ public class AppletsIntegrateProperties {
    * @return supported return true , otherwise return false
    */
   public boolean isAppletSupported(String type) {
-    if (StringUtils.hasText(type) && supportedApplets.contains(REGEX_STAR)) {
+    if (StringUtils.hasText(type) && supportedAppletTypes.contains(REGEX_STAR)) {
       return true;
     }
-    return StringUtils.hasText(type) && supportedApplets.contains(type);
+    return StringUtils.hasText(type) && supportedAppletTypes.contains(type);
   }
 }
