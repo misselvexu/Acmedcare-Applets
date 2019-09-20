@@ -1,4 +1,4 @@
-package com.acmedcare.framework.applet.integrate.spi;
+package com.acmedcare.framework.applet.integrate.common.spi;
 
 import java.lang.annotation.*;
 

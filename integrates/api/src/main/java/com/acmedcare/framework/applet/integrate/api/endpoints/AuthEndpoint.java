@@ -46,4 +46,18 @@ public class AuthEndpoint extends AbstractEndpoint {
     return authService.auth(request);
   }
 
+
+  @POST
+  @Path("/{type}/bind")
+  @Produces({MediaType.APPLICATION_JSON})
+  public <T extends AppletResponse> T bind(@PathParam("type") String type, @Context HttpServletRequest request) throws AppletException {
+
+    checkAppletType(type);
+
+    AuthService authService = AppletsSPIExtensionFactory.getService(type, AuthService.class);
+
+    return authService.bind(request);
+
+  }
+
 }

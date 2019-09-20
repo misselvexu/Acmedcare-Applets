@@ -1,6 +1,6 @@
 package com.acmedcare.framework.applet.integrate.api;
 
-import com.acmedcare.framework.applet.integrate.spi.util.StringUtils;
+import com.acmedcare.framework.applet.integrate.common.spi.util.StringUtils;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +27,11 @@ public class AppletsIntegrateProperties {
 
   private boolean enabled = false;
 
+  /**
+   * Applet Base Scan Packages Defined
+   *
+   * <p>
+   */
   private String[] basePackages;
 
   private static final String REGEX_STAR = "*";

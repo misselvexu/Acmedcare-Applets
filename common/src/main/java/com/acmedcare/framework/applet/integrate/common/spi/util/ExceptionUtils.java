@@ -1,7 +1,7 @@
-package com.acmedcare.framework.applet.integrate.spi.util;
+package com.acmedcare.framework.applet.integrate.common.spi.util;
 
 
-import com.acmedcare.framework.applet.integrate.spi.exception.SpiException;
+import com.acmedcare.framework.applet.integrate.common.spi.exception.SpiException;
 
 /**
  * 异常工具类

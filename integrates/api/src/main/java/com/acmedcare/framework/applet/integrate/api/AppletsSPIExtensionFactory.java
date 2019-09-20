@@ -4,10 +4,10 @@ import com.acmedcare.framework.applet.api.exception.NotFoundAppletDependencyExce
 import com.acmedcare.framework.applet.api.exception.UnSupportedAppletException;
 import com.acmedcare.framework.applet.integrate.api.spi.AuthService;
 import com.acmedcare.framework.applet.integrate.api.spi.PrincipalService;
-import com.acmedcare.framework.applet.integrate.spi.Extensible;
-import com.acmedcare.framework.applet.integrate.spi.ExtensionLoader;
-import com.acmedcare.framework.applet.integrate.spi.ExtensionLoaderFactory;
-import com.acmedcare.framework.applet.integrate.spi.util.StringUtils;
+import com.acmedcare.framework.applet.integrate.common.spi.Extensible;
+import com.acmedcare.framework.applet.integrate.common.spi.ExtensionLoader;
+import com.acmedcare.framework.applet.integrate.common.spi.ExtensionLoaderFactory;
+import com.acmedcare.framework.applet.integrate.common.spi.util.StringUtils;
 import com.acmedcare.framework.kits.lang.NonNull;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;

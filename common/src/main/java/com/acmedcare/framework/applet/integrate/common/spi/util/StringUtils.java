@@ -1,4 +1,4 @@
-package com.acmedcare.framework.applet.integrate.spi.util;
+package com.acmedcare.framework.applet.integrate.common.spi.util;
 
 import java.nio.charset.Charset;
 import java.util.*;
@@ -812,7 +812,7 @@ public final class StringUtils {
     if (enumeration == null) {
       return null;
     }
-    List<String> list = java.util.Collections.list(enumeration);
+    List<String> list = Collections.list(enumeration);
     return list.toArray(new String[list.size()]);
   }
 

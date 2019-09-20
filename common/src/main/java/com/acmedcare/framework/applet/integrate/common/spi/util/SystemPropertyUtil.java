@@ -1,4 +1,4 @@
-package com.acmedcare.framework.applet.integrate.spi.util;
+package com.acmedcare.framework.applet.integrate.common.spi.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

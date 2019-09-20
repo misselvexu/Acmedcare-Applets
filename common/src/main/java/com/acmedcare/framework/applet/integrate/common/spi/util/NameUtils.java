@@ -1,4 +1,4 @@
-package com.acmedcare.framework.applet.integrate.spi.util;
+package com.acmedcare.framework.applet.integrate.common.spi.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

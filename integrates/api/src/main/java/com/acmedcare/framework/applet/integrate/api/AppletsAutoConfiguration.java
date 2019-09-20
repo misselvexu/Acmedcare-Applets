@@ -1,5 +1,6 @@
 package com.acmedcare.framework.applet.integrate.api;
 
+import com.acmedcare.framework.kits.lang.NonNull;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -49,7 +50,7 @@ public class AppletsAutoConfiguration {
      * @param event the event to respond to
      */
     @Override
-    public void onApplicationEvent(SpringApplicationEvent event) {
+    public void onApplicationEvent(@NonNull SpringApplicationEvent event) {
       if(event instanceof ApplicationEnvironmentPreparedEvent) {
         ApplicationEnvironmentPreparedEvent environmentPreparedEvent = (ApplicationEnvironmentPreparedEvent) event;
         AppletsContext.start(environmentPreparedEvent.getEnvironment());

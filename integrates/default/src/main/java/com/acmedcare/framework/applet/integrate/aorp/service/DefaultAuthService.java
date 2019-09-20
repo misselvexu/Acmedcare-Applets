@@ -4,7 +4,7 @@ import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.integrate.aorp.response.DefaultAppletResponse;
 import com.acmedcare.framework.applet.integrate.api.AppletResponse;
 import com.acmedcare.framework.applet.integrate.api.spi.AuthService;
-import com.acmedcare.framework.applet.integrate.spi.Extension;
+import com.acmedcare.framework.applet.integrate.common.spi.Extension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

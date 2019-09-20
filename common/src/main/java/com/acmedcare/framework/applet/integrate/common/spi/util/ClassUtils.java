@@ -14,10 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.acmedcare.framework.applet.integrate.spi.util;
+package com.acmedcare.framework.applet.integrate.common.spi.util;
 
 
-import com.acmedcare.framework.applet.integrate.spi.exception.SpiException;
+import com.acmedcare.framework.applet.integrate.common.spi.exception.SpiException;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

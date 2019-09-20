@@ -20,6 +20,11 @@
 
         <dependency>
             <groupId>com.acmedcare.framework</groupId>
+            <artifactId>applet-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.acmedcare.framework</groupId>
             <artifactId>exception-api</artifactId>
         </dependency>
 

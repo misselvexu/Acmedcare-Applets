@@ -3,7 +3,7 @@ package com.acmedcare.framework.applet.integrate.aorp.service;
 import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.integrate.aorp.response.DefaultPrincipalResponse;
 import com.acmedcare.framework.applet.integrate.api.spi.PrincipalService;
-import com.acmedcare.framework.applet.integrate.spi.Extension;
+import com.acmedcare.framework.applet.integrate.common.spi.Extension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

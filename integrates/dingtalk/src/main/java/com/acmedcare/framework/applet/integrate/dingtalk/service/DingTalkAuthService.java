@@ -4,7 +4,7 @@ import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.api.exception.InvalidRequestParamException;
 import com.acmedcare.framework.applet.integrate.api.AppletResponse;
 import com.acmedcare.framework.applet.integrate.api.spi.AuthService;
-import com.acmedcare.framework.applet.integrate.spi.Extension;
+import com.acmedcare.framework.applet.integrate.common.spi.Extension;
 import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.DingTalkSignatureUtil;
@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.util.Assert;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -47,7 +48,7 @@ public class DingTalkAuthService implements AuthService {
    * @throws AppletException maybe thrown {@link AppletException}
    */
   @Override
-  public <T extends AppletResponse> T auth(HttpServletRequest request) throws AppletException {
+  public AppletResponse auth(HttpServletRequest request) throws AppletException {
 
     String corpId = request.getParameter("corpId");
     String authCode = request.getParameter("authCode");
@@ -71,9 +72,12 @@ public class DingTalkAuthService implements AuthService {
     // 获得到userId之后应用应该处理应用自身的登录会话管理（session）,避免后续的业务交互（前端到应用服务端）每次都要重新获取用户身份，提升用户体验
     String userId = oapiUserGetuserinfoResponse.getUserid();
 
-    return null;
-  }
+    Map<String, Object> resultMap = new HashMap<>(2);
+    resultMap.put("userId", userId);
+    resultMap.put("corpId", corpId);
 
+    return AppletResponse.appletResponseBuilder().data(resultMap).appletResponseBuild();
+  }
 
   /**
    * ISV获取企业访问凭证
@@ -149,5 +153,21 @@ public class DingTalkAuthService implements AuthService {
   private String getSuiteTicket(String suiteKey) {
     // 正式应用必须由应用回调地址从钉钉推送获取
     return "temp_suite_ticket_only4_test";
+  }
+
+
+  /**
+   * Bind Applet Account With Biz Account
+   *
+   * @param request http request instance of {@link HttpServletRequest}
+   * @return instance of {@link AppletResponse}
+   * @throws AppletException maybe thrown {@link AppletException}
+   */
+  @Override
+  public AppletResponse bind(HttpServletRequest request) throws AppletException {
+
+    // TODO bind account
+
+    return null;
   }
 }

@@ -1,4 +1,4 @@
-package com.acmedcare.framework.applet.integrate.spi;
+package com.acmedcare.framework.applet.integrate.common.spi;
 
 /**
  * 当扩展点加载时，可以做一些事情，例如解析code，初始化等动作

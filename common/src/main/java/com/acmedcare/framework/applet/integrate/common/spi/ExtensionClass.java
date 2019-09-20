@@ -1,8 +1,8 @@
-package com.acmedcare.framework.applet.integrate.spi;
+package com.acmedcare.framework.applet.integrate.common.spi;
 
 
-import com.acmedcare.framework.applet.integrate.spi.exception.SpiException;
-import com.acmedcare.framework.applet.integrate.spi.util.ClassUtils;
+import com.acmedcare.framework.applet.integrate.common.spi.exception.SpiException;
+import com.acmedcare.framework.applet.integrate.common.spi.util.ClassUtils;
 
 /**
  * Extension Class

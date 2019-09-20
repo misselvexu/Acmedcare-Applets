@@ -1,4 +1,4 @@
-package com.acmedcare.framework.applet.integrate.spi.exception;
+package com.acmedcare.framework.applet.integrate.common.spi.exception;
 
 /**
  * Nas Context Exception

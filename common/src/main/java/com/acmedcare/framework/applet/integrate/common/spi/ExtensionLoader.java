@@ -1,10 +1,10 @@
-package com.acmedcare.framework.applet.integrate.spi;
+package com.acmedcare.framework.applet.integrate.common.spi;
 
-import com.acmedcare.framework.applet.integrate.spi.exception.SpiException;
-import com.acmedcare.framework.applet.integrate.spi.util.ClassLoaderUtils;
-import com.acmedcare.framework.applet.integrate.spi.util.ClassTypeUtils;
-import com.acmedcare.framework.applet.integrate.spi.util.ClassUtils;
-import com.acmedcare.framework.applet.integrate.spi.util.ExceptionUtils;
+import com.acmedcare.framework.applet.integrate.common.spi.exception.SpiException;
+import com.acmedcare.framework.applet.integrate.common.spi.util.ClassLoaderUtils;
+import com.acmedcare.framework.applet.integrate.common.spi.util.ClassTypeUtils;
+import com.acmedcare.framework.applet.integrate.common.spi.util.ClassUtils;
+import com.acmedcare.framework.applet.integrate.common.spi.util.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

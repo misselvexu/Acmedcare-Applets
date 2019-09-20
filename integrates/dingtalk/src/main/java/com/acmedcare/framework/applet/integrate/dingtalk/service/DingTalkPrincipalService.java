@@ -4,7 +4,7 @@ import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.integrate.api.AppletResponse;
 import com.acmedcare.framework.applet.integrate.api.bean.Principal;
 import com.acmedcare.framework.applet.integrate.api.spi.PrincipalService;
-import com.acmedcare.framework.applet.integrate.spi.Extension;
+import com.acmedcare.framework.applet.integrate.common.spi.Extension;
 
 import javax.servlet.http.HttpServletRequest;
 
