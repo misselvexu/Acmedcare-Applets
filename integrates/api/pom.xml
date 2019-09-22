@@ -25,6 +25,11 @@
 
         <dependency>
             <groupId>com.acmedcare.framework</groupId>
+            <artifactId>applet-storage-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.acmedcare.framework</groupId>
             <artifactId>exception-api</artifactId>
         </dependency>
 

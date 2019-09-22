@@ -15,6 +15,12 @@
             <groupId>com.acmedcare.framework</groupId>
             <artifactId>applet-api</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.acmedcare.framework</groupId>
+            <artifactId>applet-common</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
