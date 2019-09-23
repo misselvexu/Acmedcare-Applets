@@ -59,7 +59,7 @@ public class AppletsRepositoryProperties {
   @ToString
   @NoArgsConstructor
   @AllArgsConstructor
-  private static class RocksDBConfigProperties implements InitializingBean {
+  public static class RocksDBConfigProperties implements InitializingBean {
 
     private static final String DEFAULT_STORAGE_PATH = System.getProperty("user.home");
 
@@ -72,6 +72,8 @@ public class AppletsRepositoryProperties {
      * RocksDBConfigProperties#DEFAULT_ROCKSDB_BASE_PATH}
      */
     private String storagePath;
+
+
 
     /**
      * Invoked by the containing {@code BeanFactory} after it has set all bean properties and

@@ -14,5 +14,13 @@ import static com.acmedcare.framework.applet.integrate.storage.api.AppletsReposi
 public class DefaultAppletsRepository extends AppletsRepository {
 
 
+  @Override
+  public void saveAccountMappings() {
 
+  }
+
+  @Override
+  public void saveAppletCallbacks() {
+
+  }
 }

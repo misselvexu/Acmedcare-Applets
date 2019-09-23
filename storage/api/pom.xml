@@ -26,6 +26,11 @@
             <artifactId>rocksdbjni</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.acmedcare.framework.kits</groupId>
+            <artifactId>common-kits</artifactId>
+        </dependency>
+
         <!-- Spring Boot Libs-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
