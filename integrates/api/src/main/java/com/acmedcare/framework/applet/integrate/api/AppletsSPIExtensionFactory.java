@@ -8,6 +8,7 @@ import com.acmedcare.framework.applet.integrate.common.spi.Extensible;
 import com.acmedcare.framework.applet.integrate.common.spi.ExtensionLoader;
 import com.acmedcare.framework.applet.integrate.common.spi.ExtensionLoaderFactory;
 import com.acmedcare.framework.applet.integrate.common.spi.util.StringUtils;
+import com.acmedcare.framework.applet.integrate.storage.api.AppletsRepository;
 import com.acmedcare.framework.kits.lang.NonNull;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
@@ -15,6 +16,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Map;
+
+import static com.acmedcare.framework.applet.integrate.storage.api.AppletsRepositoryConstants.DEFAULT_REPOSITORY_IMPLEMENTS_ALIAS_NAME;
 
 /**
  * {@link AppletsSPIExtensionFactory}
@@ -37,6 +40,8 @@ public final class AppletsSPIExtensionFactory {
 
   private static ExtensionLoader<PrincipalService> principalServiceExtensionLoader;
 
+  private static ExtensionLoader<AppletsRepository> appletsRepositoryExtensionLoader;
+
   private static ConfigurableApplicationContext context;
 
   private static volatile Boolean appletsEnabled = false;
@@ -47,6 +52,8 @@ public final class AppletsSPIExtensionFactory {
     log.info("[==Applets SPI==] AuthService instance is build-ed.");
     principalServiceExtensionLoader = buildPrincipalServiceExtensionLoader();
     log.info("[==Applets SPI==] PrincipalService instance is build-ed.");
+    appletsRepositoryExtensionLoader = buildAppletsRepositoryExtensionLoader();
+    log.info("[==Applets SPI==] AppletsRepository instance is build-ed.");
 
     appletsEnabled =
         context
@@ -60,6 +67,10 @@ public final class AppletsSPIExtensionFactory {
 
   private static ExtensionLoader<AuthService> buildAuthServiceExtensionLoader() {
     return ExtensionLoaderFactory.getExtensionLoader(AuthService.class);
+  }
+
+  private static ExtensionLoader<AppletsRepository> buildAppletsRepositoryExtensionLoader() {
+    return ExtensionLoaderFactory.getExtensionLoader(AppletsRepository.class);
   }
 
   /**
@@ -109,8 +120,47 @@ public final class AppletsSPIExtensionFactory {
       return (T) principalServiceExtensionLoader.getExtension(alias);
     }
 
+    if (clazz.equals(AppletsRepository.class)) {
+      return (T) appletsRepositoryExtensionLoader.getExtension(alias);
+    }
+
     // without extension
     throw new NotFoundAppletDependencyException();
+  }
+
+  /**
+   * Get Default SPI Applets Repository Instance from extension loader Factory
+   *
+   * @param clazz spi service class type
+   * @param <T> TYPE
+   * @return instance of service
+   * @throws NotFoundAppletDependencyException maybe thrown {@link
+   *     NotFoundAppletDependencyException}
+   * @throws UnSupportedAppletException maybe thrown {@link UnSupportedAppletException}
+   * @see AuthService
+   * @see PrincipalService
+   */
+  public static @NonNull <T> T getRepository(Class<T> clazz)
+      throws NotFoundAppletDependencyException, UnSupportedAppletException {
+    return getRepository(DEFAULT_REPOSITORY_IMPLEMENTS_ALIAS_NAME, clazz);
+  }
+
+  /**
+   * Get Assigned SPI Applets Repository Instance from extension loader Factory
+   *
+   * @param alias spi implements alias name
+   * @param clazz spi service class type
+   * @param <T> TYPE
+   * @return instance of service
+   * @throws NotFoundAppletDependencyException maybe thrown {@link
+   *     NotFoundAppletDependencyException}
+   * @throws UnSupportedAppletException maybe thrown {@link UnSupportedAppletException}
+   * @see AuthService
+   * @see PrincipalService
+   */
+  public static @NonNull <T> T getRepository(String alias, Class<T> clazz)
+      throws NotFoundAppletDependencyException, UnSupportedAppletException {
+    return getService(alias, clazz);
   }
 
   private static boolean checkAndSet(@NonNull String key) {

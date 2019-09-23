@@ -17,5 +17,4 @@ public abstract class AppletsRepository {
   private static final Logger log = LoggerFactory.getLogger(AppletsRepository.class);
 
 
-
 }
