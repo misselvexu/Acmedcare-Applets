@@ -1,4 +1,4 @@
-<img src="doc/Acmedcare-Applets-Logo.jpg" width="128px" heigth="128px" alt=Acmedcare+ Applets Logo" />
+<img src="doc/Acmedcare-Applets-Logo.jpg" width="128px" heigth="128px" alt="Acmedcare+ Applets Logo" />
 
 ## 🥳Acmedcare-Applets
 
