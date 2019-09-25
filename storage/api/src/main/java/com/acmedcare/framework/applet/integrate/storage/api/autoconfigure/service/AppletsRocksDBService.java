@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service.AppletsRocksDBService.AppletsColumnFamilies.AUTH;
 
@@ -26,7 +27,13 @@ public class AppletsRocksDBService {
 
   private final AppletsRepositoryProperties properties;
 
-  private RocksDB rdb;
+  private AtomicBoolean initialized = new AtomicBoolean(false);
+
+  private OptimisticTransactionDB rdb;
+
+  public OptimisticTransactionDB rdb() {
+    return rdb;
+  }
 
   /**
    * Applet Auth Column Family Defined
@@ -64,26 +71,28 @@ public class AppletsRocksDBService {
 
   void startup() {
 
-    try {
-      long start = System.currentTimeMillis();
-      log.info("[==Applets RDB==] start initializing ...");
+    if(initialized.compareAndSet(false,true)) {
+      try {
+        long start = System.currentTimeMillis();
+        log.info("[==Applets RDB==] start initializing ...");
 
-      DBOptions options = new DBOptions();
-      options.setCreateIfMissing(true);
+        DBOptions options = new DBOptions();
+        options.setCreateIfMissing(true);
 
-      rdb = OptimisticTransactionDB.open(options, this.properties.getRdbConfig().getStoragePath(), Lists.newArrayList(appletAuthColumnFamily), columnFamilyHandles);
+        rdb = OptimisticTransactionDB.open(options, this.properties.getRdbConfig().getStoragePath(), Lists.newArrayList(appletAuthColumnFamily), columnFamilyHandles);
 
-      log.info("[==Applets RDB==] Rocks DB initialized , instance: {}" ,rdb);
+        log.info("[==Applets RDB==] Rocks DB initialized , instance: {}" ,rdb);
 
-      for (ColumnFamilyHandle columnFamilyHandle : columnFamilyHandles) {
-        if(Arrays.equals(appletAuthColumnFamily.getName(), columnFamilyHandle.getName())) {
-          columnFamilyHandleMap.put(AUTH,columnFamilyHandle);
+        for (ColumnFamilyHandle columnFamilyHandle : columnFamilyHandles) {
+          if(Arrays.equals(appletAuthColumnFamily.getName(), columnFamilyHandle.getName())) {
+            columnFamilyHandleMap.put(AUTH,columnFamilyHandle);
+          }
         }
-      }
 
-      log.info("[==Applets RDB==] initialized , time: {} ms", (System.currentTimeMillis() - start));
-    } catch (Exception e) {
-      log.warn("[==Applets RDB==] initialize happen-ed exception", e);
+        log.info("[==Applets RDB==] initialized , time: {} ms", (System.currentTimeMillis() - start));
+      } catch (Exception e) {
+        log.warn("[==Applets RDB==] initialize happen-ed exception", e);
+      }
     }
   }
 
