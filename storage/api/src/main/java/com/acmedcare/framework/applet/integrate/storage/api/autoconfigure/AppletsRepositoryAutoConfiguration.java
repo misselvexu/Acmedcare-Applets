@@ -1,6 +1,6 @@
 package com.acmedcare.framework.applet.integrate.storage.api.autoconfigure;
 
-import com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service.AppletsRocksDBService;
+import com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service.AppletsRDBService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -28,9 +28,9 @@ import static com.acmedcare.framework.applet.integrate.storage.api.autoconfigure
 public class AppletsRepositoryAutoConfiguration {
 
   @Bean(initMethod = "startup", destroyMethod = "shutdown")
-  @ConditionalOnMissingBean(AppletsRocksDBService.class)
-  AppletsRocksDBService appletsRocksDBService(AppletsRepositoryProperties properties) {
-    return new AppletsRocksDBService(properties);
+  @ConditionalOnMissingBean(AppletsRDBService.class)
+  AppletsRDBService appletsRocksDBService(AppletsRepositoryProperties properties) {
+    return new AppletsRDBService(properties);
   }
 
   // ===== Listeners =====

@@ -87,6 +87,7 @@
         <module>integrates</module>
         <module>server</module>
         <module>storage</module>
+        <module>starter</module>
     </modules>
 
     <dependencyManagement>
@@ -151,6 +152,12 @@
                 <artifactId>applet-storage-all</artifactId>
                 <version>${project.version}</version>
                 <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.framework</groupId>
+                <artifactId>spring-boot-starter-applet</artifactId>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>
@@ -258,10 +265,35 @@
                 <version>3.13.1</version>
             </dependency>
 
+            <!-- DB Libs -->
             <dependency>
                 <groupId>org.rocksdb</groupId>
                 <artifactId>rocksdbjni</artifactId>
-                <version>6.2.2</version>
+                <version>5.18.3</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapdb</groupId>
+                <artifactId>mapdb</artifactId>
+                <version>3.0.7</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.collections</groupId>
+                <artifactId>eclipse-collections</artifactId>
+                <version>7.1.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.collections</groupId>
+                <artifactId>eclipse-collections-api</artifactId>
+                <version>7.1.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.collections</groupId>
+                <artifactId>eclipse-collections-forkjoin</artifactId>
+                <version>7.1.2</version>
             </dependency>
 
             <dependency>

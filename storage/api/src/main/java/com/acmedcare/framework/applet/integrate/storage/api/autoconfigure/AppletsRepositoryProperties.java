@@ -1,6 +1,8 @@
 package com.acmedcare.framework.applet.integrate.storage.api.autoconfigure;
 
 import com.acmedcare.framework.applet.integrate.common.spi.util.StringUtils;
+import com.acmedcare.framework.kits.annotation.JustForTest;
+import com.google.common.annotations.Beta;
 import lombok.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -63,17 +65,17 @@ public class AppletsRepositoryProperties {
 
     private static final String DEFAULT_STORAGE_PATH = System.getProperty("user.home");
 
-    private static final String DEFAULT_ROCKSDB_BASE_PATH = "APPLETS_RDB";
+    private static final String DEFAULT_RDB_BASE_PATH = "APPLETS_RDB";
 
     /**
      * DB Storage File Path
      *
      * <p>default: {@link RocksDBConfigProperties#DEFAULT_STORAGE_PATH} + '/' + {@link
-     * RocksDBConfigProperties#DEFAULT_ROCKSDB_BASE_PATH}
+     * RocksDBConfigProperties#DEFAULT_RDB_BASE_PATH}
      */
     private String storagePath;
 
-
+    @Beta @JustForTest private String password;
 
     /**
      * Invoked by the containing {@code BeanFactory} after it has set all bean properties and
@@ -91,8 +93,8 @@ public class AppletsRepositoryProperties {
       if (!StringUtils.hasText(storagePath)) {
         this.storagePath =
             DEFAULT_STORAGE_PATH.endsWith("/")
-                ? DEFAULT_STORAGE_PATH.concat(DEFAULT_ROCKSDB_BASE_PATH)
-                : DEFAULT_STORAGE_PATH.concat(File.separator).concat(DEFAULT_ROCKSDB_BASE_PATH);
+                ? DEFAULT_STORAGE_PATH.concat(DEFAULT_RDB_BASE_PATH)
+                : DEFAULT_STORAGE_PATH.concat(File.separator).concat(DEFAULT_RDB_BASE_PATH);
       }
 
       log.info("[==Applets RDB==] Config: {}", this);
