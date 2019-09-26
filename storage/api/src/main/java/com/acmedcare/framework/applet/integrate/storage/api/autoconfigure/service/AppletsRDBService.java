@@ -23,14 +23,24 @@ public class AppletsRDBService {
 
   private final AppletsRepositoryProperties properties;
 
-  private static final String DEFAULT_DB_FILE_NAME = "applet_rdb";
+  private static final String DEFAULT_DB_FILE_NAME = "applet_rdb.db";
 
   private static final String FILE_SEPAR = "/";
 
   private AtomicBoolean initialized = new AtomicBoolean(false);
 
+  /**
+   * R-DB instance
+   *
+   * @see DB
+   */
   private DB rdb;
 
+  /**
+   * Return {@link DB} instance
+   *
+   * @return db instance
+   */
   public DB db() {
     return rdb;
   }
@@ -60,30 +70,29 @@ public class AppletsRDBService {
 
         String path = properties.getRdbConfig().getStoragePath();
 
-        if(StringUtils.isNotBlank(path)) {
+        if (StringUtils.isNotBlank(path)) {
           File file = new File(path);
-          if(!file.exists()){
+          if (!file.exists()) {
             log.info("[==Applets RDB==] create db-directory : {}", file.mkdirs());
           }
 
           Assert.isTrue(file.isDirectory());
         }
 
-        if(path.endsWith(FILE_SEPAR)) {
+        if (path.endsWith(FILE_SEPAR)) {
           path = path.concat(DEFAULT_DB_FILE_NAME);
         } else {
           path = path.concat(File.separator).concat(DEFAULT_DB_FILE_NAME);
         }
 
-        DBMaker.Maker maker = DBMaker.fileDB(path)
-            .fileChannelEnable()
-            .transactionEnable();
+        DBMaker.Maker maker = DBMaker.fileDB(path).fileChannelEnable().transactionEnable();
 
         rdb = maker.make();
 
         log.info("[==Applets RDB==] DB initialized , instance: {}", rdb);
 
-        log.info("[==Applets RDB==] initialized , time: {} ms", (System.currentTimeMillis() - start));
+        log.info(
+            "[==Applets RDB==] initialized , time: {} ms", (System.currentTimeMillis() - start));
       } catch (Exception e) {
         log.warn("[==Applets RDB==] initialize happen-ed exception", e);
       }
