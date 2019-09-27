@@ -1,8 +1,10 @@
 package com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service;
 
 import com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.AppletsRepositoryProperties;
+import com.acmedcare.framework.applet.integrate.storage.api.model.AppletAuthModel;
 import com.acmedcare.framework.kits.Assert;
 import com.acmedcare.framework.kits.StringUtils;
+import lombok.Getter;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.slf4j.Logger;
@@ -10,6 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
+
+import static com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service.AppletsRDBService.AppletsDBNames.AUTH;
 
 /**
  * {@link AppletsRDBService}
@@ -54,11 +58,12 @@ public class AppletsRDBService {
     /** */
     AUTH("applet_auth_db");
 
-    private String name;
+    @Getter private String name;
 
     AppletsDBNames(String name) {
       this.name = name;
     }
+
   }
 
   void startup() {
@@ -90,6 +95,16 @@ public class AppletsRDBService {
         rdb = maker.make();
 
         log.info("[==Applets RDB==] DB initialized , instance: {}", rdb);
+
+        // BUILD DB-MAPS
+        db().treeMap(AUTH.getName())
+            .keySerializer(new AppletAuthModel.AppletAuthModelKeySerializer())
+            .valueSerializer(new AppletAuthModel.AppletAuthModelValueSerializer())
+            .createOrOpen();
+        log.info("[==Applets RDB==] DB-Map :{} is createOrOpen-ed.", AUTH);
+
+
+
 
         log.info(
             "[==Applets RDB==] initialized , time: {} ms", (System.currentTimeMillis() - start));
