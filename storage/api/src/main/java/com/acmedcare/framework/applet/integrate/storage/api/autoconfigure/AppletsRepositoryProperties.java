@@ -27,7 +27,7 @@ import static com.acmedcare.framework.applet.integrate.storage.api.autoconfigure
 @NoArgsConstructor
 @AllArgsConstructor
 @ConfigurationProperties(prefix = INTEGRATE_REPOSITORY_PROPERTIES_CONFIG_PREFIX)
-public class AppletsRepositoryProperties {
+public class AppletsRepositoryProperties implements InitializingBean {
 
   static final String INTEGRATE_REPOSITORY_PROPERTIES_CONFIG_PREFIX = "applet.integrate.repository";
 
@@ -47,6 +47,11 @@ public class AppletsRepositoryProperties {
    */
   @NestedConfigurationProperty
   private RocksDBConfigProperties rdbConfig = new RocksDBConfigProperties();
+
+  @Override
+  public void afterPropertiesSet() throws Exception {
+    this.rdbConfig.afterPropertiesSet();
+  }
 
   // ===== RocksDB Config Bean Defined ======
 
@@ -75,7 +80,7 @@ public class AppletsRepositoryProperties {
      */
     private String storagePath;
 
-    @Beta @JustForTest private String password;
+    @Beta @JustForTest private String password = "";
 
     /**
      * Invoked by the containing {@code BeanFactory} after it has set all bean properties and

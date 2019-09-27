@@ -1,5 +1,3 @@
-<img src="doc/Acmedcare-Applets-Logo.jpg" width="128px" height="128px" alt="Acmedcare+ Applets Logo" />
-
 ## 🥳Acmedcare-Applets
 
 Acmedcare+ Tripartite Applet Support Framework

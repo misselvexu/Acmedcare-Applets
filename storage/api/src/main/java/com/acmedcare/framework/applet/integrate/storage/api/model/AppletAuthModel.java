@@ -1,5 +1,6 @@
 package com.acmedcare.framework.applet.integrate.storage.api.model;
 
+import com.acmedcare.framework.applet.api.bean.Principal;
 import com.google.gson.Gson;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
@@ -9,6 +10,7 @@ import org.mapdb.serializer.GroupSerializerObjectArray;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * {@link AppletAuthModel}
@@ -31,17 +33,38 @@ public class AppletAuthModel {
     private String originAuthId;
 
     private String thirdPlatformId;
+
+    @Override
+    public boolean equals(Object o) {
+      if (this == o) {
+        return true;
+      }
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
+      AppletAuthModelKey that = (AppletAuthModelKey) o;
+      return Objects.equals(originAuthId, that.originAuthId)
+          && Objects.equals(thirdPlatformId, that.thirdPlatformId);
+    }
+
+    @Override
+    public int hashCode() {
+      return Objects.hash(originAuthId, thirdPlatformId);
+    }
   }
 
   @Getter
   @Setter
-  @Builder
   @NoArgsConstructor
-  @AllArgsConstructor
-  public static class AppletAuthModelValue implements Serializable {
+  public static class AppletAuthModelValue
+      extends AppletCommonModel.AppletCommonModelValue<Principal> implements Serializable {
 
     // TODO
 
+    @Builder
+    public AppletAuthModelValue(Principal value) {
+      super(value);
+    }
   }
 
   // ===== Serializer(s) =====

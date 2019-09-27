@@ -17,9 +17,9 @@ public abstract class AppletsRepository {
   private static final Logger log = LoggerFactory.getLogger(AppletsRepository.class);
 
 
-  public abstract void saveAccountMappings() ;
+  public void saveAccountMappings() {}
 
 
-  public abstract void saveAppletCallbacks();
+  public void saveAppletCallbacks(){}
 
 }

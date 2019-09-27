@@ -2,9 +2,11 @@ package com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.servi
 
 import com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.AppletsRepositoryProperties;
 import com.acmedcare.framework.applet.integrate.storage.api.model.AppletAuthModel;
+import com.acmedcare.framework.applet.integrate.storage.api.model.AppletCommonModel;
 import com.acmedcare.framework.kits.Assert;
 import com.acmedcare.framework.kits.StringUtils;
 import lombok.Getter;
+import org.mapdb.BTreeMap;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
 import org.slf4j.Logger;
@@ -14,6 +16,7 @@ import java.io.File;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service.AppletsRDBService.AppletsDBNames.AUTH;
+import static com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service.AppletsRDBService.AppletsDBNames.COMMON;
 
 /**
  * {@link AppletsRDBService}
@@ -22,6 +25,8 @@ import static com.acmedcare.framework.applet.integrate.storage.api.autoconfigure
  * @version ${project.version} - 2019/9/23.
  */
 public class AppletsRDBService {
+
+  // PROPERTIES
 
   private static final Logger log = LoggerFactory.getLogger(AppletsRDBService.class);
 
@@ -49,23 +54,38 @@ public class AppletsRDBService {
     return rdb;
   }
 
+  /**
+   * Auth Storage Map
+   */
+  private BTreeMap<AppletAuthModel.AppletAuthModelKey, AppletAuthModel.AppletAuthModelValue> authMap;
+
+  /**
+   * Common Storage Map
+   */
+  private BTreeMap<AppletCommonModel.AppletCommonModelKey, AppletCommonModel.AppletCommonModelValue> commonMap;
+
+  // CONSTRUCTORS
   public AppletsRDBService(AppletsRepositoryProperties properties) {
     this.properties = properties;
   }
 
+  // INNER CLASSES
   public enum AppletsDBNames {
 
-    /** */
-    AUTH("applet_auth_db");
+    /** Auth Storage */
+    AUTH("applet_auth_db"),
+
+    /** Common Stroage */
+    COMMON("common_db");
 
     @Getter private String name;
 
     AppletsDBNames(String name) {
       this.name = name;
     }
-
   }
 
+  // START UP
   void startup() {
 
     if (initialized.compareAndSet(false, true)) {
@@ -82,6 +102,8 @@ public class AppletsRDBService {
           }
 
           Assert.isTrue(file.isDirectory());
+        } else {
+          throw new IllegalArgumentException("invalid argunment - path");
         }
 
         if (path.endsWith(FILE_SEPAR)) {
@@ -90,6 +112,7 @@ public class AppletsRDBService {
           path = path.concat(File.separator).concat(DEFAULT_DB_FILE_NAME);
         }
 
+        // INIT
         DBMaker.Maker maker = DBMaker.fileDB(path).fileChannelEnable().transactionEnable();
 
         rdb = maker.make();
@@ -97,15 +120,20 @@ public class AppletsRDBService {
         log.info("[==Applets RDB==] DB initialized , instance: {}", rdb);
 
         // BUILD DB-MAPS
-        db().treeMap(AUTH.getName())
+        authMap = db().treeMap(AUTH.getName())
             .keySerializer(new AppletAuthModel.AppletAuthModelKeySerializer())
             .valueSerializer(new AppletAuthModel.AppletAuthModelValueSerializer())
             .createOrOpen();
-        log.info("[==Applets RDB==] DB-Map :{} is createOrOpen-ed.", AUTH);
+        log.info("[==Applets RDB==] DB-Map :{} is createOrOpen-ed, {}", AUTH, authMap);
 
+        commonMap = db().treeMap(COMMON.getName())
+            .keySerializer(new AppletCommonModel.AppletCommonModelKeySerializer())
+            .valueSerializer(new AppletCommonModel.AppletCommonModelValueSerializer())
+            .createOrOpen();
 
+        log.info("[==Applets RDB==] DB-Map :{} is createOrOpen-ed, {}", COMMON, commonMap);
 
-
+        // END
         log.info(
             "[==Applets RDB==] initialized , time: {} ms", (System.currentTimeMillis() - start));
       } catch (Exception e) {
@@ -114,6 +142,7 @@ public class AppletsRDBService {
     }
   }
 
+  // SHUTDOWN
   void shutdown() {
     log.info("[==Applets RDB==] start shutdown ~~~");
     try {

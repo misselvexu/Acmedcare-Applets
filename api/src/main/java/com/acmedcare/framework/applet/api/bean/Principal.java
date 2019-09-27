@@ -1,4 +1,4 @@
-package com.acmedcare.framework.applet.integrate.api.bean;
+package com.acmedcare.framework.applet.api.bean;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

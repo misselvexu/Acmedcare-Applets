@@ -1,6 +1,6 @@
 package com.acmedcare.framework.applet.integrate.aorp.bean;
 
-import com.acmedcare.framework.applet.integrate.api.bean.Principal;
+import com.acmedcare.framework.applet.api.bean.Principal;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -3,7 +3,7 @@ package com.acmedcare.framework.applet.integrate.api.endpoints;
 import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.integrate.api.AppletResponse;
 import com.acmedcare.framework.applet.integrate.api.AppletsSPIExtensionFactory;
-import com.acmedcare.framework.applet.integrate.api.bean.Principal;
+import com.acmedcare.framework.applet.api.bean.Principal;
 import com.acmedcare.framework.applet.integrate.api.spi.PrincipalService;
 
 import javax.servlet.http.HttpServletRequest;

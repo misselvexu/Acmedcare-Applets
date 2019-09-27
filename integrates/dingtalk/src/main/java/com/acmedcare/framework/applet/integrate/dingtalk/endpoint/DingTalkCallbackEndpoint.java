@@ -3,6 +3,7 @@ package com.acmedcare.framework.applet.integrate.dingtalk.endpoint;
 import com.acmedcare.framework.applet.integrate.api.annotation.ExtensionEndpoint;
 import com.acmedcare.framework.applet.integrate.dingtalk.DingTalkAppletContext;
 import com.acmedcare.framework.applet.integrate.dingtalk.DingTalkIntegrateProperties;
+import com.acmedcare.framework.applet.integrate.dingtalk.service.DingTalkCallbackService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.oapi.lib.aes.DingTalkEncryptException;
@@ -105,6 +106,10 @@ public class DingTalkCallbackEndpoint {
           // 钉钉会定期向本callback url推送suite_ticket新值用以提升安全性。
           // 应用在获取到新的时值时，保存db成功后，返回给钉钉success加密串（如本demo的return）
           log.info("应用suite_ticket数据推送: " + plainText);
+
+          String suiteTicket = obj.getString("SuiteTicket");
+
+          DingTalkAppletContext.context().getBean(DingTalkCallbackService.class).processSuiteTicketEvent(suiteTicket);
 
           break;
 
