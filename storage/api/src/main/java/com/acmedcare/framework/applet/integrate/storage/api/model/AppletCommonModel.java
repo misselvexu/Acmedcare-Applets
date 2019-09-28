@@ -1,10 +1,7 @@
 package com.acmedcare.framework.applet.integrate.storage.api.model;
 
 import com.google.gson.Gson;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import org.mapdb.DataInput2;
 import org.mapdb.DataOutput2;
@@ -27,6 +24,7 @@ public class AppletCommonModel {
 
   @Getter
   @Setter
+  @ToString
   @NoArgsConstructor
   @Builder(builderMethodName = "CommonModelKeyBuilder", buildMethodName = "commonkeyBuild")
   public static class AppletCommonModelKey<K> implements Serializable {
@@ -36,6 +34,11 @@ public class AppletCommonModel {
 
     /** Biz Unique Key */
     protected K key;
+
+    public AppletCommonModelKey(String namespace, K key) {
+      this.namespace = namespace;
+      this.key = key;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -57,12 +60,22 @@ public class AppletCommonModel {
 
   @Getter
   @Setter
+  @ToString
   @NoArgsConstructor
   @Builder(builderMethodName = "CommonModelValueBuilder", buildMethodName = "commonValueBuild")
   public static class AppletCommonModelValue<V> implements Serializable {
 
+    public static final AppletCommonModelValue<String> DEFAULT_EMPTY_RESULT =
+        new AppletCommonModelValue.AppletCommonModelValueBuilder<String>()
+            .value("temp_suite_ticket_only4_test") // test only
+            .commonValueBuild();
+
     /** Common Model Value Object */
     protected V value;
+
+    public AppletCommonModelValue(V value) {
+      this.value = value;
+    }
   }
 
   // ===== Serializer(s) =====

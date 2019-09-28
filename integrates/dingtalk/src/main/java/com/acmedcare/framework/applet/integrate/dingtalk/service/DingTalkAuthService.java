@@ -5,6 +5,7 @@ import com.acmedcare.framework.applet.api.exception.InvalidRequestParamException
 import com.acmedcare.framework.applet.integrate.api.AppletResponse;
 import com.acmedcare.framework.applet.integrate.api.spi.AuthService;
 import com.acmedcare.framework.applet.integrate.common.spi.Extension;
+import com.acmedcare.framework.applet.integrate.dingtalk.DingTalkAppletContext;
 import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.DingTalkSignatureUtil;
@@ -24,6 +25,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static com.acmedcare.framework.applet.integrate.dingtalk.DingTalkAppletContext.context;
+import static com.acmedcare.framework.applet.integrate.dingtalk.DingTalkExtensionDefined.DING_TALK;
 import static com.acmedcare.framework.applet.integrate.dingtalk.contants.DingTalkConstants.URL_GET_CORP_TOKEN;
 import static com.acmedcare.framework.applet.integrate.dingtalk.contants.DingTalkConstants.URL_GET_USER_INFO;
 
@@ -33,7 +35,7 @@ import static com.acmedcare.framework.applet.integrate.dingtalk.contants.DingTal
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version} - 2019/9/19.
  */
-@Extension("dingtalk")
+@Extension(DING_TALK)
 public class DingTalkAuthService implements AuthService {
 
   private static final Logger log = LoggerFactory.getLogger(DingTalkAuthService.class);
@@ -152,7 +154,7 @@ public class DingTalkAuthService implements AuthService {
    */
   private String getSuiteTicket(String suiteKey) {
     // 正式应用必须由应用回调地址从钉钉推送获取
-    return "temp_suite_ticket_only4_test";
+    return DingTalkAppletContext.context().getBean(DingTalkCallbackService.class).getSuiteTicket(suiteKey);
   }
 
 

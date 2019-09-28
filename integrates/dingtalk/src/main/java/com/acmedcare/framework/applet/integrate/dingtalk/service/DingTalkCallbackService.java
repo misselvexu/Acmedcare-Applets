@@ -1,10 +1,15 @@
 package com.acmedcare.framework.applet.integrate.dingtalk.service;
 
+import com.acmedcare.framework.applet.api.exception.ServiceException;
+import com.acmedcare.framework.applet.integrate.api.AppletsSPIExtensionFactory;
 import com.acmedcare.framework.applet.integrate.dingtalk.DingTalkIntegrateProperties;
+import com.acmedcare.framework.applet.integrate.dingtalk.repository.DingTalkRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
+
+import static com.acmedcare.framework.applet.integrate.dingtalk.DingTalkExtensionDefined.DING_TALK;
 
 /**
  * {@link DingTalkCallbackService}
@@ -34,9 +39,35 @@ public class DingTalkCallbackService {
    *
    * @param suiteTicket 服务端的凭证
    */
-  public void processSuiteTicketEvent(@NonNull String suiteTicket) {
+  public void processSuiteTicketEvent(@NonNull String suiteTicket) throws ServiceException {
 
-    
+    try {
+      DingTalkRepository repository =
+          AppletsSPIExtensionFactory.getRepository(DING_TALK, DingTalkRepository.class);
 
+      repository.saveSuiteTicketEventData(
+          this.properties.getAppId(),
+          this.properties.getSuiteId(),
+          this.properties.getSuiteKey(),
+          suiteTicket);
+
+    } catch (Exception e) {
+      throw new ServiceException(e);
+    }
+  }
+
+  public String getSuiteTicket(String suiteKey) {
+
+    try {
+      DingTalkRepository repository =
+          AppletsSPIExtensionFactory.getRepository(DING_TALK, DingTalkRepository.class);
+
+      return repository.querySuiteTicket(
+          this.properties.getAppId(),
+          this.properties.getSuiteId(),
+          suiteKey);
+    } catch (Exception e) {
+      throw new ServiceException(e);
+    }
   }
 }

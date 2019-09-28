@@ -16,11 +16,11 @@ public class DefaultAppletsRepository extends AppletsRepository {
 
   @Override
   public void saveAccountMappings() {
-
+    super.saveAccountMappings();
   }
 
   @Override
   public void saveAppletCallbacks() {
-
+    super.saveAppletCallbacks();
   }
 }

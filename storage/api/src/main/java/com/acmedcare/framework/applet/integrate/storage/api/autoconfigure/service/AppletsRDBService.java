@@ -64,6 +64,16 @@ public class AppletsRDBService {
    */
   private BTreeMap<AppletCommonModel.AppletCommonModelKey, AppletCommonModel.AppletCommonModelValue> commonMap;
 
+  public BTreeMap<AppletAuthModel.AppletAuthModelKey, AppletAuthModel.AppletAuthModelValue>
+      authStorage() {
+    return authMap;
+  }
+
+  public BTreeMap<AppletCommonModel.AppletCommonModelKey, AppletCommonModel.AppletCommonModelValue>
+      commonStorage() {
+    return commonMap;
+  }
+
   // CONSTRUCTORS
   public AppletsRDBService(AppletsRepositoryProperties properties) {
     this.properties = properties;
