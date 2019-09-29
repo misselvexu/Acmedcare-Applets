@@ -9,7 +9,9 @@ import com.acmedcare.framework.applet.integrate.common.spi.ExtensionLoader;
 import com.acmedcare.framework.applet.integrate.common.spi.ExtensionLoaderFactory;
 import com.acmedcare.framework.applet.integrate.common.spi.util.StringUtils;
 import com.acmedcare.framework.applet.integrate.storage.api.AppletsRepository;
+import com.acmedcare.framework.kits.annotation.JustForTest;
 import com.acmedcare.framework.kits.lang.NonNull;
+import com.google.common.annotations.Beta;
 import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +46,7 @@ public final class AppletsSPIExtensionFactory {
 
   private static ConfigurableApplicationContext context;
 
-  private static volatile Boolean appletsEnabled = false;
+  @JustForTest @Beta private static volatile Boolean appletsEnabled = false;
 
   static void refresh(ConfigurableApplicationContext context) {
     AppletsSPIExtensionFactory.context = context;
