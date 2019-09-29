@@ -18,7 +18,6 @@ public class DingTalkCallbackModel {
 
   @Getter
   @Setter
-  @Builder
   @ToString
   @NoArgsConstructor
   public static class CallbackKey implements Serializable {
@@ -26,6 +25,13 @@ public class DingTalkCallbackModel {
     private String appId;
     private String suiteId;
     private String suiteKey;
+
+    @Builder
+    public CallbackKey(String appId, String suiteId, String suiteKey) {
+      this.appId = appId;
+      this.suiteId = suiteId;
+      this.suiteKey = suiteKey;
+    }
 
     // ==== equals && hashCode
 
