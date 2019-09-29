@@ -14,5 +14,6 @@ public final class DingTalkConstants {
   /** 获取用户在企业内userId的接口URL */
   public static final String URL_GET_USER_INFO = "https://oapi.dingtalk.com/user/getuserinfo";
 
-
+  /** 获取用户详情 */
+  public static final String URL_GET_USER = "https://oapi.dingtalk.com/user/get";
 }

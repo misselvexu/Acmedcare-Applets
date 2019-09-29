@@ -6,12 +6,16 @@ import com.acmedcare.framework.applet.integrate.api.AppletResponse;
 import com.acmedcare.framework.applet.integrate.api.spi.AuthService;
 import com.acmedcare.framework.applet.integrate.common.spi.Extension;
 import com.acmedcare.framework.applet.integrate.dingtalk.DingTalkAppletContext;
+import com.acmedcare.framework.applet.integrate.dingtalk.bean.DingTalkPrincipal;
+import com.acmedcare.framework.kits.BeanUtils;
 import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.DingTalkSignatureUtil;
 import com.dingtalk.api.request.OapiServiceGetCorpTokenRequest;
+import com.dingtalk.api.request.OapiUserGetRequest;
 import com.dingtalk.api.request.OapiUserGetuserinfoRequest;
 import com.dingtalk.api.response.OapiServiceGetCorpTokenResponse;
+import com.dingtalk.api.response.OapiUserGetResponse;
 import com.dingtalk.api.response.OapiUserGetuserinfoResponse;
 import com.taobao.api.ApiException;
 import org.apache.commons.lang3.StringUtils;
@@ -26,8 +30,7 @@ import java.util.Map;
 
 import static com.acmedcare.framework.applet.integrate.dingtalk.DingTalkAppletContext.context;
 import static com.acmedcare.framework.applet.integrate.dingtalk.DingTalkExtensionDefined.DING_TALK;
-import static com.acmedcare.framework.applet.integrate.dingtalk.contants.DingTalkConstants.URL_GET_CORP_TOKEN;
-import static com.acmedcare.framework.applet.integrate.dingtalk.contants.DingTalkConstants.URL_GET_USER_INFO;
+import static com.acmedcare.framework.applet.integrate.dingtalk.contants.DingTalkConstants.*;
 
 /**
  * {@link DingTalkAuthService}
@@ -74,9 +77,17 @@ public class DingTalkAuthService implements AuthService {
     // 获得到userId之后应用应该处理应用自身的登录会话管理（session）,避免后续的业务交互（前端到应用服务端）每次都要重新获取用户身份，提升用户体验
     String userId = oapiUserGetuserinfoResponse.getUserid();
 
-    Map<String, Object> resultMap = new HashMap<>(2);
+    // 4.查询用户信息
+    OapiUserGetResponse oapiUserGetResponse = getOapiUserGet(accessToken,userId);
+    Assert.notNull(oapiUserGetResponse,"[==DingTalk==] get user detail response must not be null.");
+    DingTalkPrincipal principal = new DingTalkPrincipal();
+    BeanUtils.copyProperties(oapiUserGetResponse,principal);
+
+    Map<String, Object> resultMap = new HashMap<>(4);
     resultMap.put("userId", userId);
     resultMap.put("corpId", corpId);
+    resultMap.put("token", accessToken);
+    resultMap.put("principal",principal);
 
     return AppletResponse.appletResponseBuilder().data(resultMap).appletResponseBuild();
   }
@@ -123,7 +134,7 @@ public class DingTalkAuthService implements AuthService {
   /**
    * 通过钉钉服务端API获取用户在当前企业的userId
    *
-   * @param accessToken 企业访问凭证Token
+   * @param accessToken
    * @param code 免登code @
    */
   private OapiUserGetuserinfoResponse getOapiUserGetuserinfo(String accessToken, String code) {
@@ -133,6 +144,29 @@ public class DingTalkAuthService implements AuthService {
     request.setHttpMethod("GET");
 
     OapiUserGetuserinfoResponse response;
+    try {
+      response = client.execute(request, accessToken);
+    } catch (ApiException e) {
+      e.printStackTrace();
+      return null;
+    }
+    if (response == null || !response.isSuccess()) {
+      return null;
+    }
+    return response;
+  }
+
+  /**
+   * 通过钉钉服务端API获取用户在当前企业的用户详情
+   * @param accessToken 企业访问凭证Token
+   * @param userId 用户Id
+   */
+  private OapiUserGetResponse getOapiUserGet(String accessToken, String userId) {
+    DingTalkClient client = new DefaultDingTalkClient(URL_GET_USER);
+    OapiUserGetRequest request = new OapiUserGetRequest();
+    request.setUserid(userId);
+    request.setHttpMethod("GET");
+    OapiUserGetResponse response;
     try {
       response = client.execute(request, accessToken);
     } catch (ApiException e) {
