@@ -21,6 +21,16 @@
         </dependency>
 
         <dependency>
+            <groupId>com.acmedcare.framework.kits</groupId>
+            <artifactId>common-kits</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.acmedcare.framework.kits</groupId>
+            <artifactId>executor-kit</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.acmedcare.framework</groupId>
             <artifactId>spring-boot-starter-resteasy</artifactId>
         </dependency>

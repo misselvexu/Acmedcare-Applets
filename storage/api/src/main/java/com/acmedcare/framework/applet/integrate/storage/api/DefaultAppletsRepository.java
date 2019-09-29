@@ -1,6 +1,7 @@
 package com.acmedcare.framework.applet.integrate.storage.api;
 
 import com.acmedcare.framework.applet.integrate.common.spi.Extension;
+import com.acmedcare.framework.applet.integrate.storage.api.model.AppletAuthModel;
 
 import static com.acmedcare.framework.applet.integrate.storage.api.AppletsRepositoryConstants.DEFAULT_REPOSITORY_IMPLEMENTS_ALIAS_NAME;
 
@@ -13,14 +14,9 @@ import static com.acmedcare.framework.applet.integrate.storage.api.AppletsReposi
 @Extension(DEFAULT_REPOSITORY_IMPLEMENTS_ALIAS_NAME)
 public class DefaultAppletsRepository extends AppletsRepository {
 
-
   @Override
-  public void saveAccountMappings() {
-    super.saveAccountMappings();
-  }
-
-  @Override
-  public void saveAppletCallbacks() {
-    super.saveAppletCallbacks();
+  public void savePrincipal(
+      AppletAuthModel.AppletAuthModelKey key, AppletAuthModel.AppletAuthModelValue value) {
+    super.savePrincipal(key, value);
   }
 }

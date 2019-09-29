@@ -23,6 +23,7 @@ public class DefaultPrincipal extends Principal {
 
   @Builder
   public DefaultPrincipal(Long passportId, String passport) {
+    super(passportId.toString());
     this.passportId = passportId;
     this.passport = passport;
   }

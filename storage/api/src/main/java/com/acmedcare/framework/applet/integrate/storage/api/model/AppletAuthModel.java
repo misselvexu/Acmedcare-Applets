@@ -30,7 +30,7 @@ public class AppletAuthModel {
   @AllArgsConstructor
   public static class AppletAuthModelKey implements Serializable {
 
-    private String originAuthId;
+    private String thirdPlatformType;
 
     private String thirdPlatformId;
 
@@ -43,13 +43,13 @@ public class AppletAuthModel {
         return false;
       }
       AppletAuthModelKey that = (AppletAuthModelKey) o;
-      return Objects.equals(originAuthId, that.originAuthId)
+      return Objects.equals(thirdPlatformType, that.thirdPlatformType)
           && Objects.equals(thirdPlatformId, that.thirdPlatformId);
     }
 
     @Override
     public int hashCode() {
-      return Objects.hash(originAuthId, thirdPlatformId);
+      return Objects.hash(thirdPlatformType, thirdPlatformId);
     }
   }
 

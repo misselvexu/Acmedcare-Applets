@@ -1,6 +1,10 @@
 package com.acmedcare.framework.applet.integrate.storage.api;
 
+import com.acmedcare.framework.applet.api.exception.RepositoryException;
 import com.acmedcare.framework.applet.integrate.common.spi.Extensible;
+import com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.AppletsRepositoryContext;
+import com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service.AppletsRDBService;
+import com.acmedcare.framework.applet.integrate.storage.api.model.AppletAuthModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,10 +20,26 @@ public abstract class AppletsRepository {
   /** Logger Instance */
   private static final Logger log = LoggerFactory.getLogger(AppletsRepository.class);
 
+  /**
+   * Save Principal
+   *
+   * @param key auth info biz key
+   * @param value value
+   */
+  public void savePrincipal(
+      AppletAuthModel.AppletAuthModelKey key, AppletAuthModel.AppletAuthModelValue value) {
 
-  public void saveAccountMappings() {}
+    try {
 
+      AppletsRDBService rdbService =
+          AppletsRepositoryContext.context().getBean(AppletsRDBService.class);
 
-  public void saveAppletCallbacks(){}
+      AppletAuthModel.AppletAuthModelValue origin = rdbService.authStorage().put(key, value);
 
+      log.info("[==DingTalk Repository==] save principa :{}", origin);
+
+    } catch (Exception e) {
+      throw new RepositoryException(e);
+    }
+  }
 }

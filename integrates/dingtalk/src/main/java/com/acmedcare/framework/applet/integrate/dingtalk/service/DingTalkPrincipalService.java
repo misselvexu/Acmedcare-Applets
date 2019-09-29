@@ -28,7 +28,6 @@ public class DingTalkPrincipalService implements PrincipalService {
   public <T extends AppletResponse<? extends Principal, String>> T principal(HttpServletRequest request) throws AppletException {
 
 
-
     return null;
   }
 }

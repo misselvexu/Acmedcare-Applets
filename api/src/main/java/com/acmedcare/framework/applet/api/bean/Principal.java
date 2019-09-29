@@ -1,5 +1,6 @@
 package com.acmedcare.framework.applet.api.bean;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,15 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class Principal implements Serializable {
 
+  /**
+   * 基础平台统一的通行证标识
+   *
+   * <p>
+   */
+  private String basePlatformPrincipalId;
 
-
+  @Builder(builderMethodName = "principalNBuilder", buildMethodName = "principalBuild")
+  public Principal(String basePlatformPrincipalId) {
+    this.basePlatformPrincipalId = basePlatformPrincipalId;
+  }
 }

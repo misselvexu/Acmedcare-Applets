@@ -1,13 +1,18 @@
 package com.acmedcare.framework.applet.integrate.dingtalk.service;
 
+import com.acmedcare.framework.applet.api.bean.Principal;
 import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.api.exception.InvalidRequestParamException;
 import com.acmedcare.framework.applet.integrate.api.AppletResponse;
+import com.acmedcare.framework.applet.integrate.api.AppletsSPIExtensionFactory;
 import com.acmedcare.framework.applet.integrate.api.spi.AuthService;
 import com.acmedcare.framework.applet.integrate.common.spi.Extension;
 import com.acmedcare.framework.applet.integrate.dingtalk.DingTalkAppletContext;
 import com.acmedcare.framework.applet.integrate.dingtalk.bean.DingTalkPrincipal;
+import com.acmedcare.framework.applet.integrate.dingtalk.repository.DingTalkRepository;
+import com.acmedcare.framework.applet.integrate.storage.api.model.AppletAuthModel;
 import com.acmedcare.framework.kits.BeanUtils;
+import com.acmedcare.framework.kits.executor.AsyncRuntimeExecutor;
 import com.dingtalk.api.DefaultDingTalkClient;
 import com.dingtalk.api.DingTalkClient;
 import com.dingtalk.api.DingTalkSignatureUtil;
@@ -89,9 +94,33 @@ public class DingTalkAuthService implements AuthService {
     resultMap.put("token", accessToken);
     resultMap.put("principal",principal);
 
+    // save
+    AsyncRuntimeExecutor.getAsyncThreadPool().execute(() -> savePrincipal(principal.getUnionid(),principal));
+
     return AppletResponse.appletResponseBuilder().data(resultMap).appletResponseBuild();
   }
 
+  private void savePrincipal(String thirdPlatformId, Principal principal) {
+
+    try {
+      AppletAuthModel.AppletAuthModelKey key =
+          AppletAuthModel.AppletAuthModelKey.builder()
+              .thirdPlatformId(thirdPlatformId)
+              .thirdPlatformType(DING_TALK)
+              .build();
+
+      AppletAuthModel.AppletAuthModelValue value =
+          AppletAuthModel.AppletAuthModelValue.builder().value(principal).build();
+
+      DingTalkRepository repository =
+          AppletsSPIExtensionFactory.getRepository(DING_TALK, DingTalkRepository.class);
+
+      repository.savePrincipal(key,value);
+
+    } catch (Exception e) {
+      log.warn("==Applets DingTalk== save dingtalk principal failed", e);
+    }
+  }
   /**
    * ISV获取企业访问凭证
    *
@@ -202,7 +231,7 @@ public class DingTalkAuthService implements AuthService {
   @Override
   public AppletResponse bind(HttpServletRequest request) throws AppletException {
 
-    // TODO bind account
+    // TODO bind account, union-id & basePlatfromPrincipalId
 
     return null;
   }
