@@ -1,5 +1,5 @@
 #!/bin/bash
-SERVICE_NAME=sms-server
+SERVICE_NAME=applet-server
 SERVICE_VERSION=2.1.0.BUILD-SNAPSHOT
 # Copyright 1999-2018 Acmedcare+ Group Holding Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -91,4 +91,4 @@ fi
 
 
 nohup ${JAVA} ${JAVA_OPT} > ${BASE_DIR}/logs/start.log 2>&1 &
-echo "Acmedcare+ SMS Application Server is starting，you can check the ${BASE_DIR}/logs/start.log"
+echo "Acmedcare+ Applets Application Server is starting，you can check the ${BASE_DIR}/logs/start.log"
