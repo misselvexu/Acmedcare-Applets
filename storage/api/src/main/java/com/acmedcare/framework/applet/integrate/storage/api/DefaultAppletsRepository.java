@@ -1,5 +1,6 @@
 package com.acmedcare.framework.applet.integrate.storage.api;
 
+import com.acmedcare.framework.applet.api.bean.Principal;
 import com.acmedcare.framework.applet.integrate.common.spi.Extension;
 import com.acmedcare.framework.applet.integrate.storage.api.model.AppletAuthModel;
 
@@ -16,7 +17,7 @@ public class DefaultAppletsRepository extends AppletsRepository {
 
   @Override
   public void savePrincipal(
-      AppletAuthModel.AppletAuthModelKey key, AppletAuthModel.AppletAuthModelValue value) {
-    super.savePrincipal(key, value);
+      AppletAuthModel.AppletAuthModelKey key, Principal principal) {
+    super.savePrincipal(key, principal);
   }
 }

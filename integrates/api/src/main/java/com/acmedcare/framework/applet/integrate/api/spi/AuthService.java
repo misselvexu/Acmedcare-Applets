@@ -38,4 +38,16 @@ public interface AuthService {
     // empty implement
     return (T) AppletResponse.appletResponseBuilder().appletResponseBuild();
   }
+
+  /**
+   * Un-Bind Applet Account With Biz Account
+   *
+   * @param request http request instance of {@link HttpServletRequest}
+   * @return instance of {@link AppletResponse}
+   * @throws AppletException maybe thrown {@link AppletException}
+   */
+  default <T extends AppletResponse> T unbind(HttpServletRequest request) throws AppletException {
+    // empty implement
+    return (T) AppletResponse.appletResponseBuilder().appletResponseBuild();
+  }
 }

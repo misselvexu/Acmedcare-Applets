@@ -1,6 +1,5 @@
 package com.acmedcare.framework.applet.integrate.storage.api.model;
 
-import com.acmedcare.framework.applet.api.bean.Principal;
 import com.google.gson.Gson;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
@@ -26,9 +25,10 @@ public class AppletAuthModel {
   @Getter
   @Setter
   @Builder
+  @ToString
   @NoArgsConstructor
   @AllArgsConstructor
-  public static class AppletAuthModelKey implements Serializable {
+  public static class AppletAuthModelKey implements Serializable, Comparable<AppletAuthModelKey> {
 
     private String thirdPlatformType;
 
@@ -51,19 +51,10 @@ public class AppletAuthModel {
     public int hashCode() {
       return Objects.hash(thirdPlatformType, thirdPlatformId);
     }
-  }
 
-  @Getter
-  @Setter
-  @NoArgsConstructor
-  public static class AppletAuthModelValue
-      extends AppletCommonModel.AppletCommonModelValue<Principal> implements Serializable {
-
-    // TODO
-
-    @Builder
-    public AppletAuthModelValue(Principal value) {
-      super(value);
+    @Override
+    public int compareTo(@NotNull AppletAuthModelKey o) {
+      return this.thirdPlatformId.compareTo(o.getThirdPlatformId());
     }
   }
 
@@ -82,22 +73,6 @@ public class AppletAuthModel {
     public AppletAuthModelKey deserialize(@NotNull DataInput2 input, int available)
         throws IOException {
       return AUTH_GSON.fromJson(input.readUTF(), AppletAuthModelKey.class);
-    }
-  }
-
-  public static class AppletAuthModelValueSerializer
-      extends GroupSerializerObjectArray<AppletAuthModelValue> {
-
-    @Override
-    public void serialize(@NotNull DataOutput2 out, @NotNull AppletAuthModelValue value)
-        throws IOException {
-      out.writeUTF(AUTH_GSON.toJson(value));
-    }
-
-    @Override
-    public AppletAuthModelValue deserialize(@NotNull DataInput2 input, int available)
-        throws IOException {
-      return AUTH_GSON.fromJson(input.readUTF(), AppletAuthModelValue.class);
     }
   }
 }

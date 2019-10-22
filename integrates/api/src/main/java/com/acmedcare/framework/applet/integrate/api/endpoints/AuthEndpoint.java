@@ -60,4 +60,17 @@ public class AuthEndpoint extends AbstractEndpoint {
 
   }
 
+  @POST
+  @Path("/{type}/unbind")
+  @Produces({MediaType.APPLICATION_JSON})
+  public <T extends AppletResponse> T unbind(@PathParam("type") String type, @Context HttpServletRequest request) throws AppletException {
+
+    checkAppletType(type);
+
+    AuthService authService = AppletsSPIExtensionFactory.getService(type, AuthService.class);
+
+    return authService.unbind(request);
+
+  }
+
 }

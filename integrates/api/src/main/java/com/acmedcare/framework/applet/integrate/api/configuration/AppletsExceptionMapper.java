@@ -87,6 +87,19 @@ public class AppletsExceptionMapper implements ExceptionMapper<RuntimeException>
 
         return responseBuilder.build();
       }
+
+
+      // default
+      Response.ResponseBuilder responseBuilder =
+          Response.status(Response.Status.BAD_REQUEST)
+              .entity(
+                  EntityBody.builder()
+                      .status(EntityBody.Status.FAILED)
+                      .message(appletException.getMessage())
+                      .build())
+              .type(MediaType.APPLICATION_JSON);
+
+      return responseBuilder.build();
     }
 
     // other system exception

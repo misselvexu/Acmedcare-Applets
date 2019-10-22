@@ -56,27 +56,10 @@ public class AppletCommonModel {
     public int hashCode() {
       return Objects.hash(namespace, key);
     }
+
   }
 
-  @Getter
-  @Setter
-  @ToString
-  @NoArgsConstructor
-  @Builder(builderMethodName = "CommonModelValueBuilder", buildMethodName = "commonValueBuild")
-  public static class AppletCommonModelValue<V> implements Serializable {
-
-    public static final AppletCommonModelValue<String> DEFAULT_EMPTY_RESULT =
-        new AppletCommonModelValue.AppletCommonModelValueBuilder<String>()
-            .value("temp_suite_ticket_only4_test") // test only
-            .commonValueBuild();
-
-    /** Common Model Value Object */
-    protected V value;
-
-    public AppletCommonModelValue(V value) {
-      this.value = value;
-    }
-  }
+  public static final String DEFAULT_EMPTY_RESULT = "temp_suite_ticket_only4_test";
 
   // ===== Serializer(s) =====
 
@@ -93,22 +76,6 @@ public class AppletCommonModel {
     public AppletCommonModelKey deserialize(@NotNull DataInput2 input, int available)
         throws IOException {
       return COMMON_GSON.fromJson(input.readUTF(), AppletCommonModelKey.class);
-    }
-  }
-
-  public static class AppletCommonModelValueSerializer
-      extends GroupSerializerObjectArray<AppletCommonModelValue> {
-
-    @Override
-    public void serialize(@NotNull DataOutput2 out, @NotNull AppletCommonModelValue value)
-        throws IOException {
-      out.writeUTF(COMMON_GSON.toJson(value));
-    }
-
-    @Override
-    public AppletCommonModelValue deserialize(@NotNull DataInput2 input, int available)
-        throws IOException {
-      return COMMON_GSON.fromJson(input.readUTF(), AppletCommonModelValue.class);
     }
   }
 }

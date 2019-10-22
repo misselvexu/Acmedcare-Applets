@@ -10,6 +10,7 @@ import com.acmedcare.framework.applet.integrate.common.spi.Extension;
 import com.acmedcare.framework.applet.integrate.dingtalk.DingTalkAppletContext;
 import com.acmedcare.framework.applet.integrate.dingtalk.bean.DingTalkPrincipal;
 import com.acmedcare.framework.applet.integrate.dingtalk.repository.DingTalkRepository;
+import com.acmedcare.framework.applet.integrate.storage.api.AppletsRepository;
 import com.acmedcare.framework.applet.integrate.storage.api.model.AppletAuthModel;
 import com.acmedcare.framework.kits.BeanUtils;
 import com.acmedcare.framework.kits.executor.AsyncRuntimeExecutor;
@@ -32,6 +33,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static com.acmedcare.framework.applet.integrate.dingtalk.DingTalkAppletContext.context;
 import static com.acmedcare.framework.applet.integrate.dingtalk.DingTalkExtensionDefined.DING_TALK;
@@ -88,6 +90,17 @@ public class DingTalkAuthService implements AuthService {
     DingTalkPrincipal principal = new DingTalkPrincipal();
     BeanUtils.copyProperties(oapiUserGetResponse,principal);
 
+    // 5.查询绑定的信息
+    try{
+      DingTalkPrincipal dingTalkPrincipal = queryPrincipal(userId);
+      if (dingTalkPrincipal != null) {
+        principal.setBasePlatformPrincipalId(dingTalkPrincipal.getBasePlatformPrincipalId());
+        principal.setBasePlatformPrincipalToken(dingTalkPrincipal.getBasePlatformPrincipalToken());
+      }
+    } catch (Exception e) {
+      log.warn("==Applets DingTalk== query dingtalk principal failed", e);
+    }
+
     Map<String, Object> resultMap = new HashMap<>(4);
     resultMap.put("userId", userId);
     resultMap.put("corpId", corpId);
@@ -95,7 +108,7 @@ public class DingTalkAuthService implements AuthService {
     resultMap.put("principal",principal);
 
     // save
-    AsyncRuntimeExecutor.getAsyncThreadPool().execute(() -> savePrincipal(principal.getUnionid(),principal));
+    AsyncRuntimeExecutor.getAsyncThreadPool().execute(() -> savePrincipal(principal.getUserid(),principal));
 
     return AppletResponse.appletResponseBuilder().data(resultMap).appletResponseBuild();
   }
@@ -109,18 +122,40 @@ public class DingTalkAuthService implements AuthService {
               .thirdPlatformType(DING_TALK)
               .build();
 
-      AppletAuthModel.AppletAuthModelValue value =
-          AppletAuthModel.AppletAuthModelValue.builder().value(principal).build();
-
       DingTalkRepository repository =
-          AppletsSPIExtensionFactory.getRepository(DING_TALK, DingTalkRepository.class);
+          (DingTalkRepository) AppletsSPIExtensionFactory.getRepository(DING_TALK, AppletsRepository.class);
 
-      repository.savePrincipal(key,value);
+      repository.savePrincipal(key,principal);
 
     } catch (Exception e) {
       log.warn("==Applets DingTalk== save dingtalk principal failed", e);
     }
   }
+
+  private DingTalkPrincipal queryPrincipal(String userId) throws AppletException {
+
+    try{
+      AppletAuthModel.AppletAuthModelKey key =
+          AppletAuthModel.AppletAuthModelKey.builder()
+              .thirdPlatformId(userId)
+              .thirdPlatformType(DING_TALK)
+              .build();
+
+      DingTalkRepository repository =
+          (DingTalkRepository) AppletsSPIExtensionFactory.getRepository(DING_TALK, AppletsRepository.class);
+
+      DingTalkPrincipal value = repository.queryPrincipal(key, DingTalkPrincipal.class);
+
+      log.info("==Applets DingTalk== query dingtalk principal result : {}", value);
+
+      return value;
+
+    } catch (Exception e) {
+      log.warn("==Applets DingTalk== query dingtalk principal failed", e);
+      return null;
+    }
+  }
+
   /**
    * ISV获取企业访问凭证
    *
@@ -152,10 +187,10 @@ public class DingTalkAuthService implements AuthService {
       response = client.execute(request);
     } catch (ApiException e) {
       log.info(e.toString(), e);
-      return null;
+      throw new AppletException(e);
     }
     if (response == null || !response.isSuccess()) {
-      return null;
+      throw new AppletException(Optional.ofNullable(response).isPresent() ? response.getErrmsg() : "get token failed");
     }
     return response;
   }
@@ -163,7 +198,7 @@ public class DingTalkAuthService implements AuthService {
   /**
    * 通过钉钉服务端API获取用户在当前企业的userId
    *
-   * @param accessToken
+   * @param accessToken token
    * @param code 免登code @
    */
   private OapiUserGetuserinfoResponse getOapiUserGetuserinfo(String accessToken, String code) {
@@ -177,10 +212,10 @@ public class DingTalkAuthService implements AuthService {
       response = client.execute(request, accessToken);
     } catch (ApiException e) {
       e.printStackTrace();
-      return null;
+      throw new AppletException(e);
     }
     if (response == null || !response.isSuccess()) {
-      return null;
+      throw new AppletException(Optional.ofNullable(response).isPresent() ? response.getErrmsg() : "get user info failed");
     }
     return response;
   }
@@ -200,10 +235,10 @@ public class DingTalkAuthService implements AuthService {
       response = client.execute(request, accessToken);
     } catch (ApiException e) {
       e.printStackTrace();
-      return null;
+      throw new AppletException(e);
     }
     if (response == null || !response.isSuccess()) {
-      return null;
+      throw new AppletException(Optional.ofNullable(response).isPresent() ? response.getErrmsg() : "get corp user info failed");
     }
     return response;
   }
@@ -231,8 +266,118 @@ public class DingTalkAuthService implements AuthService {
   @Override
   public AppletResponse bind(HttpServletRequest request) throws AppletException {
 
-    // TODO bind account, union-id & basePlatfromPrincipalId
+    String userId = request.getParameter("userId");
+    String basePlatformPrincipalId = request.getParameter("baseId");
+    String basePlatformPrincipalToken = request.getParameter("baseToken");
 
-    return null;
+    if (StringUtils.isAnyBlank(userId, basePlatformPrincipalId, basePlatformPrincipalToken)) {
+      throw new InvalidRequestParamException(
+          "DingTalk's bind request param [userId,baseId,baseToken] must not be null or blank.");
+    }
+
+    try {
+      AppletAuthModel.AppletAuthModelKey key =
+          AppletAuthModel.AppletAuthModelKey.builder()
+              .thirdPlatformId(userId)
+              .thirdPlatformType(DING_TALK)
+              .build();
+
+      DingTalkPrincipal dingTalkPrincipal = queryPrincipal(userId);
+
+      if(dingTalkPrincipal == null) {
+        return AppletResponse.appletResponseBuilder()
+            .status(AppletResponse.Status.FAILED)
+            .message("用户在钉钉应用平台还未授权")
+            .appletResponseBuild();
+      }
+
+      log.info("==Applets DingTalk== origin auth principal: {}", dingTalkPrincipal.toString());
+
+      dingTalkPrincipal.setBasePlatformPrincipalToken(basePlatformPrincipalToken);
+      dingTalkPrincipal.setBasePlatformPrincipalId(basePlatformPrincipalId);
+
+      DingTalkRepository repository =
+          (DingTalkRepository) AppletsSPIExtensionFactory.getRepository(DING_TALK, AppletsRepository.class);
+
+      repository.savePrincipal(key, dingTalkPrincipal);
+
+      log.info("==Applets DingTalk== bind finished .");
+
+      return AppletResponse.appletResponseBuilder().appletResponseBuild();
+
+    } catch (Exception e) {
+      log.warn("==Applets DingTalk== bind dingtalk principal failed", e);
+      return AppletResponse.appletResponseBuilder()
+          .status(AppletResponse.Status.EXCEPTION)
+          .message(e.getMessage())
+          .appletResponseBuild();
+    }
+  }
+
+  /**
+   * Un-Bind Applet Account With Biz Account
+   *
+   * @param request http request instance of {@link HttpServletRequest}
+   * @return instance of {@link AppletResponse}
+   * @throws AppletException maybe thrown {@link AppletException}
+   */
+  @Override
+  public AppletResponse unbind(HttpServletRequest request) throws AppletException {
+
+    String userId = request.getParameter("userId");
+    String basePlatformPrincipalId = request.getParameter("baseId");
+
+    if (StringUtils.isAnyBlank(userId, basePlatformPrincipalId)) {
+      throw new InvalidRequestParamException(
+          "DingTalk's bind request param [userId,baseId] must not be null or blank.");
+    }
+
+
+    try {
+      AppletAuthModel.AppletAuthModelKey key =
+          AppletAuthModel.AppletAuthModelKey.builder()
+              .thirdPlatformId(userId)
+              .thirdPlatformType(DING_TALK)
+              .build();
+
+      DingTalkPrincipal dingTalkPrincipal = queryPrincipal(userId);
+
+      if(dingTalkPrincipal == null) {
+        return AppletResponse.appletResponseBuilder()
+            .status(AppletResponse.Status.FAILED)
+            .message("用户在钉钉应用平台还未授权")
+            .appletResponseBuild();
+      }
+
+      log.info("==Applets DingTalk== bind-ed auth principal: {}", dingTalkPrincipal.toString());
+
+      if(dingTalkPrincipal.getBasePlatformPrincipalId() != null &&
+          !basePlatformPrincipalId.equalsIgnoreCase(dingTalkPrincipal.getBasePlatformPrincipalId())) {
+        return AppletResponse.appletResponseBuilder()
+            .status(AppletResponse.Status.FAILED)
+            .message("当前钉钉绑定的账户与解绑账户不匹配.")
+            .appletResponseBuild();
+      }
+
+      // un-bind
+      dingTalkPrincipal.setBasePlatformPrincipalId(null);
+      dingTalkPrincipal.setBasePlatformPrincipalToken(null);
+
+      DingTalkRepository repository =
+          (DingTalkRepository) AppletsSPIExtensionFactory.getRepository(DING_TALK, AppletsRepository.class);
+
+      repository.savePrincipal(key,dingTalkPrincipal);
+
+      log.info("==Applets DingTalk== unbind finished .");
+
+      return AppletResponse.appletResponseBuilder().appletResponseBuild();
+
+    } catch (Exception e) {
+      log.warn("==Applets DingTalk== unbind dingtalk principal failed", e);
+      return AppletResponse.appletResponseBuilder()
+          .status(AppletResponse.Status.EXCEPTION)
+          .message(e.getMessage())
+          .appletResponseBuild();
+    }
   }
 }

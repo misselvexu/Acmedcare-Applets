@@ -78,15 +78,4 @@ public class DingTalkCallbackModel {
     }
   }
 
-  @Getter
-  @Setter
-  @NoArgsConstructor
-  public static class DingTalkCallbackModelValue
-      extends AppletCommonModel.AppletCommonModelValue<String> {
-
-    @Builder
-    public DingTalkCallbackModelValue(String suiteTicket) {
-      super(suiteTicket);
-    }
-  }
 }

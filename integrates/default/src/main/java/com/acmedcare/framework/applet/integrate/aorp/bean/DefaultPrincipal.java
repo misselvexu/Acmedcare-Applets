@@ -22,8 +22,8 @@ public class DefaultPrincipal extends Principal {
   private String passport;
 
   @Builder
-  public DefaultPrincipal(Long passportId, String passport) {
-    super(passportId.toString());
+  public DefaultPrincipal(Long passportId, String token, String passport) {
+    super(passportId.toString(),token);
     this.passportId = passportId;
     this.passport = passport;
   }

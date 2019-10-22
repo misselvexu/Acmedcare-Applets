@@ -6,15 +6,14 @@ import com.acmedcare.framework.applet.integrate.dingtalk.DingTalkAppletContext;
 import com.acmedcare.framework.applet.integrate.dingtalk.model.DingTalkCallbackModel;
 import com.acmedcare.framework.applet.integrate.storage.api.AppletsRepository;
 import com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service.AppletsRDBService;
-import com.acmedcare.framework.applet.integrate.storage.api.model.AppletCommonModel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.Optional;
+import java.nio.charset.Charset;
 
 import static com.acmedcare.framework.applet.integrate.dingtalk.DingTalkExtensionDefined.DING_TALK;
 import static com.acmedcare.framework.applet.integrate.dingtalk.model.DingTalkCallbackModel.NAMESPACE;
-import static com.acmedcare.framework.applet.integrate.storage.api.model.AppletCommonModel.AppletCommonModelValue.DEFAULT_EMPTY_RESULT;
+import static com.acmedcare.framework.applet.integrate.storage.api.model.AppletCommonModel.DEFAULT_EMPTY_RESULT;
 
 /**
  * {@link DingTalkRepository}
@@ -55,12 +54,8 @@ public class DingTalkRepository extends AppletsRepository {
                       .build())
               .build();
 
-      DingTalkCallbackModel.DingTalkCallbackModelValue value =
-          DingTalkCallbackModel.DingTalkCallbackModelValue.builder()
-              .suiteTicket(suiteTicket)
-              .build();
-
-      AppletCommonModel.AppletCommonModelValue origin = rdbService.commonStorage().put(key, value);
+      byte[] origin =
+          rdbService.commonStorage().put(key, suiteTicket.getBytes(Charset.defaultCharset()));
 
       log.info("[==DingTalk Repository==] save response :{}", origin);
 
@@ -86,11 +81,11 @@ public class DingTalkRepository extends AppletsRepository {
                       .build())
               .build();
 
-      AppletCommonModel.AppletCommonModelValue origin = rdbService.commonStorage().get(key);
+      byte[] origin = rdbService.commonStorage().get(key);
 
       log.info("[==DingTalk Repository==] query suite ticket result : {}", origin);
 
-      return Optional.ofNullable(origin).orElse(DEFAULT_EMPTY_RESULT).getValue().toString();
+      return origin == null ? DEFAULT_EMPTY_RESULT : new String(origin, Charset.defaultCharset());
 
     } catch (Exception e) {
       throw new RepositoryException(e);

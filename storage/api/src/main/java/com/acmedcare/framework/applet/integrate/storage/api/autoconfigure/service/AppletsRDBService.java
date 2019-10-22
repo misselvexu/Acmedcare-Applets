@@ -9,6 +9,7 @@ import lombok.Getter;
 import org.mapdb.BTreeMap;
 import org.mapdb.DB;
 import org.mapdb.DBMaker;
+import org.mapdb.serializer.SerializerByteArray;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -57,19 +58,19 @@ public class AppletsRDBService {
   /**
    * Auth Storage Map
    */
-  private BTreeMap<AppletAuthModel.AppletAuthModelKey, AppletAuthModel.AppletAuthModelValue> authMap;
+  private BTreeMap<AppletAuthModel.AppletAuthModelKey, byte[]> authMap;
 
   /**
    * Common Storage Map
    */
-  private BTreeMap<AppletCommonModel.AppletCommonModelKey, AppletCommonModel.AppletCommonModelValue> commonMap;
+  private BTreeMap<AppletCommonModel.AppletCommonModelKey, byte[]> commonMap;
 
-  public BTreeMap<AppletAuthModel.AppletAuthModelKey, AppletAuthModel.AppletAuthModelValue>
+  public BTreeMap<AppletAuthModel.AppletAuthModelKey, byte[]>
       authStorage() {
     return authMap;
   }
 
-  public BTreeMap<AppletCommonModel.AppletCommonModelKey, AppletCommonModel.AppletCommonModelValue>
+  public BTreeMap<AppletCommonModel.AppletCommonModelKey, byte[]>
       commonStorage() {
     return commonMap;
   }
@@ -123,7 +124,7 @@ public class AppletsRDBService {
         }
 
         // INIT
-        DBMaker.Maker maker = DBMaker.fileDB(path).fileChannelEnable().transactionEnable();
+        DBMaker.Maker maker = DBMaker.fileDB(path).fileChannelEnable().fileMmapEnableIfSupported();
 
         rdb = maker.make();
 
@@ -132,13 +133,13 @@ public class AppletsRDBService {
         // BUILD DB-MAPS
         authMap = db().treeMap(AUTH.getName())
             .keySerializer(new AppletAuthModel.AppletAuthModelKeySerializer())
-            .valueSerializer(new AppletAuthModel.AppletAuthModelValueSerializer())
+            .valueSerializer(SerializerByteArray.BYTE_ARRAY)
             .createOrOpen();
         log.info("[==Applets RDB==] DB-Map :{} is createOrOpen-ed, {}", AUTH, authMap);
 
         commonMap = db().treeMap(COMMON.getName())
             .keySerializer(new AppletCommonModel.AppletCommonModelKeySerializer())
-            .valueSerializer(new AppletCommonModel.AppletCommonModelValueSerializer())
+            .valueSerializer(SerializerByteArray.BYTE_ARRAY)
             .createOrOpen();
 
         log.info("[==Applets RDB==] DB-Map :{} is createOrOpen-ed, {}", COMMON, commonMap);

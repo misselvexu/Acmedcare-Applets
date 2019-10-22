@@ -4,6 +4,7 @@ import com.acmedcare.framework.applet.api.exception.ServiceException;
 import com.acmedcare.framework.applet.integrate.api.AppletsSPIExtensionFactory;
 import com.acmedcare.framework.applet.integrate.dingtalk.DingTalkIntegrateProperties;
 import com.acmedcare.framework.applet.integrate.dingtalk.repository.DingTalkRepository;
+import com.acmedcare.framework.applet.integrate.storage.api.AppletsRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.lang.NonNull;
@@ -43,7 +44,7 @@ public class DingTalkCallbackService {
 
     try {
       DingTalkRepository repository =
-          AppletsSPIExtensionFactory.getRepository(DING_TALK, DingTalkRepository.class);
+          (DingTalkRepository) AppletsSPIExtensionFactory.getRepository(DING_TALK, AppletsRepository.class);
 
       repository.saveSuiteTicketEventData(
           this.properties.getAppId(),
@@ -60,7 +61,7 @@ public class DingTalkCallbackService {
 
     try {
       DingTalkRepository repository =
-          AppletsSPIExtensionFactory.getRepository(DING_TALK, DingTalkRepository.class);
+          (DingTalkRepository) AppletsSPIExtensionFactory.getRepository(DING_TALK, AppletsRepository.class);
 
       return repository.querySuiteTicket(
           this.properties.getAppId(),

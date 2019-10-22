@@ -1,12 +1,16 @@
 package com.acmedcare.framework.applet.integrate.storage.api;
 
+import com.acmedcare.framework.applet.api.bean.Principal;
 import com.acmedcare.framework.applet.api.exception.RepositoryException;
 import com.acmedcare.framework.applet.integrate.common.spi.Extensible;
 import com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.AppletsRepositoryContext;
 import com.acmedcare.framework.applet.integrate.storage.api.autoconfigure.service.AppletsRDBService;
 import com.acmedcare.framework.applet.integrate.storage.api.model.AppletAuthModel;
+import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Arrays;
 
 /**
  * {@link AppletsRepository}
@@ -24,20 +28,45 @@ public abstract class AppletsRepository {
    * Save Principal
    *
    * @param key auth info biz key
-   * @param value value
+   * @param principal principal
    */
   public void savePrincipal(
-      AppletAuthModel.AppletAuthModelKey key, AppletAuthModel.AppletAuthModelValue value) {
+      AppletAuthModel.AppletAuthModelKey key, Principal principal) {
 
     try {
 
       AppletsRDBService rdbService =
           AppletsRepositoryContext.context().getBean(AppletsRDBService.class);
 
-      AppletAuthModel.AppletAuthModelValue origin = rdbService.authStorage().put(key, value);
+      byte[] bytes = rdbService.authStorage().put(key, JSON.toJSONBytes(principal));
 
-      log.info("[==DingTalk Repository==] save principa :{}", origin);
+      log.info("[==DingTalk Repository==] save principa :{}", Arrays.toString(bytes));
 
+    } catch (Exception e) {
+      throw new RepositoryException(e);
+    }
+  }
+
+  public <T extends Principal> T queryPrincipal(
+      AppletAuthModel.AppletAuthModelKey key, Class<T> clazz) {
+
+    try {
+
+      AppletsRDBService rdbService =
+          AppletsRepositoryContext.context().getBean(AppletsRDBService.class);
+
+      byte[] bytes = rdbService.authStorage().get(key);
+
+      if(bytes == null || bytes.length == 0) {
+        throw new RepositoryException("Principal is not found by key: " + key);
+      }
+
+      log.info("[==DingTalk Repository==] query principa :{}", Arrays.toString(bytes));
+
+      return JSON.parseObject(bytes,clazz);
+
+    } catch (RepositoryException e) {
+      throw e;
     } catch (Exception e) {
       throw new RepositoryException(e);
     }

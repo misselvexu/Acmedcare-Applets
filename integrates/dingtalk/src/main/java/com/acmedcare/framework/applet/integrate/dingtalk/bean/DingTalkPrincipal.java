@@ -1,10 +1,7 @@
 package com.acmedcare.framework.applet.integrate.dingtalk.bean;
 
 import com.acmedcare.framework.applet.api.bean.Principal;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 /**
  * {@link DingTalkPrincipal}
@@ -14,6 +11,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
+@ToString(callSuper = true)
 @NoArgsConstructor
 public class DingTalkPrincipal extends Principal {
 
@@ -27,8 +25,8 @@ public class DingTalkPrincipal extends Principal {
 
   @Builder
   public DingTalkPrincipal(
-      String basePlatformPrincipalId, String unionid, String userid, String name, String avatar) {
-    super(basePlatformPrincipalId);
+      String basePlatformPrincipalId, String basePlatformPrincipalToken, String unionid, String userid, String name, String avatar) {
+    super(basePlatformPrincipalId,basePlatformPrincipalToken);
     this.unionid = unionid;
     this.userid = userid;
     this.name = name;
