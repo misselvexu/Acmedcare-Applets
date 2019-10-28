@@ -9,9 +9,6 @@ import com.acmedcare.framework.applet.integrate.wechat.support.pay.bean.request.
 import com.acmedcare.framework.applet.integrate.wechat.support.pay.bean.result.*;
 import com.acmedcare.framework.applet.integrate.wechat.support.pay.config.WxPayConfig;
 import com.acmedcare.framework.applet.integrate.wechat.support.pay.exception.WxPayException;
-import com.github.binarywang.wxpay.bean.coupon.*;
-import com.github.binarywang.wxpay.bean.request.*;
-import com.github.binarywang.wxpay.bean.result.*;
 
 import java.io.File;
 import java.util.Date;
@@ -159,9 +156,9 @@ public interface WxPayService {
   /**
    * 调用统一下单接口，并组装生成支付所需参数对象.
    *
-   * @param <T> 请使用{@link com.github.binarywang.wxpay.bean.order}包下的类
+   * @param <T> 请使用{@link com.acmedcare.framework.applet.integrate.wechat.support.pay.bean.order}包下的类
    * @param request 统一下单请求参数
-   * @return 返回 {@link com.github.binarywang.wxpay.bean.order}包下的类对象
+   * @return 返回 {@link com.acmedcare.framework.applet.integrate.wechat.support.pay.bean.order}包下的类对象
    * @throws WxPayException the wx pay exception
    */
   <T> T createOrder(WxPayUnifiedOrderRequest request) throws WxPayException;

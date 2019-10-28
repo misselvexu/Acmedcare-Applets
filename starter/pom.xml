@@ -35,6 +35,11 @@
             <artifactId>applet-integrate-default</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.acmedcare.framework</groupId>
+            <artifactId>applet-integrate-wechat</artifactId>
+        </dependency>
+
         <!-- Spring Boot Libs -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
