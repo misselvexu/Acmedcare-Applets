@@ -5,8 +5,7 @@ import com.acmedcare.framework.applet.integrate.wechat.support.mp.bean.message.W
 /**
  * 设备消息 Builder
  *
- * @author biggates
- * @see https://iot.weixin.qq.com/wiki/new/index.html?page=3-4-2
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  */
 public final class DeviceBuilder extends BaseBuilder<DeviceBuilder, WxMpXmlOutDeviceMessage> {
 
