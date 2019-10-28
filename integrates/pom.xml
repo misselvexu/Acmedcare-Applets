@@ -20,6 +20,9 @@
 
         <!-- Alibaba DingTalk Integration -->
         <module>dingtalk</module>
+
+        <!-- Tencent WeChat Integration -->
+        <module>wechat</module>
     </modules>
 
 
@@ -40,6 +43,12 @@
             <dependency>
                 <groupId>com.acmedcare.framework</groupId>
                 <artifactId>applet-integrate-dingtalk</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.framework</groupId>
+                <artifactId>applet-integrate-wechat</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
