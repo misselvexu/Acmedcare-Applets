@@ -113,7 +113,7 @@ applet.integrate.wechat.pay-config.sub-mch-id=
 
 ### Reference Document
 
-- [Frontend Integrate OpenApi](Applets-OpenApi.md)s
+- [Frontend Integrate OpenApi](Applets-OpenApi.md)
 
 ### License
  
