@@ -11,7 +11,7 @@ import java.io.InputStream;
  *
  * <pre>
  * 临时素材接口
- * Created by Binary Wang on 2016/7/21.
+ * Created by Acmedcare+ Developer on 2016/7/21.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

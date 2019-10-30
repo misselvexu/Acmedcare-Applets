@@ -15,7 +15,7 @@ import java.util.List;
  *
  * <pre>
  *   公众号专用的菜单类，可能包含个性化菜单
- * Created by Binary Wang on 2017-1-17.
+ * Created by Acmedcare+ Developer on 2017-1-17.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

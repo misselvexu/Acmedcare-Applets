@@ -11,7 +11,7 @@ import java.util.List;
  *
  * <pre>
  * 微信支付常量类
- * Created by Binary Wang on 2017-8-24.
+ * Created by Acmedcare+ Developer on 2017-8-24.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

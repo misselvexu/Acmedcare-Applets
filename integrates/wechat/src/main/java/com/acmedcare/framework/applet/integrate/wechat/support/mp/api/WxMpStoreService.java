@@ -8,7 +8,7 @@ import com.acmedcare.framework.applet.integrate.wechat.support.mp.bean.store.WxM
 import java.util.List;
 
 /**
- * 门店管理的相关接口代码. Created by Binary Wang on 2016-09-23.
+ * 门店管理的相关接口代码. Created by Acmedcare+ Developer on 2016-09-23.
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version}

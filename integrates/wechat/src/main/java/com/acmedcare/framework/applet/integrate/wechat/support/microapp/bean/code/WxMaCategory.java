@@ -9,7 +9,7 @@ import java.io.Serializable;
 /**
  * 小程序帐号的可选类目，其中 address / tag / title 是提交审核会用到的
  *
- * @author <a href="https://github.com/charmingoh">Charming</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @since 2018-04-26 19:44
  */
 @Data

@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  *
  * <pre>
  * 标识某个字段是否是必填的
- * Created by Binary Wang on 2016/9/25.
+ * Created by Acmedcare+ Developer on 2016/9/25.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

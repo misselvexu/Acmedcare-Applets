@@ -29,7 +29,7 @@ import java.nio.charset.StandardCharsets;
  *
  * <pre>
  * 微信支付请求实现类，apache httpclient实现.
- * Created by Binary Wang on 2016/7/28.
+ * Created by Acmedcare+ Developer on 2016/7/28.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  *
  * <pre>
  * 撤销订单响应结果类
- * Created by Binary Wang on 2017-3-23.
+ * Created by Acmedcare+ Developer on 2017-3-23.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

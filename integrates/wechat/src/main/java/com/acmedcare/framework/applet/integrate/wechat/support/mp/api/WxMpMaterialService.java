@@ -12,7 +12,7 @@ import java.io.InputStream;
  *
  *
  * <pre>
- * Created by Binary Wang on 2016/7/21.
+ * Created by Acmedcare+ Developer on 2016/7/21.
  * 素材管理的相关接口，包括媒体管理的接口，
  * 即以https://api.weixin.qq.com/cgi-bin/material
  * 和 https://api.weixin.qq.com/cgi-bin/media开头的接口

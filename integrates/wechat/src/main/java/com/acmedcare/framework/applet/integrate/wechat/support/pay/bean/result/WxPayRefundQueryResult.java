@@ -11,7 +11,7 @@ import java.util.List;
  *
  * <pre>
  * 微信支付-退款查询返回结果
- * Created by Binary Wang on 2016-11-24.
+ * Created by Acmedcare+ Developer on 2016-11-24.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

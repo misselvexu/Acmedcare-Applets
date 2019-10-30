@@ -10,7 +10,7 @@ import org.apache.commons.lang3.StringUtils;
  *
  * <pre>
  * 订单查询请求对象
- * Created by Binary Wang on 2016-10-24.
+ * Created by Acmedcare+ Developer on 2016-10-24.
  * 注释中各行每个字段描述对应如下：
  * <li>字段名
  * <li>变量名

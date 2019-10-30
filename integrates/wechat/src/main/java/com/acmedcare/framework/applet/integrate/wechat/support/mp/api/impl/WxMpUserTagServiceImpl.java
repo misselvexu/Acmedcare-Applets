@@ -19,7 +19,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 /**
- * Created by Binary Wang on 2016/9/2.
+ * Created by Acmedcare+ Developer on 2016/9/2.
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version}

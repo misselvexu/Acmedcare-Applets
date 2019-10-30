@@ -9,7 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * @author <a href="https://github.com/charmingoh">Charming</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @since 2018-04-26 19:47
  */
 public class WxMaCodeVersionDistributionGsonAdapter

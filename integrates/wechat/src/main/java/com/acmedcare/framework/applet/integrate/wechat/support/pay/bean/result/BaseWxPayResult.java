@@ -34,7 +34,7 @@ import java.util.Map;
  *
  * <pre>
  * 微信支付结果共用属性类.
- * Created by Binary Wang on 2016-10-24.
+ * Created by Acmedcare+ Developer on 2016-10-24.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

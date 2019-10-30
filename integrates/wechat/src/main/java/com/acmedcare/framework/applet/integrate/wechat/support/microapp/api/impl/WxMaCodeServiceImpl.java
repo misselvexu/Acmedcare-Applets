@@ -23,7 +23,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 /**
- * @author <a href="https://github.com/charmingoh">Charming</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @since 2018-04-26 20:00
  */
 public class WxMaCodeServiceImpl implements WxMaCodeService {

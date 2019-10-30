@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 接口分析数据接口返回结果对象
  *
- * <p>Created by Binary Wang on 2016/8/30.
+ * <p>Created by Acmedcare+ Developer on 2016/8/30.
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version}

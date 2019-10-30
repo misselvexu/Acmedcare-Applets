@@ -13,7 +13,7 @@ import java.util.List;
  *
  * <pre>
  *  用户标签对象
- *  Created by Binary Wang on 2016/9/2.
+ *  Created by Acmedcare+ Developer on 2016/9/2.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

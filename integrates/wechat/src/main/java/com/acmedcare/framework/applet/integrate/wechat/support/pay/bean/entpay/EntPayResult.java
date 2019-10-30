@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
  *
  * <pre>
  * 企业付款返回结果
- * Created by Binary Wang on 2016/10/02.
+ * Created by Acmedcare+ Developer on 2016/10/02.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

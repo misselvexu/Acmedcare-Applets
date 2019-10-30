@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  *
  * <pre>
- * Created by Binary Wang on 2016-11-25.
+ * Created by Acmedcare+ Developer on 2016-11-25.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

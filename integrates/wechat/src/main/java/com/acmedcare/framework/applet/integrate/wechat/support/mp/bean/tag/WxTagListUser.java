@@ -12,7 +12,7 @@ import java.util.List;
  *
  * <pre>
  * 获取标签下粉丝列表的结果对象
- * Created by Binary Wang on 2016-09-19.
+ * Created by Acmedcare+ Developer on 2016-09-19.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

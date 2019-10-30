@@ -9,7 +9,7 @@ import org.apache.commons.lang3.StringUtils;
  *
  *
  * <pre>
- * Created by Binary Wang on 2016-11-24.
+ * Created by Acmedcare+ Developer on 2016-11-24.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

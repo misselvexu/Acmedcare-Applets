@@ -16,7 +16,7 @@ import java.util.List;
  *
  * <pre>
  * 公众号的自动回复规则.
- * Created by Binary Wang on 2017-7-8.
+ * Created by Acmedcare+ Developer on 2017-7-8.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

@@ -5,7 +5,7 @@ package com.acmedcare.framework.applet.integrate.wechat.support.pay.constant;
  *
  * <pre>
  * 微信支付错误码
- * Created by Binary Wang on 2018/11/18.
+ * Created by Acmedcare+ Developer on 2018/11/18.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

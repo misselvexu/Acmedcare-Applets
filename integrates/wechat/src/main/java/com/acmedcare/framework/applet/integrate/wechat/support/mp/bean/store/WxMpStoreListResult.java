@@ -12,7 +12,7 @@ import java.util.List;
  *
  * <pre>
  * 门店列表结果类
- * Created by Binary Wang on 2016-09-27.
+ * Created by Acmedcare+ Developer on 2016-09-27.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

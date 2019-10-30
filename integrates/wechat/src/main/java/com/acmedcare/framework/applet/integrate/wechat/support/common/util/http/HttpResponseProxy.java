@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  *
  * <pre>
  * 三种http框架的response代理类，方便提取公共方法
- * Created by Binary Wang on 2017-8-3.
+ * Created by Acmedcare+ Developer on 2017-8-3.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

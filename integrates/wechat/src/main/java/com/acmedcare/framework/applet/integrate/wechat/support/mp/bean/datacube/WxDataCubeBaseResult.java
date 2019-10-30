@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * <pre>
  *  统计接口的共用属性类.
- *  Created by Binary Wang on 2016/8/25.
+ *  Created by Acmedcare+ Developer on 2016/8/25.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

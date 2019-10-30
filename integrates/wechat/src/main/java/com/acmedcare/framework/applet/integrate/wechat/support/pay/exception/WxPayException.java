@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
  *
  * <pre>
  * 微信支付异常结果类
- * Created by Binary Wang on 2017-6-6.
+ * Created by Acmedcare+ Developer on 2017-6-6.
  * </pre>
  *
  * @author BinaryWang

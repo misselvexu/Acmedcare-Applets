@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * @author <a href="https://github.com/charmingoh">Charming</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @since 2018-04-28
  */
 public class WxMaVisitDistributionGsonAdapter implements JsonDeserializer<WxMaVisitDistribution> {

@@ -18,10 +18,10 @@ import java.util.List;
  *
  * <pre>
  * bean操作的一些工具类
- * Created by Binary Wang on 2016-10-21.
+ * Created by Acmedcare+ Developer on 2016-10-21.
  * </pre>
  *
- * @author <a href="https://github.com/binarywang">binarywang(Binary Wang)</a>
+ * @author <a href="https://github.com/binarywang">binarywang(Acmedcare+ Developer)</a>
  */
 public class BeanUtils {
   private static Logger log = LoggerFactory.getLogger(BeanUtils.class);

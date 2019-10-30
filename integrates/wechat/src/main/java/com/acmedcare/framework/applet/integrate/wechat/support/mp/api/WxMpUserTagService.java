@@ -7,7 +7,7 @@ import com.acmedcare.framework.applet.integrate.wechat.support.mp.bean.tag.WxUse
 import java.util.List;
 
 /**
- * 用户标签管理相关接口 Created by Binary Wang on 2016/9/2.
+ * 用户标签管理相关接口 Created by Acmedcare+ Developer on 2016/9/2.
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version}

@@ -8,7 +8,7 @@ import lombok.Getter;
  * <pre>
  * 微信公众平台全局返回码.
  * 参考文档：<a href="http://mp.weixin.qq.com/wiki/10/6380dc743053a91c544ffd2b7c959166.html">公众平台全局返回码</a>
- * Created by Binary Wang on 2018/5/13.
+ * Created by Acmedcare+ Developer on 2018/5/13.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

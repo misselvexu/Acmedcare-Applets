@@ -14,7 +14,7 @@ import java.util.Date;
  *
  * <pre>
  * Gson 日期类型转换器
- * Created by Binary Wang on 2017-7-8.
+ * Created by Acmedcare+ Developer on 2017-7-8.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

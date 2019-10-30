@@ -9,7 +9,7 @@ import java.io.File;
  *
  * <pre>
  * 内容安全相关接口.
- * Created by Binary Wang on 2018/11/24.
+ * Created by Acmedcare+ Developer on 2018/11/24.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 统计分析相关接口 Created by Binary Wang on 2016/8/23.
+ * 统计分析相关接口 Created by Acmedcare+ Developer on 2016/8/23.
  *
  * @author binarywang (https://github.com/binarywang)
  */

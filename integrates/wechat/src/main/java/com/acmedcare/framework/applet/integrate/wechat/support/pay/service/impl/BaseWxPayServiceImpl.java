@@ -43,7 +43,7 @@ import java.util.zip.ZipException;
  *
  * <pre>
  *  微信支付接口请求抽象实现类
- * Created by Binary Wang on 2017-7-8.
+ * Created by Acmedcare+ Developer on 2017-7-8.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

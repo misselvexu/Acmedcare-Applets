@@ -4,7 +4,7 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import lombok.*;
 
 /**
- * 发送红包请求参数对象. Created by Binary Wang on 2016/9/24.
+ * 发送红包请求参数对象. Created by Acmedcare+ Developer on 2016/9/24.
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version}

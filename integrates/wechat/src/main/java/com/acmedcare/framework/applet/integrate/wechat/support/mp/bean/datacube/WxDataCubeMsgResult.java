@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 import java.util.List;
 
 /**
- * 消息分析数据接口返回结果对象. Created by Binary Wang on 2016/8/29.
+ * 消息分析数据接口返回结果对象. Created by Acmedcare+ Developer on 2016/8/29.
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version}

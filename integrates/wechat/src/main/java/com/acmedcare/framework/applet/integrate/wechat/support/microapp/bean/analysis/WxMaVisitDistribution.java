@@ -15,7 +15,7 @@ import java.util.Map;
  * 50-100s 8: > 100s 平均访问深度：(index="access_depth_info") 1: 1页 2: 2页 3: 3页 4: 4页 5: 5页 6: 6-10页 7:
  * >10页
  *
- * @author <a href="https://github.com/charmingoh">Charming</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @since 2018-04-28
  */
 @Data

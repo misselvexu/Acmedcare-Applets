@@ -7,7 +7,7 @@ import lombok.Data;
  *
  * <pre>
  * 微信支付接口请求数据封装对象
- * Created by Binary Wang on 2017-8-25.
+ * Created by Acmedcare+ Developer on 2017-8-25.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

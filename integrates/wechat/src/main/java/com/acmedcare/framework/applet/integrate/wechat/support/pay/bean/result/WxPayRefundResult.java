@@ -17,7 +17,7 @@ import java.util.List;
  * https://pay.weixin.qq.com/wiki/doc/api/jsapi.php?chapter=9_4
  * </pre>
  *
- * @author liukaitj & Binary Wang
+ * @author liukaitj & Acmedcare+ Developer
  */
 @Data
 @EqualsAndHashCode(callSuper = true)

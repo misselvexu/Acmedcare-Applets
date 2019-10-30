@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Binary Wang on 2016/8/23.
+ * Created by Acmedcare+ Developer on 2016/8/23.
  *
  * @author binarywang (https://github.com/binarywang)
  */

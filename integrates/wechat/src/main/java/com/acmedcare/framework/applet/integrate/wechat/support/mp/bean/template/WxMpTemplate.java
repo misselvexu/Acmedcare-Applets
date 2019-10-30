@@ -14,7 +14,7 @@ import java.util.List;
  *
  * <pre>
  * 模板列表信息
- * Created by Binary Wang on 2016-10-17.
+ * Created by Acmedcare+ Developer on 2016-10-17.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

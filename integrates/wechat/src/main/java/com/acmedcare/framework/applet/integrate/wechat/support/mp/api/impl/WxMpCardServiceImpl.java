@@ -22,7 +22,7 @@ import java.util.Arrays;
 import java.util.concurrent.locks.Lock;
 
 /**
- * Created by Binary Wang on 2016/7/27.
+ * Created by Acmedcare+ Developer on 2016/7/27.
  *
  * @author BinaryWang
  */

@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * 上传代码需要用到的第三方自定义的配置 详细文档，参考：https://developers.weixin.qq.com/miniprogram/dev/framework/config.html
  *
- * @author <a href="https://github.com/charmingoh">Charming</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @since 2018-04-26 19:44
  */
 @Data

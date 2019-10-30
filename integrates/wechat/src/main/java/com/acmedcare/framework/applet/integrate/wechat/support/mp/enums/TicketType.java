@@ -7,7 +7,7 @@ import lombok.Getter;
  *
  * <pre>
  * ticket类型枚举
- * Created by Binary Wang on 2018/11/18.
+ * Created by Acmedcare+ Developer on 2018/11/18.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

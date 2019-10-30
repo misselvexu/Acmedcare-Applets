@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * <pre>
  * 微信H5支付统一下单后发起支付拼接所需参数实现类.
- * Created by Binary Wang on 2018-4-21.
+ * Created by Acmedcare+ Developer on 2018-4-21.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 
 /**
- * Created by Binary Wang on 2016/9/26.
+ * Created by Acmedcare+ Developer on 2016/9/26.
  *
  * @author binarywang (https://github.com/binarywang)
  */

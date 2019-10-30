@@ -5,7 +5,7 @@ package com.acmedcare.framework.applet.integrate.wechat.support.mp.constant;
  *
  * <pre>
  * 微信公众号事件的相关常量
- * Created by Binary Wang on 2017-5-10.
+ * Created by Acmedcare+ Developer on 2017-5-10.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

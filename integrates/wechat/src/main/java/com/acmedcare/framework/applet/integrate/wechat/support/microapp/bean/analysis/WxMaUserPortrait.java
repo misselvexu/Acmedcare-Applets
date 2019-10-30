@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * 用户画像
  *
- * @author <a href="https://github.com/charmingoh">Charming</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @since 2018-04-28
  */
 @Data

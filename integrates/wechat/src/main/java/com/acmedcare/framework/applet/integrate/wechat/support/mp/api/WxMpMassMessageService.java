@@ -10,7 +10,7 @@ import com.acmedcare.framework.applet.integrate.wechat.support.mp.bean.result.Wx
  *
  * <pre>
  * 群发消息服务类.
- * Created by Binary Wang on 2017-8-16.
+ * Created by Acmedcare+ Developer on 2017-8-16.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

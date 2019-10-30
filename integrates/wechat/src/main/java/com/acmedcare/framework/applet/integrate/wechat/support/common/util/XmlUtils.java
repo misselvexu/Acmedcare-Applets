@@ -21,7 +21,7 @@ import java.util.Set;
  *
  * <pre>
  * XML转换工具类.
- * Created by Binary Wang on 2018/11/4.
+ * Created by Acmedcare+ Developer on 2018/11/4.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

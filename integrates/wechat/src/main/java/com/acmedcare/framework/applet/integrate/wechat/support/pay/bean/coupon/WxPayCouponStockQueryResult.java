@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
  *
  * <pre>
  * 查询代金券批次响应结果类.
- * Created by Binary Wang on 2017-7-15.
+ * Created by Acmedcare+ Developer on 2017-7-15.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

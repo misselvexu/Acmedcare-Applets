@@ -7,7 +7,7 @@ import lombok.Data;
  *
  * <pre>
  * 参考文档 https://developers.weixin.qq.com/miniprogram/dev/api-backend/templateMessage.send.html
- * Created by Binary Wang on 2018/9/23.
+ * Created by Acmedcare+ Developer on 2018/9/23.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

@@ -14,7 +14,7 @@ import lombok.*;
  *   示例值
  *   类型
  *   说明
- * Created by Binary Wang on 2016-11-28.
+ * Created by Acmedcare+ Developer on 2016-11-28.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

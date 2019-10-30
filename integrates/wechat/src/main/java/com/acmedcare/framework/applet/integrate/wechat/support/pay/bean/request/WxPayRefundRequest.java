@@ -16,7 +16,7 @@ import java.util.Arrays;
  *
  * <pre>
  * 微信支付-申请退款请求参数
- * Created by Binary Wang on 2016-10-08.
+ * Created by Acmedcare+ Developer on 2016-10-08.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

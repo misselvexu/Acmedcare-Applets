@@ -12,7 +12,7 @@ import java.util.List;
  *
  * <pre>
  *  查询订单 返回结果对象
- * Created by Binary Wang on 2016-10-24.
+ * Created by Acmedcare+ Developer on 2016-10-24.
  * 注释中各行每个字段描述对应如下：
  * <li>字段名
  * <li>变量名

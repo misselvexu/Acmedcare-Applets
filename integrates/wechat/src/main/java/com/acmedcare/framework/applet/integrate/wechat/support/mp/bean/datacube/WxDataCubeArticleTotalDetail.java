@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * 获取图文群发总数据接口(getarticletotal)中的详细字段
  *
- * <p>Created by Binary Wang on 2016/8/24.
+ * <p>Created by Acmedcare+ Developer on 2016/8/24.
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version}

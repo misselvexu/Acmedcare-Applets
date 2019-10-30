@@ -20,10 +20,10 @@ import java.util.*;
  *
  * <pre>
  * 签名相关工具类.
- * Created by Binary Wang on 2017-3-23.
+ * Created by Acmedcare+ Developer on 2017-3-23.
  * </pre>
  *
- * @author <a href="https://github.com/binarywang">binarywang(Binary Wang)</a>
+ * @author <a href="https://github.com/binarywang">binarywang(Acmedcare+ Developer)</a>
  */
 @Slf4j
 public class SignUtils {

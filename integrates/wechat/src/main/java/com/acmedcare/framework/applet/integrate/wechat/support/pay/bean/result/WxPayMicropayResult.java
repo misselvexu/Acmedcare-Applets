@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  *
  * <pre>
  * 提交刷卡支付接口响应结果对象类
- * Created by Binary Wang on 2017-3-23.
+ * Created by Acmedcare+ Developer on 2017-3-23.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>

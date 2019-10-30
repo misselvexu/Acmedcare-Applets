@@ -5,7 +5,7 @@ package com.acmedcare.framework.applet.integrate.wechat.support.common.util.http
  *
  * <pre>
  * http请求响应回调处理接口.
- * Created by Binary Wang on 2018/12/8.
+ * Created by Acmedcare+ Developer on 2018/12/8.
  * </pre>
  *
  * @param <T> 返回值类型

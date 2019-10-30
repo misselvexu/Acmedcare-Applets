@@ -17,7 +17,7 @@ import java.util.List;
  *
  * <pre>
  *  门店基础信息
- *  Created by Binary Wang on 2016-09-23.
+ *  Created by Acmedcare+ Developer on 2016-09-23.
  * </pre>
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
