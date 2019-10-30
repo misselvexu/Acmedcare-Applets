@@ -30,6 +30,91 @@ $ mvn clean install
 If you want to build with the regular `mvn` command, you will need [Maven v3.5.0 or above](https://maven.apache.org/run-maven/index.html).
 
 
+### Documents
+
+*First* : add maven dependency
+ 
+```xml
+
+<repositories>
+    <repository>
+        <id>acmedcare-repo</id>
+        <name>Acmedcare+ Maven Repository</name>
+        <url>http://47.97.26.165:8081/repository/maven-public/</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
+
+
+<dependency>
+    <groupId>com.acmedcare.framework</groupId>
+    <artifactId>spring-boot-starter-applet</artifactId>
+    <version>2.1.0.BUILD-SNAPSHOT</version>
+</dependency>
+
+```
+
+*Second* : config applets properties in `application.properties`
+
+```properties
+
+######## global applets config ########
+applet.integrate.enabled=true
+applet.integrate.supported-applet-types=*
+applet.integrate.base-packages=com.acmedcare.framework.applet.integrate.dingtalk.endpoint
+
+applet.integrate.repository.enabled=true
+applet.integrate.repository.rdb-config.storage-path=
+
+# default applet config propertiess
+applet.integrate.aorp.enabled=false
+
+## Ding talk config properties
+applet.integrate.dingtalk.enabled=true
+applet.integrate.dingtalk.app-id=27844
+applet.integrate.dingtalk.suite-id=6704009
+applet.integrate.dingtalk.suite-key=suite4xxxxxxxxxxxxxxx
+applet.integrate.dingtalk.suite-secret=_rN_Zd4jydsKN7C2iDFu3ipGX8KygLzdvFlzuATT52jAZe38-G1T8y9CZpEBO0wb
+applet.integrate.dingtalk.callback-url-aes-key=4g5j64qlyl3zvetqxz5jiocdr586fn2zvjpa8zls3ij
+applet.integrate.dingtalk.callback-url-sign-token=123456
+
+## WeChat Applets Config Properties
+applet.integrate.wechat.enabled=true
+applet.integrate.wechat.micro-app-config.enabled=true
+applet.integrate.wechat.micro-app-config.aes-key=
+applet.integrate.wechat.micro-app-config.appid=
+applet.integrate.wechat.micro-app-config.msg-data-format=json
+applet.integrate.wechat.micro-app-config.secret=
+applet.integrate.wechat.micro-app-config.token=
+
+## WeChat MP Config Properties
+applet.integrate.wechat.mp-config.enabled=false
+applet.integrate.wechat.mp-config.aes-key=
+applet.integrate.wechat.mp-config.secret=
+applet.integrate.wechat.mp-config.app-id=
+applet.integrate.wechat.mp-config.token=
+
+## WeChat Pay Config Properties
+applet.integrate.wechat.pay-config.enabled=true
+applet.integrate.wechat.pay-config.app-id=
+applet.integrate.wechat.pay-config.key-path=
+applet.integrate.wechat.pay-config.mch-id=
+applet.integrate.wechat.pay-config.mch-key=
+applet.integrate.wechat.pay-config.sub-app-id=
+applet.integrate.wechat.pay-config.sub-mch-id=
+
+
+```
+
+### Reference Document
+
+- [Frontend Integrate OpenApi](Applets-OpenApi.md)s
+
 ### License
  
 ```
