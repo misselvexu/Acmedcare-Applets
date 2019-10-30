@@ -6,7 +6,7 @@ import com.google.gson.*;
 
 import java.lang.reflect.Type;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 public class WxOpenComponentAccessTokenGsonAdapter
     implements JsonDeserializer<WxOpenComponentAccessToken> {
   @Override

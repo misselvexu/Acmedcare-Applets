@@ -17,7 +17,7 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.charset.StandardCharsets;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 @Data
 @Slf4j
 @XStreamAlias("xml")

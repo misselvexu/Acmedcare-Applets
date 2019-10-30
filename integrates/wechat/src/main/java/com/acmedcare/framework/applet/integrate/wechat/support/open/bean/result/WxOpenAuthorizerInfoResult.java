@@ -6,7 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 @Data
 public class WxOpenAuthorizerInfoResult implements Serializable {
   private static final long serialVersionUID = 3166298050833019785L;

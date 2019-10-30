@@ -20,7 +20,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 基于内存的微信配置provider，在实际生产环境中应该将这些配置持久化
  *
- * @author <a href="https://github.com/007gzs">007</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  */
 public class WxOpenInMemoryConfigStorage implements WxOpenConfigStorage {
   private String componentAppId;

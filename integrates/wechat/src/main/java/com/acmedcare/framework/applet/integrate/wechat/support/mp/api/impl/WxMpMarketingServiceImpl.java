@@ -22,7 +22,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 @Slf4j
 @RequiredArgsConstructor
 public class WxMpMarketingServiceImpl implements WxMpMarketingService {

@@ -8,7 +8,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 public class WxOpenAuthorizerInfoResultGsonAdapter
     implements JsonDeserializer<WxOpenAuthorizerInfoResult> {
   @Override

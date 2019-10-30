@@ -11,7 +11,7 @@ import com.acmedcare.framework.applet.integrate.wechat.support.open.bean.result.
 
 import java.util.List;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 public interface WxOpenComponentService {
   String API_COMPONENT_TOKEN_URL =
       "https://api.weixin.qq.com/cgi-bin/component/api_component_token";

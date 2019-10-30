@@ -9,7 +9,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.List;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 @Data
 public class WxMpAdLeadResult implements Serializable {
   protected static final JsonParser JSON_PARSER = new JsonParser();

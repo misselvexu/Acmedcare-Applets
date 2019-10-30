@@ -7,7 +7,7 @@ import lombok.Data;
 import java.io.Serializable;
 import java.util.List;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 @Data
 public class WxMpAdLeadFilter implements Serializable {
   private static final long serialVersionUID = -1469998986497327439L;

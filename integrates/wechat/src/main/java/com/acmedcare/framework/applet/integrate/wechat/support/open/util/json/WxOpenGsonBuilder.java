@@ -8,7 +8,7 @@ import com.acmedcare.framework.applet.integrate.wechat.support.open.bean.result.
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 public class WxOpenGsonBuilder {
 
   private static final GsonBuilder INSTANCE = new GsonBuilder();

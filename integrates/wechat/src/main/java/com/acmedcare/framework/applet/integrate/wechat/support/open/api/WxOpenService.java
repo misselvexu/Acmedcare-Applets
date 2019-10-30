@@ -2,7 +2,7 @@ package com.acmedcare.framework.applet.integrate.wechat.support.open.api;
 
 import com.acmedcare.framework.applet.integrate.wechat.support.common.error.WxErrorException;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 public interface WxOpenService {
   WxOpenComponentService getWxOpenComponentService();
 

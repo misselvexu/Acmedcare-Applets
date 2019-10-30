@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author <a href="https://github.com/007gzs">007</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  *     <pre>
  *     增加开放平台代小程序管理服务能力
  *     说明：这里让这个服务公开便于调用者模拟本地测试服务

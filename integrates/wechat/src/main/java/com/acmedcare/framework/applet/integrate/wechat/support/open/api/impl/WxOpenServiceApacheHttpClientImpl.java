@@ -13,7 +13,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 /**
  * apache-http方式实现
  *
- * @author <a href="https://github.com/007gzs">007</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  */
 public class WxOpenServiceApacheHttpClientImpl
     extends WxOpenServiceAbstractImpl<CloseableHttpClient, HttpHost> {

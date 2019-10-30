@@ -6,7 +6,7 @@ import com.acmedcare.framework.applet.integrate.wechat.support.mp.config.WxMpCon
 import com.acmedcare.framework.applet.integrate.wechat.support.open.bean.WxOpenAuthorizerAccessToken;
 import com.acmedcare.framework.applet.integrate.wechat.support.open.bean.WxOpenComponentAccessToken;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 public interface WxOpenConfigStorage {
 
   String getComponentAppId();

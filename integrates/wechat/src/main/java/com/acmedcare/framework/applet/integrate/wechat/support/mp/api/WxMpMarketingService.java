@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 微信营销接口.
  *
- * @author <a href="https://github.com/007gzs">007</a>
+ * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  */
 public interface WxMpMarketingService {
   /**

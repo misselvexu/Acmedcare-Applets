@@ -6,7 +6,7 @@ import com.acmedcare.framework.applet.integrate.wechat.support.mp.bean.result.Wx
 import com.acmedcare.framework.applet.integrate.wechat.support.mp.config.WxMpConfigStorage;
 import com.acmedcare.framework.applet.integrate.wechat.support.open.api.WxOpenComponentService;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 public class WxOpenMpServiceImpl extends WxMpServiceImpl {
   private WxOpenComponentService wxOpenComponentService;
   private WxMpConfigStorage wxMpConfigStorage;

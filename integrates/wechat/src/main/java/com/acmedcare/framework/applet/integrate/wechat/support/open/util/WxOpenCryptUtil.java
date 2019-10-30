@@ -4,7 +4,7 @@ import com.acmedcare.framework.applet.integrate.wechat.support.common.util.crypt
 import com.acmedcare.framework.applet.integrate.wechat.support.open.api.WxOpenConfigStorage;
 import org.apache.commons.codec.binary.Base64;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 public class WxOpenCryptUtil extends WxCryptUtil {
   /**
    * 构造函数

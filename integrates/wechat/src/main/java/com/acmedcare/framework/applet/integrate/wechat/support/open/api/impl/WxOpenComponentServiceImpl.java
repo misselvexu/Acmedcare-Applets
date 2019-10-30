@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/** @author <a href="https://github.com/007gzs">007</a> */
+/** @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a> */
 public class WxOpenComponentServiceImpl implements WxOpenComponentService {
   private static final JsonParser JSON_PARSER = new JsonParser();
   private static final Map<String, WxOpenMaService> WX_OPEN_MA_SERVICE_MAP =
