@@ -29,7 +29,7 @@ public class OkHttpMediaDownloadRequestExecutor
 
   @Override
   public File execute(String uri, String queryParam) throws WxErrorException, IOException {
-    logger.debug("OkHttpMediaDownloadRequestExecutor is running");
+    logger.info("OkHttpMediaDownloadRequestExecutor is running");
     if (queryParam != null) {
       if (uri.indexOf('?') == -1) {
         uri += '?';

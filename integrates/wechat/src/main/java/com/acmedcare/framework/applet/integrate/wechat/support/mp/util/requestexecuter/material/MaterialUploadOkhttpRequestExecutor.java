@@ -29,7 +29,7 @@ public class MaterialUploadOkhttpRequestExecutor
   @Override
   public WxMpMaterialUploadResult execute(String uri, WxMpMaterial material)
       throws WxErrorException, IOException {
-    logger.debug("MaterialUploadOkhttpRequestExecutor is running");
+    logger.info("MaterialUploadOkhttpRequestExecutor is running");
     if (material == null) {
       throw new WxErrorException(
           WxError.builder().errorCode(-1).errorMsg("非法请求，material参数为空").build());

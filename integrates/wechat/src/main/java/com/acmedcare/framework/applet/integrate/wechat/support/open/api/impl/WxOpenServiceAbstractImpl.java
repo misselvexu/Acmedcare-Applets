@@ -41,7 +41,7 @@ public abstract class WxOpenServiceAbstractImpl<H, P> implements WxOpenService, 
       throws WxErrorException {
     try {
       T result = executor.execute(uri, data);
-      this.log.debug("\n【请求地址】: {}\n【请求参数】：{}\n【响应数据】：{}", uri, data, result);
+      this.log.info("\n【请求地址】: {}\n【请求参数】：{}\n【响应数据】：{}", uri, data, result);
       return result;
     } catch (WxErrorException e) {
       WxError error = e.getError();

@@ -214,7 +214,7 @@ public class StandardSessionManager implements WxSessionManager, InternalSession
     int expireHere = 0;
 
     if (this.log.isDebugEnabled()) {
-      this.log.debug(
+      this.log.info(
           "Start expire sessions {} at {} sessioncount {}", getName(), timeNow, sessions.length);
     }
     for (InternalSession session : sessions) {
@@ -224,7 +224,7 @@ public class StandardSessionManager implements WxSessionManager, InternalSession
     }
     long timeEnd = System.currentTimeMillis();
     if (this.log.isDebugEnabled()) {
-      this.log.debug(
+      this.log.info(
           "End expire sessions {} processingTime {} expired sessions: {}",
           getName(),
           timeEnd - timeNow,

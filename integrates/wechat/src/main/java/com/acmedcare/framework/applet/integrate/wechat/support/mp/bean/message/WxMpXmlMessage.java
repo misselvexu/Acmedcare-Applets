@@ -573,7 +573,7 @@ public class WxMpXmlMessage implements Serializable {
       String msgSignature) {
     WxMpCryptUtil cryptUtil = new WxMpCryptUtil(wxMpConfigStorage);
     String plainText = cryptUtil.decrypt(msgSignature, timestamp, nonce, encryptedXml);
-    log.debug("解密后的原始xml消息内容：{}", plainText);
+    log.info("解密后的原始xml消息内容：{}", plainText);
     return fromXml(plainText);
   }
 

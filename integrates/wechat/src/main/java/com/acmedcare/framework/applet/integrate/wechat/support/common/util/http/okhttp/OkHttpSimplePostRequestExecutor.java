@@ -21,7 +21,7 @@ public class OkHttpSimplePostRequestExecutor
 
   @Override
   public String execute(String uri, String postEntity) throws WxErrorException, IOException {
-    logger.debug("OkHttpSimplePostRequestExecutor running");
+    logger.info("OkHttpSimplePostRequestExecutor running");
     // 得到httpClient
     OkHttpClient client = requestHttp.getRequestHttpClient();
 

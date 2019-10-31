@@ -30,7 +30,7 @@ public class MediaImgUploadOkhttpRequestExecutor
   @Override
   public WxMediaImgUploadResult execute(String uri, File file)
       throws WxErrorException, IOException {
-    logger.debug("MediaImgUploadOkhttpRequestExecutor is running");
+    logger.info("MediaImgUploadOkhttpRequestExecutor is running");
     // 得到httpClient
     OkHttpClient client = requestHttp.getRequestHttpClient();
 

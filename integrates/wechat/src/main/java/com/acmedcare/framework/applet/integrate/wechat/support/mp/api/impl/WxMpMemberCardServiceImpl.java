@@ -267,7 +267,7 @@ public class WxMpMemberCardServiceImpl implements WxMpMemberCardService {
     String responseContent =
         this.getWxMpService()
             .post(WxMpApiUrl.MemberCard.MEMBER_CARD_USER_INFO_GET, jsonObject.toString());
-    log.debug("{}", responseContent);
+    log.info("{}", responseContent);
     JsonElement tmpJsonElement = new JsonParser().parse(responseContent);
     return WxMpGsonBuilder.create()
         .fromJson(tmpJsonElement, new TypeToken<WxMpMemberCardUserInfoResult>() {}.getType());

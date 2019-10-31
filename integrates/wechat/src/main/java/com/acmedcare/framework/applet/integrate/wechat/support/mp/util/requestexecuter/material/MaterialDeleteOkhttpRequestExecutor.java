@@ -29,7 +29,7 @@ public class MaterialDeleteOkhttpRequestExecutor
 
   @Override
   public Boolean execute(String uri, String materialId) throws WxErrorException, IOException {
-    logger.debug("MaterialDeleteOkhttpRequestExecutor is running");
+    logger.info("MaterialDeleteOkhttpRequestExecutor is running");
     // 得到httpClient
     OkHttpClient client = requestHttp.getRequestHttpClient();
 

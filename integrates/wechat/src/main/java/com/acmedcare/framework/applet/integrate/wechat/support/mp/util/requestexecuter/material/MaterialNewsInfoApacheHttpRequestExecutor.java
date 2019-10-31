@@ -49,7 +49,7 @@ public class MaterialNewsInfoApacheHttpRequestExecutor
         new StringEntity(WxGsonBuilder.create().toJson(ImmutableMap.of("media_id", materialId))));
     try (CloseableHttpResponse response = requestHttp.getRequestHttpClient().execute(httpPost)) {
       String responseContent = Utf8ResponseHandler.INSTANCE.handleResponse(response);
-      this.logger.debug("响应原始数据：{}", responseContent);
+      this.logger.info("响应原始数据：{}", responseContent);
       WxError error = WxError.fromJson(responseContent, WxType.MP);
       if (error.getErrorCode() != 0) {
         throw new WxErrorException(error);

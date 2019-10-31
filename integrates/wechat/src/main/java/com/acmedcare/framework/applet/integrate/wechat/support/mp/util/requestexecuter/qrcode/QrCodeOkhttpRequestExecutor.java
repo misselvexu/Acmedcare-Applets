@@ -34,7 +34,7 @@ public class QrCodeOkhttpRequestExecutor
 
   @Override
   public File execute(String uri, WxMpQrCodeTicket ticket) throws WxErrorException, IOException {
-    logger.debug("QrCodeOkhttpRequestExecutor is running");
+    logger.info("QrCodeOkhttpRequestExecutor is running");
 
     if (ticket != null) {
       if (uri.indexOf('?') == -1) {

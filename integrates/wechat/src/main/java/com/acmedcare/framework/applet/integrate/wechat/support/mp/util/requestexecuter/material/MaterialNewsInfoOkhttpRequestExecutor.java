@@ -39,7 +39,7 @@ public class MaterialNewsInfoOkhttpRequestExecutor
 
     Response response = client.newCall(request).execute();
     String responseContent = response.body().string();
-    this.logger.debug("响应原始数据：{}", responseContent);
+    this.logger.info("响应原始数据：{}", responseContent);
 
     WxError error = WxError.fromJson(responseContent, WxType.MP);
     if (error.getErrorCode() != 0) {

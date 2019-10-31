@@ -106,7 +106,7 @@ public class WxOpenXmlMessage implements Serializable {
       String msgSignature) {
     WxOpenCryptUtil cryptUtil = new WxOpenCryptUtil(wxOpenConfigStorage);
     String plainText = cryptUtil.decrypt(msgSignature, timestamp, nonce, encryptedXml);
-    log.debug("解密后的原始xml消息内容：{}", plainText);
+    log.info("解密后的原始xml消息内容：{}", plainText);
     return fromXml(plainText);
   }
 
