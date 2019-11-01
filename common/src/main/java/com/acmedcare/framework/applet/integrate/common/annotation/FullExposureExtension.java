@@ -1,9 +1,9 @@
-package com.acmedcare.framework.applet.integrate.api.annotation;
+package com.acmedcare.framework.applet.integrate.common.annotation;
 
 import java.lang.annotation.*;
 
 /**
- * {@link FullExposureService}
+ * {@link FullExposureExtension}
  *
  * @author <a href="mailto:iskp.me@gmail.com">Elve.Xu</a>
  * @version ${project.version} - 2019/9/19.
@@ -11,6 +11,6 @@ import java.lang.annotation.*;
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
-public @interface FullExposureService {
+public @interface FullExposureExtension {
 
 }

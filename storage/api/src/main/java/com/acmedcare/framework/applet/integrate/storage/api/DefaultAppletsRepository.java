@@ -16,8 +16,7 @@ import static com.acmedcare.framework.applet.integrate.storage.api.AppletsReposi
 public class DefaultAppletsRepository extends AppletsRepository {
 
   @Override
-  public void savePrincipal(
-      AppletAuthModel.AppletAuthModelKey key, Principal principal) {
+  public void savePrincipal(AppletAuthModel.AppletAuthModelKey key, Principal principal) {
     super.savePrincipal(key, principal);
   }
 }

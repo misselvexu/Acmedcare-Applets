@@ -26,7 +26,7 @@ public class AppletCommonModel {
   @Setter
   @ToString
   @NoArgsConstructor
-  @Builder(builderMethodName = "CommonModelKeyBuilder", buildMethodName = "commonkeyBuild")
+  @Builder(builderMethodName = "commonModelKeyBuilder", buildMethodName = "commonkeyBuild")
   public static class AppletCommonModelKey<K> implements Serializable {
 
     /** Storage Namespace Defined */

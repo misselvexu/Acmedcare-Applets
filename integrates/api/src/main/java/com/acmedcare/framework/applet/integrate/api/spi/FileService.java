@@ -1,7 +1,7 @@
 package com.acmedcare.framework.applet.integrate.api.spi;
 
 import com.acmedcare.framework.applet.api.exception.FileException;
-import com.acmedcare.framework.applet.integrate.api.annotation.FullExposureService;
+import com.acmedcare.framework.applet.integrate.common.annotation.FullExposureExtension;
 import com.acmedcare.framework.applet.integrate.api.bean.DownloadFileRequest;
 import com.acmedcare.framework.applet.integrate.api.bean.DownloadFileResponse;
 import com.acmedcare.framework.applet.integrate.api.bean.UploadFileRequest;
@@ -15,8 +15,10 @@ import com.acmedcare.framework.applet.integrate.common.spi.Extensible;
  * @version ${project.version} - 2019/11/1.
  */
 @Extensible
-@FullExposureService
+@FullExposureExtension
 public interface FileService {
+
+  String FILE_NAMESPACE = "applet-file-storage-ns";
 
   /**
    * Upload File

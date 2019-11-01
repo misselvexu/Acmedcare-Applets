@@ -2,7 +2,7 @@ package com.acmedcare.framework.applet.integrate.api;
 
 import com.acmedcare.framework.applet.api.exception.NotFoundAppletDependencyException;
 import com.acmedcare.framework.applet.api.exception.UnSupportedAppletException;
-import com.acmedcare.framework.applet.integrate.api.annotation.FullExposureService;
+import com.acmedcare.framework.applet.integrate.common.annotation.FullExposureExtension;
 import com.acmedcare.framework.applet.integrate.api.spi.AuthService;
 import com.acmedcare.framework.applet.integrate.api.spi.FileService;
 import com.acmedcare.framework.applet.integrate.api.spi.PrincipalService;
@@ -111,7 +111,7 @@ public final class AppletsSPIExtensionFactory {
     }
 
     // Hit：is this service is full exposur.
-    boolean existFullExposureEndpointAnnotation = clazz.isAnnotationPresent(FullExposureService.class);
+    boolean existFullExposureAnnotation = clazz.isAnnotationPresent(FullExposureExtension.class);
 
     /*
     if(!appletsEnabled) {
@@ -122,7 +122,7 @@ public final class AppletsSPIExtensionFactory {
 
     String envKey = String.format(SPI_IMPLEMENTS_ENABLED_ENV_PROPERTIES_KEY, alias);
 
-    if(!existFullExposureEndpointAnnotation) {
+    if(!existFullExposureAnnotation) {
       if (!checkAndSet(envKey)) {
         throw new UnSupportedAppletException(
             "Applet server not found config properties <" + envKey + "=true> on environment");

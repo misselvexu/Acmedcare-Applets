@@ -88,7 +88,7 @@ public class AppletsExceptionMapper implements ExceptionMapper<RuntimeException>
         return responseBuilder.build();
       }
 
-
+      exception.printStackTrace();
       // default
       Response.ResponseBuilder responseBuilder =
           Response.status(Response.Status.BAD_REQUEST)
