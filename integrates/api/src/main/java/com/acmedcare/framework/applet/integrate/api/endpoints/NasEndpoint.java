@@ -8,6 +8,7 @@ import org.jboss.resteasy.annotations.providers.multipart.PartType;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import static com.acmedcare.framework.applet.integrate.api.AppletEndpoints.APPLET_NAS_ENDPOINT;
 
@@ -22,6 +23,12 @@ public class NasEndpoint {
 
   private static final String FILE_UPLOAD_ATTRIBUTE_NAME = "file";
 
+  /**
+   * Upload Request Method
+   *
+   * @param form upload form instance
+   * @return {@link AppletResponse}
+   */
   @POST
   @Path("/upload")
   @Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -30,8 +37,20 @@ public class NasEndpoint {
     // Do something with your filedata here
 
 
+
     return null;
   }
+
+
+  @GET
+  @Path("/download/{fileId}")
+  public Response download(@PathParam("fileId") String fileId) {
+
+    
+
+    return null;
+  }
+
 
   /**
    * File Upload Form Instance

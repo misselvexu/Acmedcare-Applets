@@ -1,0 +1,2 @@
+local=com.acmedcare.framework.applet.integrate.api.service.LocalFileService
+nas=com.acmedcare.framework.applet.integrate.api.service.NasFileService

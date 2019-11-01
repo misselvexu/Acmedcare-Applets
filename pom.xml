@@ -122,9 +122,21 @@
             </dependency>
 
             <dependency>
+                <groupId>com.acmedcare.nas</groupId>
+                <artifactId>nas-client</artifactId>
+                <version>2.1.1.BUILD-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.acmedcare.framework</groupId>
                 <artifactId>acmedcare-spring-aop-starter</artifactId>
                 <version>2.1.0-RC1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.framework.kits</groupId>
+                <artifactId>timed-id-kit</artifactId>
+                <version>Antarctica.RC1</version>
             </dependency>
 
             <dependency>

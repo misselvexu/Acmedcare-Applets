@@ -44,6 +44,23 @@
         </dependency>
 
         <dependency>
+            <groupId>com.acmedcare.framework.kits</groupId>
+            <artifactId>timed-id-kit</artifactId>
+            <version>Antarctica.RC1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.acmedcare.nas</groupId>
+            <artifactId>nas-client</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.acmedcare.framework</groupId>
             <artifactId>spring-boot-starter-resteasy</artifactId>
         </dependency>
