@@ -1,0 +1,47 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import java.util.List;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiListField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.InsPolicy;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: alipay.ins.underwrite.user.policy.query response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-08-26 16:45:34
+ */
+public class AlipayInsUnderwriteUserPolicyQueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 6555151562972548597L;
+
+	/** 
+	 * 查询到的用户拥有的保单列表，含所有查询状态对应的保单，排序规则按照，保险保障开始时间倒序
+	 */
+	@ApiListField("policys")
+	@ApiField("ins_policy")
+	private List<InsPolicy> policys;
+
+	/** 
+	 * 结果的总条数
+	 */
+	@ApiField("total")
+	private Long total;
+
+	public void setPolicys(List<InsPolicy> policys) {
+		this.policys = policys;
+	}
+	public List<InsPolicy> getPolicys( ) {
+		return this.policys;
+	}
+
+	public void setTotal(Long total) {
+		this.total = total;
+	}
+	public Long getTotal( ) {
+		return this.total;
+	}
+
+}

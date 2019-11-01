@@ -1,0 +1,30 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: alipay.eco.mycar.maintain.data.update response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-08-29 11:20:36
+ */
+public class AlipayEcoMycarMaintainDataUpdateResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 7751685783678939213L;
+
+	/** 
+	 * 具体返回的处理结果
+	 */
+	@ApiField("info")
+	private String info;
+
+	public void setInfo(String info) {
+		this.info = info;
+	}
+	public String getInfo( ) {
+		return this.info;
+	}
+
+}

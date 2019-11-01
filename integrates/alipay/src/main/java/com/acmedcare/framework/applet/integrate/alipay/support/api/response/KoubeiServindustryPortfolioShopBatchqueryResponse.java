@@ -1,0 +1,47 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import java.util.List;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiListField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.PortfolioInfoOpenModel;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: koubei.servindustry.portfolio.shop.batchquery response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-01-07 20:51:15
+ */
+public class KoubeiServindustryPortfolioShopBatchqueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 1483526749334613193L;
+
+	/** 
+	 * 总数
+	 */
+	@ApiField("portfolio_count")
+	private Long portfolioCount;
+
+	/** 
+	 * 返回作品集列表
+	 */
+	@ApiListField("portfolio_info_list")
+	@ApiField("portfolio_info_open_model")
+	private List<PortfolioInfoOpenModel> portfolioInfoList;
+
+	public void setPortfolioCount(Long portfolioCount) {
+		this.portfolioCount = portfolioCount;
+	}
+	public Long getPortfolioCount( ) {
+		return this.portfolioCount;
+	}
+
+	public void setPortfolioInfoList(List<PortfolioInfoOpenModel> portfolioInfoList) {
+		this.portfolioInfoList = portfolioInfoList;
+	}
+	public List<PortfolioInfoOpenModel> getPortfolioInfoList( ) {
+		return this.portfolioInfoList;
+	}
+
+}

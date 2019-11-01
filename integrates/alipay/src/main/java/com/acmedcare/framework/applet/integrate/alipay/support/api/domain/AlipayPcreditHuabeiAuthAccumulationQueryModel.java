@@ -1,0 +1,55 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.domain;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayObject;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+/**
+ * 账单周期数据查询
+ *
+ * @author auto create
+ * @since 1.0, 2019-07-29 09:47:59
+ */
+public class AlipayPcreditHuabeiAuthAccumulationQueryModel extends AlipayObject {
+
+	private static final long serialVersionUID = 7571896623287573735L;
+
+	/**
+	 * 支付宝系统中用以唯一标识用户签约记录的编号。
+	 */
+	@ApiField("agreement_no")
+	private String agreementNo;
+
+	/**
+	 * 买家在支付宝的用户id
+	 */
+	@ApiField("alipay_user_id")
+	private String alipayUserId;
+
+	/**
+	 * 协议结算周期，使用支付宝端回传的周期信息。
+	 */
+	@ApiField("period")
+	private String period;
+
+	public String getAgreementNo() {
+		return this.agreementNo;
+	}
+	public void setAgreementNo(String agreementNo) {
+		this.agreementNo = agreementNo;
+	}
+
+	public String getAlipayUserId() {
+		return this.alipayUserId;
+	}
+	public void setAlipayUserId(String alipayUserId) {
+		this.alipayUserId = alipayUserId;
+	}
+
+	public String getPeriod() {
+		return this.period;
+	}
+	public void setPeriod(String period) {
+		this.period = period;
+	}
+
+}

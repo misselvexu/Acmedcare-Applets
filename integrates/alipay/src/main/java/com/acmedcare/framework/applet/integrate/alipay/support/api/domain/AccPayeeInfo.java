@@ -1,0 +1,42 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.domain;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayObject;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+/**
+ * 批量代发到账户收款方模型
+ *
+ * @author auto create
+ * @since 1.0, 2018-05-02 15:06:09
+ */
+public class AccPayeeInfo extends AlipayObject {
+
+	private static final long serialVersionUID = 8367537216162641524L;
+
+	/**
+	 * 收款方电子钱包账号。
+	 */
+	@ApiField("payee_account")
+	private String payeeAccount;
+
+	/**
+	 * 收款方电子钱包持有者姓名。
+	 */
+	@ApiField("payee_name")
+	private String payeeName;
+
+	public String getPayeeAccount() {
+		return this.payeeAccount;
+	}
+	public void setPayeeAccount(String payeeAccount) {
+		this.payeeAccount = payeeAccount;
+	}
+
+	public String getPayeeName() {
+		return this.payeeName;
+	}
+	public void setPayeeName(String payeeName) {
+		this.payeeName = payeeName;
+	}
+
+}

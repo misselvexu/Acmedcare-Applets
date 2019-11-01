@@ -1,0 +1,43 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.domain;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayObject;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+/**
+ * 获取用户参与活动状态
+ *
+ * @author auto create
+ * @since 1.0, 2017-09-28 11:02:50
+ */
+public class AlipayInsAutoUserCampaignQueryModel extends AlipayObject {
+
+	private static final long serialVersionUID = 5242133695643157167L;
+
+	/**
+	 * 车险活动类型编码。
+攒油活动：SAVE_OIL
+	 */
+	@ApiField("auto_campaign_type")
+	private String autoCampaignType;
+
+	/**
+	 * 蚂蚁统一会员ID
+	 */
+	@ApiField("user_id")
+	private String userId;
+
+	public String getAutoCampaignType() {
+		return this.autoCampaignType;
+	}
+	public void setAutoCampaignType(String autoCampaignType) {
+		this.autoCampaignType = autoCampaignType;
+	}
+
+	public String getUserId() {
+		return this.userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+}

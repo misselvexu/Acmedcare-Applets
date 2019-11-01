@@ -1,0 +1,55 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.domain;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayObject;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+/**
+ * 代理
+ *
+ * @author auto create
+ * @since 1.0, 2019-07-30 17:11:41
+ */
+public class AgentOrganization extends AlipayObject {
+
+	private static final long serialVersionUID = 6565747659587964734L;
+
+	/**
+	 * 经代下面二级商户id
+	 */
+	@ApiField("agent_merchant_id")
+	private String agentMerchantId;
+
+	/**
+	 * 代理机构(ISV)蚂蚁编码，组织入驻蚂蚁生成的cid
+	 */
+	@ApiField("cid")
+	private String cid;
+
+	/**
+	 * 代理机构(ISV)蚂蚁全称,组织入驻蚂蚂蚁的全称
+	 */
+	@ApiField("cid_name")
+	private String cidName;
+
+	public String getAgentMerchantId() {
+		return this.agentMerchantId;
+	}
+	public void setAgentMerchantId(String agentMerchantId) {
+		this.agentMerchantId = agentMerchantId;
+	}
+
+	public String getCid() {
+		return this.cid;
+	}
+	public void setCid(String cid) {
+		this.cid = cid;
+	}
+
+	public String getCidName() {
+		return this.cidName;
+	}
+	public void setCidName(String cidName) {
+		this.cidName = cidName;
+	}
+
+}

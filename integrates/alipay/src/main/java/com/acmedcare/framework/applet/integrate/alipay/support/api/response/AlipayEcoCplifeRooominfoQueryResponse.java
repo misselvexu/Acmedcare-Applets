@@ -1,0 +1,34 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import java.util.List;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiListField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.CplifeRoomDetail;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: alipay.eco.cplife.rooominfo.query response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-01-07 20:51:15
+ */
+public class AlipayEcoCplifeRooominfoQueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 5247137826566999467L;
+
+	/** 
+	 * 符合条件的小区房屋信息列表.
+	 */
+	@ApiListField("room_info")
+	@ApiField("cplife_room_detail")
+	private List<CplifeRoomDetail> roomInfo;
+
+	public void setRoomInfo(List<CplifeRoomDetail> roomInfo) {
+		this.roomInfo = roomInfo;
+	}
+	public List<CplifeRoomDetail> getRoomInfo( ) {
+		return this.roomInfo;
+	}
+
+}

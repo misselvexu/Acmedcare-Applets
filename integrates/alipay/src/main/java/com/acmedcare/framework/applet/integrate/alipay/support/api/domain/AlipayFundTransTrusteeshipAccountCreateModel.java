@@ -1,0 +1,84 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.domain;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayObject;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+/**
+ * 创建托管账号接口
+ *
+ * @author auto create
+ * @since 1.0, 2019-07-04 19:09:28
+ */
+public class AlipayFundTransTrusteeshipAccountCreateModel extends AlipayObject {
+
+	private static final long serialVersionUID = 2293264723695131447L;
+
+	/**
+	 * 开户产品码，开户的具体业务类型
+	 */
+	@ApiField("account_product_code")
+	private String accountProductCode;
+
+	/**
+	 * 开户场景码
+	 */
+	@ApiField("account_scene_code")
+	private String accountSceneCode;
+
+	/**
+	 * 支付宝用户id
+	 */
+	@ApiField("alipay_user_id")
+	private String alipayUserId;
+
+	/**
+	 * 外部商户系统会员的唯一标识
+	 */
+	@ApiField("merchant_user_id")
+	private String merchantUserId;
+
+	/**
+	 * 用户类型
+党组织:PARTY_ORGANIZATION
+企业组织:BUSINESS_ORGANIZATION
+企业员工:BUSINESS_EMPLOYEE
+	 */
+	@ApiField("merchant_user_type")
+	private String merchantUserType;
+
+	public String getAccountProductCode() {
+		return this.accountProductCode;
+	}
+	public void setAccountProductCode(String accountProductCode) {
+		this.accountProductCode = accountProductCode;
+	}
+
+	public String getAccountSceneCode() {
+		return this.accountSceneCode;
+	}
+	public void setAccountSceneCode(String accountSceneCode) {
+		this.accountSceneCode = accountSceneCode;
+	}
+
+	public String getAlipayUserId() {
+		return this.alipayUserId;
+	}
+	public void setAlipayUserId(String alipayUserId) {
+		this.alipayUserId = alipayUserId;
+	}
+
+	public String getMerchantUserId() {
+		return this.merchantUserId;
+	}
+	public void setMerchantUserId(String merchantUserId) {
+		this.merchantUserId = merchantUserId;
+	}
+
+	public String getMerchantUserType() {
+		return this.merchantUserType;
+	}
+	public void setMerchantUserType(String merchantUserType) {
+		this.merchantUserType = merchantUserType;
+	}
+
+}

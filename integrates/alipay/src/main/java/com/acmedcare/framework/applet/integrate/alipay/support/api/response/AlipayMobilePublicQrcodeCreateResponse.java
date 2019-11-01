@@ -1,0 +1,69 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: alipay.mobile.public.qrcode.create response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-03-08 15:29:11
+ */
+public class AlipayMobilePublicQrcodeCreateResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 3695158947547687779L;
+
+	/** 
+	 * 返回结果码，如200，标识成功
+	 */
+	@ApiField("code")
+	private String code;
+
+	/** 
+	 * 图片地址
+	 */
+	@ApiField("code_img")
+	private String codeImg;
+
+	/** 
+	 * 码过期时间，单位：秒
+	 */
+	@ApiField("expire_second")
+	private Long expireSecond;
+
+	/** 
+	 * 结果吗描述信息
+	 */
+	@ApiField("msg")
+	private String msg;
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getCode( ) {
+		return this.code;
+	}
+
+	public void setCodeImg(String codeImg) {
+		this.codeImg = codeImg;
+	}
+	public String getCodeImg( ) {
+		return this.codeImg;
+	}
+
+	public void setExpireSecond(Long expireSecond) {
+		this.expireSecond = expireSecond;
+	}
+	public Long getExpireSecond( ) {
+		return this.expireSecond;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+	public String getMsg( ) {
+		return this.msg;
+	}
+
+}
