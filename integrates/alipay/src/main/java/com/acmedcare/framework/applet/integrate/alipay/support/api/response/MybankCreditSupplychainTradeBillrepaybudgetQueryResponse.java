@@ -1,0 +1,113 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import java.util.List;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiListField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.CustScpBillAmtVO;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.CustScpInstallmentBudgetVO;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: mybank.credit.supplychain.trade.billrepaybudget.query response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-07-02 14:25:02
+ */
+public class MybankCreditSupplychainTradeBillrepaybudgetQueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 5239381315432167112L;
+
+	/** 
+	 * 账单金额明细
+	 */
+	@ApiField("bill_amt_detail")
+	private CustScpBillAmtVO billAmtDetail;
+
+	/** 
+	 * 是否可以还款
+	 */
+	@ApiField("can_repay")
+	private Boolean canRepay;
+
+	/** 
+	 * exempt_amt:减免金额
+	 */
+	@ApiField("exempt_amt")
+	private String exemptAmt;
+
+	/** 
+	 * 分期明细
+	 */
+	@ApiListField("install_budget_detail_list")
+	@ApiField("cust_scp_installment_budget_v_o")
+	private List<CustScpInstallmentBudgetVO> installBudgetDetailList;
+
+	/** 
+	 * 外部账款编号
+	 */
+	@ApiField("out_order")
+	private String outOrder;
+
+	/** 
+	 * 账单状态：WAIT_RECEIPT:待供应商收款,RECEIPTED:供应商已收款,CLEAR:已结清,OVERDUE:逾期 ,INVALID:失效 ,CANCEL:取消
+	 */
+	@ApiField("status")
+	private String status;
+
+	/** 
+	 * 账单总金额
+	 */
+	@ApiField("total_amt")
+	private String totalAmt;
+
+	public void setBillAmtDetail(CustScpBillAmtVO billAmtDetail) {
+		this.billAmtDetail = billAmtDetail;
+	}
+	public CustScpBillAmtVO getBillAmtDetail( ) {
+		return this.billAmtDetail;
+	}
+
+	public void setCanRepay(Boolean canRepay) {
+		this.canRepay = canRepay;
+	}
+	public Boolean getCanRepay( ) {
+		return this.canRepay;
+	}
+
+	public void setExemptAmt(String exemptAmt) {
+		this.exemptAmt = exemptAmt;
+	}
+	public String getExemptAmt( ) {
+		return this.exemptAmt;
+	}
+
+	public void setInstallBudgetDetailList(List<CustScpInstallmentBudgetVO> installBudgetDetailList) {
+		this.installBudgetDetailList = installBudgetDetailList;
+	}
+	public List<CustScpInstallmentBudgetVO> getInstallBudgetDetailList( ) {
+		return this.installBudgetDetailList;
+	}
+
+	public void setOutOrder(String outOrder) {
+		this.outOrder = outOrder;
+	}
+	public String getOutOrder( ) {
+		return this.outOrder;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getStatus( ) {
+		return this.status;
+	}
+
+	public void setTotalAmt(String totalAmt) {
+		this.totalAmt = totalAmt;
+	}
+	public String getTotalAmt( ) {
+		return this.totalAmt;
+	}
+
+}

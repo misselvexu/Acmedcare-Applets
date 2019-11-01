@@ -1,0 +1,42 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.domain;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayObject;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+/**
+ * 信用受理服务签约
+ *
+ * @author auto create
+ * @since 1.0, 2019-07-26 13:56:11
+ */
+public class ZhimaCreditPeUserContractSignModel extends AlipayObject {
+
+	private static final long serialVersionUID = 3281763316467641895L;
+
+	/**
+	 * 芝麻信用场景，由芝麻信用侧分配，如：天猫信用购，淘宝租赁等
+	 */
+	@ApiField("credit_scene")
+	private String creditScene;
+
+	/**
+	 * 蚂蚁统一会员ID
+	 */
+	@ApiField("user_id")
+	private String userId;
+
+	public String getCreditScene() {
+		return this.creditScene;
+	}
+	public void setCreditScene(String creditScene) {
+		this.creditScene = creditScene;
+	}
+
+	public String getUserId() {
+		return this.userId;
+	}
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+}

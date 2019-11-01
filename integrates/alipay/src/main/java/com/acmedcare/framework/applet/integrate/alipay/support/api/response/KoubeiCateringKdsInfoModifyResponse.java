@@ -1,0 +1,20 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: koubei.catering.kds.info.modify response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-03-05 15:49:38
+ */
+public class KoubeiCateringKdsInfoModifyResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 4513977983293755827L;
+
+	
+
+	
+
+}

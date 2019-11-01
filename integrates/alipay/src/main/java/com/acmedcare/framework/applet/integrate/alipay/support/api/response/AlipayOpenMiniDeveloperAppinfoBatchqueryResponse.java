@@ -1,0 +1,34 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import java.util.List;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiListField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.MiniAppBaseInfoQueryResponse;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: alipay.open.mini.developer.appinfo.batchquery response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-05-30 14:20:01
+ */
+public class AlipayOpenMiniDeveloperAppinfoBatchqueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 3166981888983694617L;
+
+	/** 
+	 * 多端应用信息
+	 */
+	@ApiListField("app_base_info_list")
+	@ApiField("mini_app_base_info_query_response")
+	private List<MiniAppBaseInfoQueryResponse> appBaseInfoList;
+
+	public void setAppBaseInfoList(List<MiniAppBaseInfoQueryResponse> appBaseInfoList) {
+		this.appBaseInfoList = appBaseInfoList;
+	}
+	public List<MiniAppBaseInfoQueryResponse> getAppBaseInfoList( ) {
+		return this.appBaseInfoList;
+	}
+
+}

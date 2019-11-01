@@ -1,0 +1,30 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: alipay.mobile.public.follow.add response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-03-08 15:29:11
+ */
+public class AlipayMobilePublicFollowAddResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 8128918185231159135L;
+
+	/** 
+	 * 成功与否的标志
+	 */
+	@ApiField("code")
+	private String code;
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getCode( ) {
+		return this.code;
+	}
+
+}

@@ -1,0 +1,86 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import java.util.List;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiListField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.VehicleDashboardResult;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: alipay.iservice.cognitive.ocr.vehicledashboard.query response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-04-23 17:27:54
+ */
+public class AlipayIserviceCognitiveOcrVehicledashboardQueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 6274159845622464215L;
+
+	/** 
+	 * 服务ip
+	 */
+	@ApiField("ip")
+	private String ip;
+
+	/** 
+	 * 识别结果
+	 */
+	@ApiListField("result")
+	@ApiField("vehicle_dashboard_result")
+	private List<VehicleDashboardResult> result;
+
+	/** 
+	 * 0为识别成功，1为识别失败
+	 */
+	@ApiField("ret")
+	private Long ret;
+
+	/** 
+	 * 识别服务的RT,单位为毫秒ms
+	 */
+	@ApiField("rt")
+	private Long rt;
+
+	/** 
+	 * 识别服务的session id
+	 */
+	@ApiField("sid")
+	private String sid;
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+	public String getIp( ) {
+		return this.ip;
+	}
+
+	public void setResult(List<VehicleDashboardResult> result) {
+		this.result = result;
+	}
+	public List<VehicleDashboardResult> getResult( ) {
+		return this.result;
+	}
+
+	public void setRet(Long ret) {
+		this.ret = ret;
+	}
+	public Long getRet( ) {
+		return this.ret;
+	}
+
+	public void setRt(Long rt) {
+		this.rt = rt;
+	}
+	public Long getRt( ) {
+		return this.rt;
+	}
+
+	public void setSid(String sid) {
+		this.sid = sid;
+	}
+	public String getSid( ) {
+		return this.sid;
+	}
+
+}

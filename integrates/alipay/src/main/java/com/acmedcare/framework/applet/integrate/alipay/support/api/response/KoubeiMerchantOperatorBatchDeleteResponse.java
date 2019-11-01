@@ -1,0 +1,44 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: koubei.merchant.operator.batch.delete response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-01-07 20:51:15
+ */
+public class KoubeiMerchantOperatorBatchDeleteResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 5874391826855892772L;
+
+	/** 
+	 * 批量删除，不保证事务，可能有部分成功，部分失败;
+枚举值为： PART_SUCCESS, ALL_SUCCESS
+	 */
+	@ApiField("biz_code")
+	private String bizCode;
+
+	/** 
+	 * true, false
+	 */
+	@ApiField("success")
+	private Boolean success;
+
+	public void setBizCode(String bizCode) {
+		this.bizCode = bizCode;
+	}
+	public String getBizCode( ) {
+		return this.bizCode;
+	}
+
+	public void setSuccess(Boolean success) {
+		this.success = success;
+	}
+	public Boolean getSuccess( ) {
+		return this.success;
+	}
+
+}

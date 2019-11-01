@@ -1,0 +1,55 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.domain;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayObject;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+/**
+ * 指纹注册初始化
+ *
+ * @author auto create
+ * @since 1.0, 2018-12-24 13:52:42
+ */
+public class AlipaySecurityProdFingerprintApplyInitializeModel extends AlipayObject {
+
+	private static final long serialVersionUID = 2748743362547729575L;
+
+	/**
+	 * IFAA标准中的校验类型，目前1为指纹
+	 */
+	@ApiField("auth_type")
+	private String authType;
+
+	/**
+	 * IFAA协议的版本，目前为2.0
+	 */
+	@ApiField("ifaa_version")
+	private String ifaaVersion;
+
+	/**
+	 * IFAA协议客户端静态信息，调用IFAA客户端SDK接口获取secData，透传至本参数
+	 */
+	@ApiField("sec_data")
+	private String secData;
+
+	public String getAuthType() {
+		return this.authType;
+	}
+	public void setAuthType(String authType) {
+		this.authType = authType;
+	}
+
+	public String getIfaaVersion() {
+		return this.ifaaVersion;
+	}
+	public void setIfaaVersion(String ifaaVersion) {
+		this.ifaaVersion = ifaaVersion;
+	}
+
+	public String getSecData() {
+		return this.secData;
+	}
+	public void setSecData(String secData) {
+		this.secData = secData;
+	}
+
+}

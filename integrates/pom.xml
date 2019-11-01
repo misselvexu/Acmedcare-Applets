@@ -23,6 +23,9 @@
 
         <!-- Tencent WeChat Integration -->
         <module>wechat</module>
+
+        <!-- Alibaba Alipay -->
+        <module>alipay</module>
     </modules>
 
 
@@ -49,6 +52,12 @@
             <dependency>
                 <groupId>com.acmedcare.framework</groupId>
                 <artifactId>applet-integrate-wechat</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.framework</groupId>
+                <artifactId>applet-integrate-alipay</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

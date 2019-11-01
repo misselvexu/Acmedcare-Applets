@@ -1,0 +1,70 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.AddressDTO;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: alipay.open.app.service.miniappnearbypoipage.query response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-08-01 20:35:12
+ */
+public class AlipayOpenAppServiceMiniappnearbypoipageQueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 6363534455724391832L;
+
+	/** 
+	 * 服务poi信息列表
+	 */
+	@ApiField("addresses")
+	private AddressDTO addresses;
+
+	/** 
+	 * 当前页数
+	 */
+	@ApiField("page_num")
+	private Long pageNum;
+
+	/** 
+	 * 每页条数
+	 */
+	@ApiField("page_size")
+	private Long pageSize;
+
+	/** 
+	 * 总条数
+	 */
+	@ApiField("total")
+	private Long total;
+
+	public void setAddresses(AddressDTO addresses) {
+		this.addresses = addresses;
+	}
+	public AddressDTO getAddresses( ) {
+		return this.addresses;
+	}
+
+	public void setPageNum(Long pageNum) {
+		this.pageNum = pageNum;
+	}
+	public Long getPageNum( ) {
+		return this.pageNum;
+	}
+
+	public void setPageSize(Long pageSize) {
+		this.pageSize = pageSize;
+	}
+	public Long getPageSize( ) {
+		return this.pageSize;
+	}
+
+	public void setTotal(Long total) {
+		this.total = total;
+	}
+	public Long getTotal( ) {
+		return this.total;
+	}
+
+}

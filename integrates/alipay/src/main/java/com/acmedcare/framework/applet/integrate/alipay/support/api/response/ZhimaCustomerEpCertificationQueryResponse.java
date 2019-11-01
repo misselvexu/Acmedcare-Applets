@@ -1,0 +1,43 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: zhima.customer.ep.certification.query response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-01-07 20:51:15
+ */
+public class ZhimaCustomerEpCertificationQueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 6282488713795625882L;
+
+	/** 
+	 * 认证不通过的原因
+	 */
+	@ApiField("failed_reason")
+	private String failedReason;
+
+	/** 
+	 * 认证是否通过，通过为true，不通过为false
+	 */
+	@ApiField("passed")
+	private String passed;
+
+	public void setFailedReason(String failedReason) {
+		this.failedReason = failedReason;
+	}
+	public String getFailedReason( ) {
+		return this.failedReason;
+	}
+
+	public void setPassed(String passed) {
+		this.passed = passed;
+	}
+	public String getPassed( ) {
+		return this.passed;
+	}
+
+}

@@ -1,0 +1,48 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import java.util.List;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiListField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.InboundOrderLine;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.InboundOrderVO;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: koubei.retail.wms.inboundorder.query response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-01-07 20:51:15
+ */
+public class KoubeiRetailWmsInboundorderQueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 5837575599426987161L;
+
+	/** 
+	 * 入库通知单明细列表
+	 */
+	@ApiListField("inbound_order_line_list")
+	@ApiField("inbound_order_line")
+	private List<InboundOrderLine> inboundOrderLineList;
+
+	/** 
+	 * 入库通知单信息
+	 */
+	@ApiField("inbound_order_vo")
+	private InboundOrderVO inboundOrderVo;
+
+	public void setInboundOrderLineList(List<InboundOrderLine> inboundOrderLineList) {
+		this.inboundOrderLineList = inboundOrderLineList;
+	}
+	public List<InboundOrderLine> getInboundOrderLineList( ) {
+		return this.inboundOrderLineList;
+	}
+
+	public void setInboundOrderVo(InboundOrderVO inboundOrderVo) {
+		this.inboundOrderVo = inboundOrderVo;
+	}
+	public InboundOrderVO getInboundOrderVo( ) {
+		return this.inboundOrderVo;
+	}
+
+}

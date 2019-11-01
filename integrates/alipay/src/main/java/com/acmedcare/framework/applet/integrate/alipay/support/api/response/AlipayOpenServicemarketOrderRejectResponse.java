@@ -1,0 +1,20 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: alipay.open.servicemarket.order.reject response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-01-07 20:51:15
+ */
+public class AlipayOpenServicemarketOrderRejectResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 5592715889792257199L;
+
+	
+
+	
+
+}

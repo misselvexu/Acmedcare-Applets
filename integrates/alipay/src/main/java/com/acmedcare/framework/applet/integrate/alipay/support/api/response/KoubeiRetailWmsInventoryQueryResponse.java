@@ -1,0 +1,73 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.response;
+
+import java.util.List;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiListField;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.domain.Inventory;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayResponse;
+
+/**
+ * ALIPAY API: koubei.retail.wms.inventory.query response.
+ * 
+ * @author auto create
+ * @since 1.0, 2019-01-07 20:51:15
+ */
+public class KoubeiRetailWmsInventoryQueryResponse extends AlipayResponse {
+
+	private static final long serialVersionUID = 1794956116599528365L;
+
+	/** 
+	 * 返回货品库存列表
+	 */
+	@ApiListField("inventory_list")
+	@ApiField("inventory")
+	private List<Inventory> inventoryList;
+
+	/** 
+	 * 页码
+	 */
+	@ApiField("page_no")
+	private Long pageNo;
+
+	/** 
+	 * 页面大小
+	 */
+	@ApiField("page_size")
+	private Long pageSize;
+
+	/** 
+	 * 总记录数
+	 */
+	@ApiField("total_count")
+	private Long totalCount;
+
+	public void setInventoryList(List<Inventory> inventoryList) {
+		this.inventoryList = inventoryList;
+	}
+	public List<Inventory> getInventoryList( ) {
+		return this.inventoryList;
+	}
+
+	public void setPageNo(Long pageNo) {
+		this.pageNo = pageNo;
+	}
+	public Long getPageNo( ) {
+		return this.pageNo;
+	}
+
+	public void setPageSize(Long pageSize) {
+		this.pageSize = pageSize;
+	}
+	public Long getPageSize( ) {
+		return this.pageSize;
+	}
+
+	public void setTotalCount(Long totalCount) {
+		this.totalCount = totalCount;
+	}
+	public Long getTotalCount( ) {
+		return this.totalCount;
+	}
+
+}

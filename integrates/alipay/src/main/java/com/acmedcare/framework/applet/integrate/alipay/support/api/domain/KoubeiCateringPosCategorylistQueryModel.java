@@ -1,0 +1,29 @@
+package com.acmedcare.framework.applet.integrate.alipay.support.api.domain;
+
+import com.acmedcare.framework.applet.integrate.alipay.support.api.AlipayObject;
+import com.acmedcare.framework.applet.integrate.alipay.support.api.internal.mapping.ApiField;
+
+/**
+ * 查询门店菜类列表
+ *
+ * @author auto create
+ * @since 1.0, 2018-11-16 16:50:16
+ */
+public class KoubeiCateringPosCategorylistQueryModel extends AlipayObject {
+
+	private static final long serialVersionUID = 4659543455367923811L;
+
+	/**
+	 * 门店ID
+	 */
+	@ApiField("shop_id")
+	private String shopId;
+
+	public String getShopId() {
+		return this.shopId;
+	}
+	public void setShopId(String shopId) {
+		this.shopId = shopId;
+	}
+
+}
