@@ -1,6 +1,7 @@
 package com.acmedcare.framework.applet.integrate.api.spi;
 
 import com.acmedcare.framework.applet.api.exception.FileException;
+import com.acmedcare.framework.applet.integrate.api.annotation.FullExposureService;
 import com.acmedcare.framework.applet.integrate.api.bean.DownloadFileRequest;
 import com.acmedcare.framework.applet.integrate.api.bean.DownloadFileResponse;
 import com.acmedcare.framework.applet.integrate.api.bean.UploadFileRequest;
@@ -14,6 +15,7 @@ import com.acmedcare.framework.applet.integrate.common.spi.Extensible;
  * @version ${project.version} - 2019/11/1.
  */
 @Extensible
+@FullExposureService
 public interface FileService {
 
   /**

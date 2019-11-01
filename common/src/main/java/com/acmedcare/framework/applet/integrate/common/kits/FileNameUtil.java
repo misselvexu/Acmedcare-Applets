@@ -79,7 +79,17 @@ public class FileNameUtil {
 
 	private static final ThreadLocal<DateFormat> FILE_PATH_FORMAT_HOLDER = new ThreadLocal<DateFormat>(){
 
-	  private static final String YYYYMMDD = "/yyyy/MMdd/hhmmss-";
+	  private static final String YYYYMMDD = "yyyy/MMdd/";
+
+    @Override
+    protected DateFormat initialValue() {
+      return new SimpleDateFormat(YYYYMMDD);
+    }
+  };
+
+  private static final ThreadLocal<DateFormat> FILE_NAME_PREFIX_FORMAT_HOLDER = new ThreadLocal<DateFormat>(){
+
+    private static final String YYYYMMDD = "hhmmss-";
 
     @Override
     protected DateFormat initialValue() {
@@ -115,8 +125,12 @@ public class FileNameUtil {
 
   // ---------------------------------------------------------------- build new file name
 
-  public static String newFileName(String suffix) {
-    return FILE_PATH_FORMAT_HOLDER.get().format(new Date()) + TIMED_ID_GENERATOR.generate().concat(".").concat(suffix);
+  public static String newFileName() {
+	  return FILE_NAME_PREFIX_FORMAT_HOLDER.get().format(new Date()).concat(TIMED_ID_GENERATOR.generate());
+  }
+
+  public static String newFileStorageDatePath() {
+    return FILE_PATH_FORMAT_HOLDER.get().format(new Date());
   }
 
 	// ---------------------------------------------------------------- normalization

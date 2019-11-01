@@ -2,7 +2,9 @@ package com.acmedcare.framework.applet.integrate.api;
 
 import com.acmedcare.framework.applet.api.exception.NotFoundAppletDependencyException;
 import com.acmedcare.framework.applet.api.exception.UnSupportedAppletException;
+import com.acmedcare.framework.applet.integrate.api.annotation.FullExposureService;
 import com.acmedcare.framework.applet.integrate.api.spi.AuthService;
+import com.acmedcare.framework.applet.integrate.api.spi.FileService;
 import com.acmedcare.framework.applet.integrate.api.spi.PrincipalService;
 import com.acmedcare.framework.applet.integrate.common.spi.Extensible;
 import com.acmedcare.framework.applet.integrate.common.spi.ExtensionLoader;
@@ -40,6 +42,8 @@ public final class AppletsSPIExtensionFactory {
 
   private static ExtensionLoader<AuthService> authServiceExtensionLoader;
 
+  private static ExtensionLoader<FileService> fileServiceExtensionLoader;
+
   private static ExtensionLoader<PrincipalService> principalServiceExtensionLoader;
 
   private static ExtensionLoader<AppletsRepository> appletsRepositoryExtensionLoader;
@@ -52,6 +56,8 @@ public final class AppletsSPIExtensionFactory {
     AppletsSPIExtensionFactory.context = context;
     authServiceExtensionLoader = buildAuthServiceExtensionLoader();
     log.info("[==Applets SPI==] AuthService instance is build-ed.");
+    fileServiceExtensionLoader = buildFileServiceExtensionLoader();
+    log.info("[==Applets SPI==] FileService instance is build-ed.");
     principalServiceExtensionLoader = buildPrincipalServiceExtensionLoader();
     log.info("[==Applets SPI==] PrincipalService instance is build-ed.");
     appletsRepositoryExtensionLoader = buildAppletsRepositoryExtensionLoader();
@@ -69,6 +75,10 @@ public final class AppletsSPIExtensionFactory {
 
   private static ExtensionLoader<AuthService> buildAuthServiceExtensionLoader() {
     return ExtensionLoaderFactory.getExtensionLoader(AuthService.class);
+  }
+
+  private static ExtensionLoader<FileService> buildFileServiceExtensionLoader() {
+    return ExtensionLoaderFactory.getExtensionLoader(FileService.class);
   }
 
   private static ExtensionLoader<AppletsRepository> buildAppletsRepositoryExtensionLoader() {
@@ -100,6 +110,9 @@ public final class AppletsSPIExtensionFactory {
       throw new NotFoundAppletDependencyException();
     }
 
+    // Hit：is this service is full exposur.
+    boolean existFullExposureEndpointAnnotation = clazz.isAnnotationPresent(FullExposureService.class);
+
     /*
     if(!appletsEnabled) {
       throw new UnSupportedAppletException(
@@ -109,13 +122,19 @@ public final class AppletsSPIExtensionFactory {
 
     String envKey = String.format(SPI_IMPLEMENTS_ENABLED_ENV_PROPERTIES_KEY, alias);
 
-    if (!checkAndSet(envKey)) {
-      throw new UnSupportedAppletException(
-          "Applet server not found config properties <" + envKey + "=true> on environment");
+    if(!existFullExposureEndpointAnnotation) {
+      if (!checkAndSet(envKey)) {
+        throw new UnSupportedAppletException(
+            "Applet server not found config properties <" + envKey + "=true> on environment");
+      }
     }
 
     if (clazz.equals(AuthService.class)) {
       return (T) authServiceExtensionLoader.getExtension(alias);
+    }
+
+    if (clazz.equals(FileService.class)) {
+      return (T) fileServiceExtensionLoader.getExtension(alias);
     }
 
     if (clazz.equals(PrincipalService.class)) {

@@ -1,5 +1,6 @@
 package com.acmedcare.framework.applet.integrate.api;
 
+import com.acmedcare.framework.applet.api.exception.AppletException;
 import com.acmedcare.framework.applet.integrate.common.spi.util.StringUtils;
 import com.acmedcare.framework.kits.Assert;
 import com.acmedcare.nas.client.NasProperties;
@@ -91,7 +92,7 @@ public class AppletsIntegrateProperties implements InitializingBean {
      *
      * <p>
      */
-    private FileStorageType type = FileStorageType.DEFAULT;
+    private FileStorageType type = FileStorageType.LOCAL;
 
     /**
      * Local Storage Dir
@@ -105,16 +106,16 @@ public class AppletsIntegrateProperties implements InitializingBean {
      *
      * <p>
      */
-    private String filePublishUri;
+    private String localStoragePublishUrlPrefix;
 
     void recheck() {
 
       if(type == null) {
-        this.type = FileStorageType.DEFAULT;
+        this.type = FileStorageType.LOCAL;
       }
 
       // default check
-      if(type.equals(FileStorageType.DEFAULT)) {
+      if(type.equals(FileStorageType.LOCAL)) {
 
         if(com.acmedcare.framework.kits.StringUtils.isBlank(localStoragePath)) {
 
@@ -131,32 +132,44 @@ public class AppletsIntegrateProperties implements InitializingBean {
 
         if(!localStorageDirectory.exists()) {
 
-          logger.info("[==Applets LocalFile==] create dir:{} result: {}" , this.localStoragePath ,localStorageDirectory.mkdirs());
+          logger.info("[==Applets LocalFile==] create dir: {} result: {}" , this.localStoragePath ,localStorageDirectory.mkdirs());
 
         }
 
+        if(!this.localStoragePath.endsWith("/")) {
+          this.localStoragePath = this.localStoragePath.concat("/");
+        }
+
+        if(com.acmedcare.framework.kits.StringUtils.isBlank(this.localStoragePublishUrlPrefix)) {
+          throw new AppletException("[==Applet LocalFile==] file storage property 'local-storage-publish-url-prefix' must not be null or blank.");
+        }
       }
 
       // NAS CHECK
       if(type.equals(FileStorageType.NAS)) {
 
         if(org.apache.commons.lang3.StringUtils.isAnyBlank(getAppId(), getAppKey())) {
-          throw new IllegalArgumentException("[==Applet NasFile==] file storage type is nas, properties 'appId' & 'appKey' must not be null or blank.");
+          throw new AppletException("[==Applet NasFile==] file storage type is nas, properties 'appId' & 'appKey' must not be null or blank.");
         }
 
         if(getServerAddrs().isEmpty()) {
-          throw new IllegalArgumentException("[==Applet NasFile==] file storage type is nas, property 'serverAddrs' must not be empty .");
+          throw new AppletException("[==Applet NasFile==] file storage type is nas, property 'serverAddrs' must not be empty .");
         }
 
       }
 
+      if (org.apache.commons.lang3.StringUtils.endsWith(this.localStoragePublishUrlPrefix, "/")) {
+        this.localStoragePublishUrlPrefix =
+            org.apache.commons.lang3.StringUtils.substring(
+                this.localStoragePublishUrlPrefix, 0, this.localStoragePublishUrlPrefix.length() - 1);
+      }
     }
   }
 
   public enum FileStorageType {
 
     /** Default， local storage */
-    DEFAULT,
+    LOCAL,
 
     /** Acmedcare+ Nas File System */
     NAS

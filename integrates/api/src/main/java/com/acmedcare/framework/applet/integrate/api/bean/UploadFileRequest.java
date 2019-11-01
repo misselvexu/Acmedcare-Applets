@@ -2,6 +2,7 @@ package com.acmedcare.framework.applet.integrate.api.bean;
 
 import lombok.*;
 
+import javax.ws.rs.core.MediaType;
 import java.io.Serializable;
 
 /**
@@ -17,6 +18,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class UploadFileRequest implements Serializable {
 
+  private String fileKey;
 
+  private byte[] file;
+
+  private MediaType mediaType;
 
 }

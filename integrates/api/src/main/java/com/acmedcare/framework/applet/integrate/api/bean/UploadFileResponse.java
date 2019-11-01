@@ -13,10 +13,19 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class UploadFileResponse implements Serializable {
 
+  private String fileKey;
 
+  private long fileSize;
+
+  private String mediaType;
+
+  private String filePublishUrl;
+
+  private String fileChecksum;
 
 }

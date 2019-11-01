@@ -2,8 +2,6 @@ package com.acmedcare.framework.applet.integrate.common.kits;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * {@link FileNameUtilTest}
  *
@@ -13,9 +11,5 @@ import static org.junit.Assert.*;
 public class FileNameUtilTest {
 
   @Test
-  public void newFileName() {
-    for (int i = 0; i < 1000; i++) {
-      System.out.println(FileNameUtil.newFileName("jpg"));
-    }
-  }
+  public void newFileName() {}
 }

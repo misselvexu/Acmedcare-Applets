@@ -52,7 +52,6 @@
         <dependency>
             <groupId>com.acmedcare.nas</groupId>
             <artifactId>nas-client</artifactId>
-            <scope>provided</scope>
         </dependency>
 
         <dependency>
