@@ -2,11 +2,10 @@ package com.acmedcare.framework.applet.integrate.api;
 
 import com.acmedcare.framework.applet.integrate.common.spi.util.StringUtils;
 import com.google.common.collect.Sets;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import static com.acmedcare.framework.applet.integrate.api.AppletsIntegrateProperties.INTEGRATE_PROPERTIES_CONFIG_PREFIX;
@@ -54,5 +53,32 @@ public class AppletsIntegrateProperties {
       return true;
     }
     return StringUtils.hasText(type) && supportedAppletTypes.contains(type);
+  }
+
+  @Getter
+  @Setter
+  @Builder
+  @NoArgsConstructor
+  @AllArgsConstructor
+  public static class FileProperties implements Serializable {
+
+    /**
+     * File Storage Type ,default is local storage
+     *
+     * <p>
+     */
+    private FileStorageType storageType = FileStorageType.DEFAULT;
+
+
+    private String fileStorageDir;
+  }
+
+  public enum FileStorageType {
+
+    /** Default， local storage */
+    DEFAULT,
+
+    /** Acmedcare+ Nas File System */
+    NAS
   }
 }

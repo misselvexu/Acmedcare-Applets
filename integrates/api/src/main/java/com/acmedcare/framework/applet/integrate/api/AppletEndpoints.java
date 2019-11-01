@@ -28,4 +28,11 @@ public class AppletEndpoints {
    * <p>
    */
   public static final String APPLET_PRINCIPAL_ENDPOINT = "/principal";
+
+  /**
+   * Applet Nas Endpoint
+   *
+   * <p>
+   */
+  public static final String APPLET_NAS_ENDPOINT = "/nas";
 }
