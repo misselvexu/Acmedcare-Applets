@@ -124,7 +124,7 @@ public class AppletsRDBService {
         }
 
         // INIT
-        DBMaker.Maker maker = DBMaker.fileDB(path).fileChannelEnable().fileMmapEnableIfSupported();
+        DBMaker.Maker maker = DBMaker.fileDB(path).fileChannelEnable().fileMmapEnableIfSupported().checksumHeaderBypass();
 
         rdb = maker.make();
 

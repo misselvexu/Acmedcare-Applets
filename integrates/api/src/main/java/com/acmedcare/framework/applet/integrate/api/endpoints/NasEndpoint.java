@@ -1,13 +1,17 @@
 package com.acmedcare.framework.applet.integrate.api.endpoints;
 
+import com.acmedcare.framework.applet.api.exception.FileNotFoundException;
 import com.acmedcare.framework.applet.integrate.api.AppletResponse;
 import com.acmedcare.framework.applet.integrate.api.AppletsContext;
 import com.acmedcare.framework.applet.integrate.api.AppletsIntegrateProperties;
 import com.acmedcare.framework.applet.integrate.api.AppletsSPIExtensionFactory;
+import com.acmedcare.framework.applet.integrate.api.bean.DownloadFileRequest;
+import com.acmedcare.framework.applet.integrate.api.bean.DownloadFileResponse;
 import com.acmedcare.framework.applet.integrate.api.bean.UploadFileRequest;
 import com.acmedcare.framework.applet.integrate.api.bean.UploadFileResponse;
 import com.acmedcare.framework.applet.integrate.api.spi.FileService;
 import com.acmedcare.framework.applet.integrate.common.kits.FileNameUtil;
+import com.acmedcare.framework.kits.StringUtils;
 import com.acmedcare.framework.kits.timed.TimedIdGenerator;
 import org.apache.commons.io.IOUtils;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
@@ -15,6 +19,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.*;
 import java.io.InputStream;
@@ -23,6 +28,8 @@ import java.util.Map;
 
 import static com.acmedcare.framework.applet.integrate.api.AppletEndpoints.APPLET_ENDPOINT_PREFIX;
 import static com.acmedcare.framework.applet.integrate.api.AppletEndpoints.APPLET_NAS_ENDPOINT;
+import static javax.ws.rs.core.HttpHeaders.CONTENT_DISPOSITION;
+import static javax.ws.rs.core.HttpHeaders.CONTENT_TYPE;
 
 /**
  * {@link NasEndpoint}
@@ -129,8 +136,46 @@ public class NasEndpoint {
 
   @GET
   @Path("/d/{fileId}")
-  public Response download(@PathParam("fileId") String fileId) {
+  public Response download(
+      @PathParam("fileId") String fileId, @Context HttpServletRequest request) {
 
-    return null;
+    try {
+
+      if (StringUtils.isBlank(fileId)) {
+        return Response.status(Response.Status.BAD_REQUEST).build();
+      }
+
+      log.info("==Applets File== request download file: {}", fileId);
+
+      AppletsIntegrateProperties properties = AppletsContext.context().getProperties();
+
+      FileService fileService =
+          AppletsSPIExtensionFactory.getService(
+              properties.getFileStorageConfig().getType().name().toLowerCase(), FileService.class);
+
+      DownloadFileRequest downloadFileRequest =
+          DownloadFileRequest.builder().fileId(fileId).build();
+
+      DownloadFileResponse response = fileService.download(downloadFileRequest);
+
+      log.info("==Applets File== request download file response : {}", response);
+
+      return Response.status(Response.Status.OK)
+          .header(CONTENT_TYPE, response.getMediaType())
+          .header(CONTENT_DISPOSITION, response.responseFileName())
+          .entity(response.getFile())
+          .build();
+
+    } catch (FileNotFoundException e) {
+      return Response.status(Response.Status.NOT_FOUND).build();
+    } catch (Exception e) {
+      return Response.status(Response.Status.BAD_REQUEST)
+          .entity(
+              AppletResponse.appletResponseBuilder()
+                  .status(AppletResponse.Status.EXCEPTION)
+                  .message(e.getMessage())
+                  .appletResponseBuild())
+          .build();
+    }
   }
 }

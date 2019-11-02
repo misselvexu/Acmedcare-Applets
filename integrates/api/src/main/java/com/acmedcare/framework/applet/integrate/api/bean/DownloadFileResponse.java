@@ -13,14 +13,22 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Builder
+@ToString(exclude = "file")
 @NoArgsConstructor
 @AllArgsConstructor
 public class DownloadFileResponse implements Serializable {
 
+  private static final String CONTENT_DISPOSITION_FILENAME = "attachment;fileName=%s";
 
   private String fileId;
 
-  private String fileName;
-
   private byte[] file;
+
+  private String mediaType;
+
+  private String checksum;
+
+  public String responseFileName() {
+    return String.format(CONTENT_DISPOSITION_FILENAME, this.fileId);
+  }
 }

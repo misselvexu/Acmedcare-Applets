@@ -133,6 +133,10 @@ public class FileNameUtil {
     return FILE_PATH_FORMAT_HOLDER.get().format(new Date());
   }
 
+  public static String newFileStorageDatePath(Date date) {
+    return FILE_PATH_FORMAT_HOLDER.get().format(date);
+  }
+
 	// ---------------------------------------------------------------- normalization
 
 	public static String normalize(String filename) {

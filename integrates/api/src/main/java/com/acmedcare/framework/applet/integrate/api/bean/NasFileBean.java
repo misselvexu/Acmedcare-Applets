@@ -15,6 +15,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Builder
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class NasFileBean implements Serializable {

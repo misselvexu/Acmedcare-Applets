@@ -27,7 +27,7 @@ public class AppletCommonModel {
   @ToString
   @NoArgsConstructor
   @Builder(builderMethodName = "commonModelKeyBuilder", buildMethodName = "commonkeyBuild")
-  public static class AppletCommonModelKey<K> implements Serializable {
+  public static class AppletCommonModelKey<K> implements Serializable, Comparable<AppletCommonModelKey> {
 
     /** Storage Namespace Defined */
     protected String namespace;
@@ -57,6 +57,10 @@ public class AppletCommonModel {
       return Objects.hash(namespace, key);
     }
 
+    @Override
+    public int compareTo(@NotNull AppletCommonModelKey o) {
+      return o.getKey().hashCode() - this.getKey().hashCode();
+    }
   }
 
   public static final String DEFAULT_EMPTY_RESULT = "temp_suite_ticket_only4_test";
