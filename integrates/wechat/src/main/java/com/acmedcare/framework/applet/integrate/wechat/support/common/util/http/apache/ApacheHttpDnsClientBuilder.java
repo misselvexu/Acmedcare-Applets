@@ -206,12 +206,12 @@ public class ApacheHttpDnsClientBuilder implements ApacheHttpClientBuilder {
     PoolingHttpClientConnectionManager connectionManager;
     if (dnsResover != null) {
       if (log.isDebugEnabled()) {
-        log.debug("specified dns resolver.");
+        log.info("specified dns resolver.");
       }
       connectionManager = new PoolingHttpClientConnectionManager(registry, dnsResover);
     } else {
       if (log.isDebugEnabled()) {
-        log.debug("Not specified dns resolver.");
+        log.info("Not specified dns resolver.");
       }
       connectionManager = new PoolingHttpClientConnectionManager(registry);
     }

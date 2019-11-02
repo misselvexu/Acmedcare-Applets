@@ -4,7 +4,7 @@
     <parent>
         <groupId>com.acmedcare.framework</groupId>
         <artifactId>applet-integrates-all</artifactId>
-        <version>2.1.0.BUILD-SNAPSHOT</version>
+        <version>2.2.0.BUILD-SNAPSHOT</version>
         <relativePath>../</relativePath>
     </parent>
     <artifactId>applet-integrate-api</artifactId>
@@ -44,8 +44,29 @@
         </dependency>
 
         <dependency>
+            <groupId>com.acmedcare.framework.kits</groupId>
+            <artifactId>timed-id-kit</artifactId>
+            <version>Antarctica.RC1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.acmedcare.nas</groupId>
+            <artifactId>nas-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.acmedcare.framework</groupId>
             <artifactId>spring-boot-starter-resteasy</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
         </dependency>
 
         <dependency>

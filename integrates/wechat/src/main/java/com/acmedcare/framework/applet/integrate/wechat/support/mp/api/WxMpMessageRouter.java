@@ -216,7 +216,7 @@ public class WxMpMessageRouter {
         res =
             rule.service(wxMessage, context, mpService, this.sessionManager, this.exceptionHandler);
         // 在同步操作结束，session访问结束
-        this.log.debug("End session access: async=false, sessionId={}", wxMessage.getFromUser());
+        this.log.info("End session access: async=false, sessionId={}", wxMessage.getFromUser());
         sessionEndAccess(wxMessage);
       }
     }
@@ -229,7 +229,7 @@ public class WxMpMessageRouter {
               for (Future<?> future : futures) {
                 try {
                   future.get();
-                  WxMpMessageRouter.this.log.debug(
+                  WxMpMessageRouter.this.log.info(
                       "End session access: async=true, sessionId={}", wxMessage.getFromUser());
                   // 异步操作结束，session访问结束
                   sessionEndAccess(wxMessage);

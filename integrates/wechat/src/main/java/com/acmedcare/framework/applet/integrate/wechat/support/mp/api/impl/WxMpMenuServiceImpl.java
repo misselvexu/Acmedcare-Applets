@@ -31,10 +31,10 @@ public class WxMpMenuServiceImpl implements WxMpMenuService {
       url = WxMpApiUrl.Menu.MENU_ADDCONDITIONAL;
     }
 
-    log.debug("开始创建菜单：{}", menuJson);
+    log.info("开始创建菜单：{}", menuJson);
 
     String result = this.wxMpService.post(url, menuJson);
-    log.debug("创建菜单：{},结果：{}", menuJson, result);
+    log.info("创建菜单：{},结果：{}", menuJson, result);
 
     if (menu.getMatchRule() != null) {
       return new JsonParser().parse(result).getAsJsonObject().get("menuid").getAsString();
@@ -63,7 +63,7 @@ public class WxMpMenuServiceImpl implements WxMpMenuService {
   @Override
   public void menuDelete() throws WxErrorException {
     String result = this.wxMpService.get(WxMpApiUrl.Menu.MENU_DELETE, null);
-    log.debug("删除菜单结果：{}", result);
+    log.info("删除菜单结果：{}", result);
   }
 
   @Override
@@ -72,7 +72,7 @@ public class WxMpMenuServiceImpl implements WxMpMenuService {
     jsonObject.addProperty("menuid", menuId);
     String result =
         this.wxMpService.post(WxMpApiUrl.Menu.MENU_DELCONDITIONAL, jsonObject.toString());
-    log.debug("根据MeunId({})删除个性化菜单结果：{}", menuId, result);
+    log.info("根据MeunId({})删除个性化菜单结果：{}", menuId, result);
   }
 
   @Override

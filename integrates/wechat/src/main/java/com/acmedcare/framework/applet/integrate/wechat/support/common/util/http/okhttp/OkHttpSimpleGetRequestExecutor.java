@@ -23,7 +23,7 @@ public class OkHttpSimpleGetRequestExecutor
 
   @Override
   public String execute(String uri, String queryParam) throws WxErrorException, IOException {
-    logger.debug("OkHttpSimpleGetRequestExecutor is running");
+    logger.info("OkHttpSimpleGetRequestExecutor is running");
     if (queryParam != null) {
       if (uri.indexOf('?') == -1) {
         uri += '?';

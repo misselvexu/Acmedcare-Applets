@@ -1,6 +1,11 @@
 package com.acmedcare.framework.applet.integrate.common.kits;
 
+import com.acmedcare.framework.kits.timed.TimedIdGenerator;
+
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * General filename and filepath manipulation utilities.
@@ -72,6 +77,28 @@ public class FileNameUtil {
 	 */
 	private static final char WINDOWS_SEPARATOR = '\\';
 
+	private static final ThreadLocal<DateFormat> FILE_PATH_FORMAT_HOLDER = new ThreadLocal<DateFormat>(){
+
+	  private static final String YYYYMMDD = "yyyy/MMdd/";
+
+    @Override
+    protected DateFormat initialValue() {
+      return new SimpleDateFormat(YYYYMMDD);
+    }
+  };
+
+  private static final ThreadLocal<DateFormat> FILE_NAME_PREFIX_FORMAT_HOLDER = new ThreadLocal<DateFormat>(){
+
+    private static final String YYYYMMDD = "hhmmss-";
+
+    @Override
+    protected DateFormat initialValue() {
+      return new SimpleDateFormat(YYYYMMDD);
+    }
+  };
+
+  private static final TimedIdGenerator TIMED_ID_GENERATOR = new TimedIdGenerator();
+
 	/**
 	 * The system separator character.
 	 */
@@ -95,6 +122,20 @@ public class FileNameUtil {
 	private static boolean isSeparator(char ch) {
 		return (ch == UNIX_SEPARATOR) || (ch == WINDOWS_SEPARATOR);
 	}
+
+  // ---------------------------------------------------------------- build new file name
+
+  public static String newFileName() {
+	  return FILE_NAME_PREFIX_FORMAT_HOLDER.get().format(new Date()).concat(TIMED_ID_GENERATOR.generate());
+  }
+
+  public static String newFileStorageDatePath() {
+    return FILE_PATH_FORMAT_HOLDER.get().format(new Date());
+  }
+
+  public static String newFileStorageDatePath(Date date) {
+    return FILE_PATH_FORMAT_HOLDER.get().format(date);
+  }
 
 	// ---------------------------------------------------------------- normalization
 

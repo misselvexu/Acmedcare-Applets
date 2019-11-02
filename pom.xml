@@ -4,7 +4,7 @@
 
     <groupId>com.acmedcare.framework</groupId>
     <artifactId>applet-all</artifactId>
-    <version>2.1.0.BUILD-SNAPSHOT</version>
+    <version>2.2.0.BUILD-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Acmedcare+ Applets Project Parent :: ${project.version}</name>
@@ -116,9 +116,27 @@
             </dependency>
 
             <dependency>
+                <groupId>org.jboss.resteasy</groupId>
+                <artifactId>resteasy-multipart-provider</artifactId>
+                <version>4.3.0.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.nas</groupId>
+                <artifactId>nas-client</artifactId>
+                <version>2.1.1.BUILD-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
                 <groupId>com.acmedcare.framework</groupId>
                 <artifactId>acmedcare-spring-aop-starter</artifactId>
                 <version>2.1.0-RC1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.acmedcare.framework.kits</groupId>
+                <artifactId>timed-id-kit</artifactId>
+                <version>Antarctica.RC1</version>
             </dependency>
 
             <dependency>
@@ -177,6 +195,12 @@
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-lang3</artifactId>
                 <version>3.8.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.4</version>
             </dependency>
 
             <dependency>

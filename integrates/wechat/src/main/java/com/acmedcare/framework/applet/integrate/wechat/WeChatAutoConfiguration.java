@@ -156,6 +156,7 @@ public class WeChatAutoConfiguration implements ApplicationContextAware {
     payConfig.setSubAppId(StringUtils.trimToNull(properties.getPayConfig().getSubAppId()));
     payConfig.setSubMchId(StringUtils.trimToNull(properties.getPayConfig().getSubMchId()));
     payConfig.setKeyPath(StringUtils.trimToNull(properties.getPayConfig().getKeyPath()));
+    payConfig.setNotifyUrl(StringUtils.trimToNull(properties.getPayConfig().getNotifyUrl()));
 
     wxPayService.setConfig(payConfig);
 

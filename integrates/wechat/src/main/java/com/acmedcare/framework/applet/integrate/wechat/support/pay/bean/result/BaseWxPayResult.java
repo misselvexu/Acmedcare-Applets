@@ -228,7 +228,7 @@ public abstract class BaseWxPayResult implements Serializable {
     Map<String, String> map = toMap();
     if (getSign() != null
         && !SignUtils.checkSign(map, signType, wxPayService.getConfig().getMchKey())) {
-      this.getLogger().debug("校验结果签名失败，参数：{}", map);
+      this.getLogger().info("校验结果签名失败，参数：{}", map);
       throw new WxPayException("参数格式校验错误！");
     }
 

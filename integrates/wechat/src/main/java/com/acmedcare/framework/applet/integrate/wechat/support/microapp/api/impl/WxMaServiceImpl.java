@@ -259,7 +259,7 @@ public class WxMaServiceImpl implements WxMaService, RequestHttp<CloseableHttpCl
 
     try {
       T result = executor.execute(uriWithAccessToken, data);
-      log.debug("\n【请求地址】: {}\n【请求参数】：{}\n【响应数据】：{}", uriWithAccessToken, dataForLog, result);
+      log.info("\n【请求地址】: {}\n【请求参数】：{}\n【响应数据】：{}", uriWithAccessToken, dataForLog, result);
       return result;
     } catch (WxErrorException e) {
       WxError error = e.getError();

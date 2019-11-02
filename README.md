@@ -54,7 +54,7 @@ If you want to build with the regular `mvn` command, you will need [Maven v3.5.0
 <dependency>
     <groupId>com.acmedcare.framework</groupId>
     <artifactId>spring-boot-starter-applet</artifactId>
-    <version>2.1.0.BUILD-SNAPSHOT</version>
+    <version>2.2.0.BUILD-SNAPSHOT</version>
 </dependency>
 
 ```

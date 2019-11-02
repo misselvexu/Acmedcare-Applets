@@ -59,7 +59,7 @@ public class BeanUtils {
 
     if (!requiredFields.isEmpty()) {
       String msg = "必填字段 " + requiredFields + " 必须提供值";
-      log.debug(msg);
+      log.info(msg);
       throw new WxErrorException(WxError.builder().errorMsg(msg).build());
     }
   }

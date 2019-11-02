@@ -11,7 +11,7 @@ public class Constants {
 	/**
 	 * Default temp file prefix.
 	 */
-	public static String tempFilePrefix = "jodd-";
+	public static String tempFilePrefix = "applet-";
 
 	/**
 	 * Default file encoding (UTF8).

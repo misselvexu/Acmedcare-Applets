@@ -150,9 +150,9 @@ public abstract class BaseWxPayServiceImpl implements WxPayService {
   @Override
   public WxPayOrderNotifyResult parseOrderNotifyResult(String xmlData) throws WxPayException {
     try {
-      log.debug("微信支付异步通知请求参数：{}", xmlData);
+      log.info("微信支付异步通知请求参数：{}", xmlData);
       WxPayOrderNotifyResult result = WxPayOrderNotifyResult.fromXML(xmlData);
-      log.debug("微信支付异步通知请求解析后的对象：{}", result);
+      log.info("微信支付异步通知请求解析后的对象：{}", result);
       result.checkResult(this, this.getConfig().getSignType(), false);
       return result;
     } catch (WxPayException e) {
@@ -167,10 +167,10 @@ public abstract class BaseWxPayServiceImpl implements WxPayService {
   @Override
   public WxPayRefundNotifyResult parseRefundNotifyResult(String xmlData) throws WxPayException {
     try {
-      log.debug("微信支付退款异步通知参数：{}", xmlData);
+      log.info("微信支付退款异步通知参数：{}", xmlData);
       WxPayRefundNotifyResult result =
           WxPayRefundNotifyResult.fromXML(xmlData, this.getConfig().getMchKey());
-      log.debug("微信支付退款异步通知解析后的对象：{}", result);
+      log.info("微信支付退款异步通知解析后的对象：{}", result);
       return result;
     } catch (Exception e) {
       log.error(e.getMessage(), e);
@@ -181,9 +181,9 @@ public abstract class BaseWxPayServiceImpl implements WxPayService {
   @Override
   public WxScanPayNotifyResult parseScanPayNotifyResult(String xmlData) throws WxPayException {
     try {
-      log.debug("扫码支付回调通知请求参数：{}", xmlData);
+      log.info("扫码支付回调通知请求参数：{}", xmlData);
       WxScanPayNotifyResult result = BaseWxPayResult.fromXML(xmlData, WxScanPayNotifyResult.class);
-      log.debug("扫码支付回调通知解析后的对象：{}", result);
+      log.info("扫码支付回调通知解析后的对象：{}", result);
       result.checkResult(this, this.getConfig().getSignType(), false);
       return result;
     } catch (WxPayException e) {
@@ -473,7 +473,7 @@ public abstract class BaseWxPayServiceImpl implements WxPayService {
     }
 
     String content = codeUrl.toString().substring(0, codeUrl.length() - 1);
-    log.debug("扫码支付模式一生成二维码的URL:{}", content);
+    log.info("扫码支付模式一生成二维码的URL:{}", content);
     return content;
   }
 

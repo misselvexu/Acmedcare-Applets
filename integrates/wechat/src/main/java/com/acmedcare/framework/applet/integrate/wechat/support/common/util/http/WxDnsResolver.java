@@ -29,7 +29,7 @@ public class WxDnsResolver implements DnsResolver {
 
   private void init() {
     if (log.isDebugEnabled()) {
-      log.debug("init wechat dns config with ip {}", wxApiIp);
+      log.info("init wechat dns config with ip {}", wxApiIp);
     }
     try {
       MAPPINGS.put(WECHAT_API_URL, new InetAddress[] {InetAddress.getByName(wxApiIp)});
