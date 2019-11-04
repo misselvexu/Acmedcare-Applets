@@ -25,6 +25,7 @@
 - [请求登录接口](#登录授权请求)
 - [绑定接口](#账户绑定业务系统接口)
 - [解绑接口](#账户解绑业务系统接口)
+- [上传文件](#上传文件)
 
 ----
 
@@ -211,5 +212,55 @@ baseId: 123
 > 接入微信请求参数解析
 
 > 编辑中
+
+
+-----
+
+
+#### 上传文件
+
+##### 请求`curl`示例
+
+```bash
+
+curl -F file=@/Users/misselvexu/Downloads/iPhone-11-Pro-stock-blue-wallpaper-by-AR72014.png http://127.0.0.1:5543/applet-endpoints/applet/nas/upload
+
+```
+
+## Http Javascript客户端使用
+
+> 基于标准的 `multipart/form-data` 表单上传方式
+
+----
+
+> Request
+
+```
+URL:      http://127.0.0.1:5543/applet-endpoints/applet/nas/upload
+Method:   POST 
+```
+
+> Response
+
+- 成功
+> 状态码: 200
+
+> 返回值:
+
+```json
+
+{
+	"timestamp": "2019-11-02 13:10:05",
+	"status": "SUCCESS",
+	"data": {
+		"fileKey": "011005-1Zf0fKk_yJANQwatJqxu3xjZO6J",
+		"fileSize": 315114,
+		"mediaType": "image/png",
+		"filePublishUrl": "http://127.0.0.1:5543/applet-endpoints/applet/nas/d/011005-1Zf0fKk_yJANQwatJqxu3xjZO6J",
+		"fileChecksum": "0e00663b90bb8d1333e57e611a71f83c"
+	}
+}
+
+```
 
 #### 常量表
