@@ -1,4 +1,4 @@
-## 🥳Acmedcare-Applets
+## Acmedcare-Applets
 
 Acmedcare+ Tripartite Applet Support Framework
 
